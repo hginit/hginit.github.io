@@ -1,0 +1,955 @@
+---
+title: Setting up for a Team
+description: >
+  One of the benefits of using Mercurial is working
+  with a team on the same code. Mercurial lets you
+  each work independently, and merges your changes together.
+layout: default
+---
+<div id="topnav">
+  <div class="tInterior">
+      <a href="index.html">
+        <img src="i/logo.png" border="0" alt="HgInit Home" />
+      </a>
+
+  One of the benefits of using Mercurial is working
+  with a team on the same code. Mercurial lets you
+  each work independently, and merges your changes together.
+
+  </div>
+</div>
+<h1>Setting up for a Team</h1>
+<div class="content">
+
+<p>The most common way to collaborate with Mercurial is to set up a central repository, in addition to the private repositories that we each have on our own computers. We can use the central repository sort of like a swap meet, where we get together to trade the changes we&#8217;ve been making.</p>
+
+
+<div><img src="i/02-repo.png" /></div>
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg serve</div>
+</div>
+<p class="cheattext">runs a web server to make the current repository accessible over the Internet </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+
+<p>The quick-and-dirty way to make a central repository is to use Mercurial&#8217;s built in web server&#8212;all you have to do is make a repository with <strong>hg init</strong> and then serve it on the web with <strong>hg serve</strong>. By default it will be served on port 8000.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\&gt; <strong>mkdir CentralRepo</strong>
+
+C:\&gt; <strong>cd CentralRepo</strong>
+
+C:\CentralRepo&gt; <strong>hg init</strong>
+
+C:\CentralRepo&gt; <strong>hg serve</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<p>Since this computer is named <strong>joel.example.com</strong> I can just go to <strong>http://joel.example.com:8000/</strong> with a web browser and see that the server is up and running, even though the repository there is completely empty.</p>
+
+
+<div><img src="i/02-web.png" /></div>
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg clone</div>
+</div>
+<p class="cheattext">make a complete copy of an entire repository </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+
+<p>With the central web server running, I can <em>clone</em> this repository <em>from</em> the server <em>onto</em> my own computer for my own use. This repository is empty right now, so I&#8217;ll just get another empty repository when I clone it.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel&gt; <strong>hg clone http://joel.example.com:8000/ recipes</strong>
+no changes found
+updating to branch default
+0 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\joel&gt; <strong>cd recipes</strong>
+
+C:\Users\joel\recipes&gt; <strong>dir</strong>
+ Volume in drive C has no label.
+ Volume Serial Number is 84BD-9C2C
+
+ Directory of C:\Users\joel\recipes
+
+02/08/2010  02:46 PM    &lt;DIR&gt;          .
+02/08/2010  02:46 PM    &lt;DIR&gt;          ..
+02/08/2010  02:46 PM    &lt;DIR&gt;          .hg
+               0 File(s)              0 bytes
+               3 Dir(s)  41,852,125,184 bytes free
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Now I&#8217;ll create a file called <strong>guac</strong> with my famous guacamole recipe.</p>
+
+<div class="edit1">
+                <div class="edittopbefore" >
+                guac </div>
+                <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 serrano chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Crunch all ingredients together.<br>
+Serve with tortilla chips.<br>
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+
+
+<p>I&#8217;ll add this file, and commit it as the first official version:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg add</strong>
+adding guac
+
+C:\Users\joel\recipes&gt; <strong>hg commit</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>I&#8217;ll provide a commit comment:</p>
+
+
+<img src="i/02-commit0.png">
+
+
+<p>I&#8217;m just going to quickly edit this file and make one small change, so
+that we have a little bit of history in the repository.</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+&#8230;<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Crunch all ingredients together.<br>
+Serve with tortilla chips.<br>
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+
+  <div class="editcontent">
+&#8230;<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+<strong>Smoosh</strong> all ingredients together.<br>
+Serve with tortilla chips.<br>
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>And now to commit that change:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+
+C:\Users\joel\recipes&gt; <strong>hg status</strong>
+M guac
+
+C:\Users\joel\recipes&gt; <strong>hg diff guac</strong>
+diff -r c1fb7e7fbe50 guac
+--- a/guac      Mon Feb 08 14:50:08 2010 -0500
++++ b/guac      Mon Feb 08 14:51:08 2010 -0500
+@@ -7,5 +7,5 @@
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+
+-Crunch all ingredients together.
++Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\joel\recipes&gt; <strong>hg com -m "Change crunch to smoosh"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg log</strong>
+changeset:   1:a52881ed530d
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Notice that when I committed that time, I used the <strong>-m</strong> argument, which I haven&#8217;t done before. That&#8217;s just a way to provide the commit message on the command line, without using an editor.</p>
+
+<p>OK, where are we? So far, I&#8217;ve got a central repository, and my clone of it. I&#8217;ve made two changes and committed them, but those changes are only in my clone&#8212;they&#8217;re not in the central repository yet. So the world looks like this:</p>
+
+
+   <div><img src="i/02-repo-2.png" /></div>
+
+
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg push</div>
+</div>
+<p class="cheattext"> push new changes from this repository into another  </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+<p>Now I&#8217;m going to use the <strong>hg push</strong> command, which will push my changes from my repository into the central repository:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+ssl required
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Oh great. It figures that wouldn&#8217;t work. I neglected to think about the security implications of just running a random web server and allowing anybody in the world to push their stupid changes into it. Bear with me for a moment; I&#8217;m going to configure that server to allow anybody in the world to do anything they want to it. This can be done by editing the file .hg\hgrc on the server:</p>
+<div class="edit1">
+                <div class="edittopbefore">
+                .hg\hgrc </div>
+                <div class="editcontent">
+                    [web]<br />
+                    push_ssl=False<br />
+                    allow_push=*<br />
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+<p>Needless to say, this is rather unsafe, but if you&#8217;re on a nice protected LAN at work and there&#8217;s a good firewall and you trust everybody on your LAN, this is reasonably OK. Otherwise, you&#8217;ll want to read the advanced chapters on security.</p>
+
+<p>OK, time to fire up the server again:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\CentralRepo> <strong>hg serve</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<p>And now I should be able to push into it:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Yay! Now the world looks like this:</p>
+
+
+   <img src="i/02-repo-3.png" />
+
+<p>I know what you&#8217;re thinking. You&#8217;re thinking, &#8220;Gosh, Joel, that&#8217;s strange. Why do these repositories contain <em>changes</em> as opposed to <em>files</em>? Where&#8217;s that <strong>guac</strong> file?&#8221;</p>
+
+<p>Yeah, it&#8217;s weird. But that&#8217;s the way distributed version control works. Repositories just contain big stacks of changes. Imagine that a change is like one of those clear transparency sheets. When you have a bunch of transparency sheets, you stack them on each other in order, with the latest change on the top, and look down from above, and&#8212;tada!&#8212;you&#8217;re looking at the current version of the file. As you peel away transparencies from the top of the pile, you see older and older versions.</p>
+
+<p>We can use our web browser to peek into the central repository now:</p>
+
+
+  <img src="i/02-web-2.png" />
+
+
+<p>Exactly what you would expect.</p>
+
+<p>Now I want Rose to help me work on the recipe. Rose is on the test team. Everyone agrees that she reminds them of those middle-aged ladies you see in Vegas, sitting there slack-jawed for hours, shoveling quarter after quarter into the slot machines, only she&#8217;s testing software. You can throw her a new version of your code and she&#8217;ll test it on 23 different Linux distros, one after the other, expressionless, unmoving, pausing only to tell you that there&#8217;s a dot missing on one of the lower-case I&#8217;s in the Turkish version on Ubuntu Linux. Rose is a great tester but I swear sometimes she acts like a zombie.</p>
+
+
+
+
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose&gt; <strong>hg clone http://joel.example.com:8000/ recipes</strong>
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+updating to branch default
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+
+<p>Rose used the <strong>hg clone</strong> command to get her own, complete copy of the repository. <strong>hg clone</strong> takes two arguments: the URL of the repository and the name of the directory where you want it cloned. She made her own <strong>recipes</strong> folder.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose&gt; <strong>cd recipes</strong>
+
+C:\Users\rose\recipes&gt; <strong>dir</strong>
+ Volume in drive C has no label.
+ Volume Serial Number is 84BD-9C2C
+
+ Directory of C:\Users\rose\recipes
+
+02/08/2010  03:23 PM    &lt;DIR&gt;          .
+02/08/2010  03:23 PM    &lt;DIR&gt;          ..
+02/08/2010  03:23 PM    &lt;DIR&gt;          .hg
+02/08/2010  03:23 PM               394 guac
+               1 File(s)            394 bytes
+               3 Dir(s)  41,871,872,000 bytes free
+
+C:\Users\rose\recipes&gt; <strong>hg log</strong>
+changeset:   1:a52881ed530d
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Notice that when she types <strong>hg log</strong> she sees the whole history. She has actually downloaded the entire repository, with its complete history of everything that happened.</p>
+
+<p>Rose is going to make a change, and check it in:</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 serrano chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+&#8230;
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+  <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 <strong>habanero</strong> chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+&#8230;<br>
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>Now she commits it. Notice that she can do this even if the server is not running: the commit entirely happens on her machine.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg diff</strong>
+diff -r a52881ed530d guac
+--- a/guac      Mon Feb 08 14:51:18 2010 -0500
++++ b/guac      Mon Feb 08 15:28:57 2010 -0500
+@@ -1,6 +1,6 @@
+ * 2 ripe avocados
+ * 1/2 red onion, minced (about 1/2 cup)
+-* 1-2 serrano chiles, stems and seeds removed, minced
++* 1-2 habanero chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+ * 1 tablespoon of fresh lime or lemon juice
+ * 1/2 teaspoon coarse salt
+
+C:\Users\rose\recipes&gt; <strong>hg com -m "spicier kind of chile"</strong>
+
+C:\Users\rose\recipes&gt; <strong>hg log</strong>
+changeset:   2:689026657682
+tag:         tip
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>While Rose was making her change, I can make a change at the same time.</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+&#8230;<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with tortilla chips.<br>
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+  <div class="editcontent">
+&#8230;<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with <strong>potato</strong> chips.
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+
+<p>After I check that in, you&#8217;ll see that my log shows something different as changeset #2 than Rose&#8217;s log.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg com -m "potato chips. No one can eat just one."</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg log</strong>
+changeset:   2:4ecdb2401ab4
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Our histories are starting to diverge.</p>
+
+
+  <img src="i/02-repo-4.png" />
+
+
+<p>Don&#8217;t worry&#8230; in a minute we&#8217;ll see how to bring these diverging changes back together into one delicious habanero-based potato chip dip.</p>
+
+<div class="cheatcontent" style="margin-top:-15px">
+<div class="cheattop">
+	<div class="command">hg outgoing</div>
+</div>
+<p class="cheattext">list changes in current repository waiting to be pushed  </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+<p>Rose can continue to work, disconnected, making as many changes as she wants, and either committing them, or reverting them, in her own repository. At some point, though, she&#8217;s going to want to share all the changes she&#8217;s been committing with the outside world. She can type <strong>hg outgoing</strong> which will show a list of changes that are waiting to be sent up to the central repository. These are the changes that <strong>hg push</strong> would send, if she were to <strong>hg push</strong>.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg outgoing</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   2:689026657682
+tag:         tip
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Think of <strong>hg outgoing</strong> like this: it simply lists any changes in the current repository that aren&#8217;t in the central repository.</p>
+
+<p>OK, so Rose pushes her changes.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And the world looks like this:</p>
+
+
+  <img src="i/02-repo-5.png" />
+
+<p>When I get back from my fourth latte break of the day, I&#8217;m ready to push my potato-chip change, too.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg outgoing</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   2:4ecdb2401ab4
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+abort: push creates new remote heads!
+(did you forget to merge? use push -f to force)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Ahhh!! Failure! By the way&#8230; that message you see there? The one that says <strong>use push -f to force?</strong> That&#8217;s <em>terrible</em> advice. Never, ever, EVER use <strong>push -f</strong> to force. You will regret it. Trust me for now.</p>
+
+<p>The reason Rose&#8217;s push succeeded while mine failed is because potato chips do not go well with guacamole. Just kidding! I wanted to see if you were awake, there.</p>
+
+<p>The push failed because we both made changes, and so they need to be merged somehow, and Mercurial knows it.</p>
+
+<p>The first thing I&#8217;m going to do is get all those changes that are in the central repository that I don&#8217;t have yet, so I can merge them.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg incoming</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   3:689026657682
+tag:         tip
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+
+C:\Users\joel\recipes&gt; <strong>hg pull</strong>
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>There&#8217;s some gibberish there about +1 heads. That&#8217;s because my repository, which used to just have three changes neatly stacked, is now a two-headed monster, with two different changes stacked precariously on top like this:</p>
+
+<div class="i">
+  <img src="i/02-repo-6.png" />
+</div>
+
+<p>I&#8217;ve got both versions in my repository now&#8230; I&#8217;ve got my version:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 serrano chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And I&#8217;ve got Rose&#8217;s version:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg cat -r 3 guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And it&#8217;s up to me to merge them. Luckily, this is easy.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg merge</strong>
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<p>Look! The <strong>hg merge</strong> command took my two heads and combined them together. In this case, since we both edited different parts of the file, there was no conflict at all and the merge went off without a hitch.</p>
+<div class="cheatcontent" style="margin-top:-65px">
+<div class="cheattop">
+	<div class="command">hg merge</div>
+</div>
+<p class="cheattext">merge two heads  </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+
+<p>I still have to commit. This is important. If the merge failed, I could always revert and try again. Since the merge was successful, I&#8217;m going to commit it. Then I&#8217;ll be able to push my changes to the central repository.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">
+C:\Users\joel\recipes&gt; <strong>hg commit -m "merge"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg log</strong>
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+changeset:   2:4ecdb2401ab4
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+
+
+C:\Users\joel\recipes&gt; <strong>hg out</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   2:4ecdb2401ab4
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And now the central repository has the same thing as I do:</p>
+
+
+<img src="i/02-repo-7.png" />
+
+
+<p>OK, I have Rose&#8217;s changes, and my changes, but Rose doesn&#8217;t have my changes yet.</p>
+
+<p>One thing I forgot to tell you about Rose. She&#8217;s a doctor. Yep. A medical doctor. Isn&#8217;t that weird? She was a hotshot pediatrician at Mt. Sinai, probably earning five times as much as this crappy joint pays its testers. Nobody really knows why she left the field of medicine. The other testers think something tragic happened. She had a family, once, too; there&#8217;s a picture of a cute ten year old on her desk, but now she lives alone, and we don&#8217;t want to pry.</p>
+
+<p>Rose needs to
+pull the latest, incoming stuff from the repository to get it.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg pull</strong>
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+(run 'hg update' to get a working copy)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Got it. Now, you may find this a bit odd, but even though Rose pulled those new changes into her repository, <em>they&#8217;re not in her working directory yet.</em></p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>See that? She&#8217;s still working with Tortilla chips. Tortilla chips!</p>
+
+<p>She <em>does</em> have my new changes somewhere in her repository&#8230;</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg log</strong>
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      3:4ecdb2401ab4
+parent:      2:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:4ecdb2401ab4
+parent:      1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   2:689026657682
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg parent</div>
+</div>
+<p class="cheattext">show the changeset that&#8217;s in the working directory </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+
+<p>They&#8217;re just not in her working directory. That&#8217;s because she&#8217;s still working off of changeset #2. You can see this with the &#8220;parent&#8221; command:</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg parent</strong>
+changeset:   2:689026657682
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Mercurial is being nice to us. It&#8217;s always safe to pull; all it does is get us the latest changes that other people have been making. We can switch to working with them later, at our own convenience.<p>
+
+<p>Remember that the <strong>hg up</strong> command with no arguments will change the working directory to the <em>tip</em> (the absolute TOP changeset), in this case number 4:</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">
+C:\Users\rose\recipes&gt; <strong>hg up</strong>
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\rose\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And now, she&#8217;s looking at the latest version with everybody&#8217;s changes.</p>
+
+<p>When you&#8217;re working on a team, your workflow is going to look a lot like this:</p>
+
+<ol>
+  <li>If you haven&#8217;t done so in a while, get the latest version that everyone else is
+      working off of:</li>
+  <ul>
+      <li>hg pull</li>
+      <li>hg up</li>
+  </ul>
+  <li>Make some changes</li>
+  <li>Commit them (locally)</li>
+  <li>Repeat steps 2-3 until you&#8217;ve got some nice code that you&#8217;re willing to inflict on everyone else</li>
+  <li>When you&#8217;re ready to share:</li>
+  <ul>
+    <li>hg pull to get everyone else&#8217;s changes (if there are any)</li>
+    <li>hg merge to merge them into yours</li>
+    <li>test! to make sure the merge didn&#8217;t screw anything up</li>
+    <li>hg commit (the merge)</li>
+    <li>hg push</li>
+  </ul>
+</ol>
+
+<h2>Test yourself</h2>
+
+<p>Here are the things you should know how to do after reading this tutorial:</p>
+
+<ol>
+  <li>Set up a central repository and let team members clone off of it</li>
+  <li>Push changes into the central repository</li>
+  <li>Pull changes from the central repository</li>
+  <li>Merge changes from different contributors</li>
+</li>
+</ol>
+
+<div class="footer">
+ <div class="footernav" id="home" align="center"><a href="index.html"><span class="angleQuote">&#171;</span> Home</a></div>
+
+<div class="footernav" id="comingup">Next, we talk about how to fix <span style="text-decoration: line-through;">misstakes</span> mistakes.</div>
+<div class="footernav" id="next" align="center"><a href="03.html">Next <span class="angleQuote">&#187;</span></a></div>
+ </div>

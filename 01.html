@@ -1,0 +1,661 @@
+---
+title: Ground Up Mercurial
+description: Ground Up Mercurial
+layout: default
+---
+<div id="topnav">
+  <div class="tInterior">
+      <a href="index.html">
+        <img src="i/logo.png" border="0" alt="HgInit Home" />
+      </a>
+
+  Even if you&#8217;re working by yourself,
+  you should use Mercurial to get the
+  benefits of version control. This tutorial shows
+  how easy it is to check a directory into Mercurial
+  so you can track old versions easily.
+
+  </div>
+</div>
+<h1>Ground Up Mercurial</h1>
+<div class="content">
+  <p>
+    Mercurial is a <em>version control system</em>. Developers use it to manage source code.
+    It serves two important purposes:
+  </p>
+  <ol>
+    <li>It keeps track of every old version of every file</li>
+    <li>It can merge different versions of your code, so that teammates can work independently on the code and then merge their changes</li>
+  </ol>
+  <p>Without Mercurial, you could try to keep old versions
+  just by making a lot of copies of the directory containing all your code:</p>
+  <div class="i">
+    <img src="i/01-copies.png">
+  </div>
+  <p>This is tedious, takes up a lot of disk space, and confusing. Using version control is a better way to do this.</p>
+  <p>Most people work with Mercurial through the command line, which works on Windows, Unix, and Mac. The command for Mercurial is <strong>hg</strong>:
+  </p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+                                <pre>
+c:\hginit&gt; <strong>hg</strong>
+Mercurial Distributed SCM
+basic commands:
+add        add the specified files on the next commit
+annotate   show changeset information by line for each file
+clone      make a copy of an existing repository
+commit     commit the specified files or all outstanding changes
+diff       diff repository (or selected files)
+export     dump the header and diffs for one or more changesets
+forget     forget the specified files on the next commit
+init       create a new repository in the given directory
+log        show revision history of entire repository or files
+merge      merge working directory with another revision
+pull       pull changes from the specified source
+push       push changes to the specified destination
+remove     remove the specified files on the next commit
+serve      export the repository via HTTP
+status     show changed files in the working directory
+summary    summarize working directory state
+update     update working directory
+use "hg help" for the full list of commands or "hg -v" for details
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>Typing <strong>hg</strong> without anything else gives you a list of the most common commands that are available. You can also try <strong>hg help</strong> for a complete list of commands.</p>
+  <p>To take advantage of version control, you needed a <em>repository</em>. A repository stores all your old versions of every file. To save disk space, it&#8217;s not actually going to store every old version&#8212;it&#8217;s just going to store a compact list of changes.</p>
+  <p>In the old days, getting a repository was a big deal. You had to have a central server somewhere and you had to install software on it. Mercurial is <em>distributed</em>, so you can use it without a fancy central server. You can run it entirely on your own computer. And getting a repository is super-easy: you just go into the top-level directory where all your code lives&#8230;</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit&gt; <strong>cd CountDown</strong>
+c:\hginit\CountDown&gt; <strong>dir /w</strong>
+ Volume in drive C has no label.
+ Volume Serial Number is 9862-36C5
+ Directory of c:\hginit\CountDown
+[.]                       [..]                      a.txt
+AlternateMessages.xml     App.config                App.xaml
+App.xaml.cs               CountDown.xaml            CountDown.xaml.cs
+DevDaysCountDown.csproj   favicon.ico               [Images]
+[Properties]              [TweetSharp]
+               9 File(s)        155,932 bytes
+               5 Dir(s)  76,083,609,600 bytes free
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <div class="cheat">
+  </div>
+  <p>&#8230; there&#8217;s my code, and you type <strong>hg init</strong>:</p>
+  <div class="cheatcontent" style="margin-top:-50px">
+    <div class="cheattop">
+      <div class="command">hg init</div>
+    </div>
+    <p class="cheattext">creates a repository</p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre class="cl">
+      c:\hginit\CountDown&gt; <strong>hg init</strong>
+      c:\hginit\CountDown&gt;
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>Wait a minute, did anything happen? It doesn&#8217;t look like anything happened. But if you look closely, you&#8217;ll see that there&#8217;s a new directory there, named <strong>.hg</strong>:</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre class="cl">
+      c:\hginit\CountDown&gt; <strong>dir /w</strong>
+       Volume in drive C has no label.
+       Volume Serial Number is 9862-36C5
+       Directory of c:\hginit\CountDown
+      [.]                       [..]                      [.hg]
+      a.txt                     AlternateMessages.xml     App.config
+      App.xaml                  App.xaml.cs               CountDown.xaml
+      CountDown.xaml.cs         DevDaysCountDown.csproj   favicon.ico
+      [Images]                  [Properties]              [TweetSharp]
+                     9 File(s)        155,932 bytes
+                     6 Dir(s)  76,083,650,560 bytes free
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>That&#8217;s the repository! It&#8217;s a directory full of everything Mercurial needs. Settings, old version of files, tags, an extra pair of socks for when it rains, etc. <em>Don&#8217;t go in there.</em> You are almost never going to want to mess with that directory directly.</p>
+  <p>OK, now that we have a fresh new repository, we&#8217;re going to want to add all these source files to it. That&#8217;s easy, too: just type <strong>hg add</strong>.</p>
+  <div class="cheatcontent" style="margin-top:-60px">
+    <div class="cheattop">
+      <div class="command">hg add</div>
+    </div>
+    <p class="cheattext">schedules files to be added to the repository. They won&#8217;t actually be added until you commit </p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown> <strong>hg add</strong>
+adding AlternateMessages.xml
+adding App.config
+adding App.xaml
+adding App.xaml.cs
+adding CountDown.xaml
+adding CountDown.xaml.cs
+adding DevDaysCountDown.csproj
+adding Images\background_city.jpg
+adding Images\carsonified_presents.png
+adding Images\darkpanel.png
+adding Images\devdays.png
+adding Images\failwhale.png
+adding Images\holding_image.jpg
+adding Images\jeff_atwood.jpg
+adding Images\joel_spolsky.jpg
+adding Images\logo_stackoverflow.png
+adding Images\matt_lacey.jpg
+adding Images\sideDarkpanel.png
+adding Images\vertical_lines2.png
+adding Properties\AssemblyInfo.cs
+adding Properties\Resources.Designer.cs
+adding Properties\Resources.resx
+adding Properties\Settings.Designer.cs
+adding Properties\Settings.settings
+adding TweetSharp\Dimebrain.TweetSharp.dll
+adding TweetSharp\Dimebrain.TweetSharp.xml
+adding TweetSharp\Newtonsoft.Json.dll
+adding a.txt
+adding favicon.ico
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>There&#8217;s still one more step&#8230; you have to <em>commit</em> your changes. What changes? The change of adding all those files.</p>
+  <p>Why do you have to commit? With Mercurial, committing says &#8220;hey, the way the files look right now&#8212;please remember that.&#8221; It&#8217;s like making a copy of the whole directory&#8230; every time you have something that you&#8217;ve changed that you sorta like, you commit.</p>
+  <!-- hg commit box -->
+  <div class="cheatcontent" style="margin-top:-80px">
+    <div class="cheattop">
+      <div class="command">hg commit</div>
+    </div>
+    <p class="cheattext">saves the current state of all files to the repository </p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg commit</strong>
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>Mercurial will pop up an editor so that you can type a commit message. This is just something you type to remind yourself of what changed in this commit.</p>
+  <img src="i/01-commit0.png">
+  <p>When you save and exit, your files will be committed.</p>
+  <p>You can type <strong>hg log</strong> to see a history of changes. It&#8217;s like your repository&#8217;s blog:</p>
+  <!-- hg log box -->
+  <div class="cheatcontent" style="margin-top:-50px">
+    <div class="cheattop">
+      <div class="command">hg log</div>
+    </div>
+    <p class="cheattext">shows the history of changes committed to the repository </p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg log</strong>
+changeset:   0:da5f372c3901
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code</pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>Let&#8217;s edit a file and see what happens.</p>
+  <!-- edit text file module -->
+  <div class="edit1">
+    <div class="edittopbefore">
+    a.txt </div>
+    <div class="editcontent">
+      Scott Adams: Normal people believe that if it ain't
+      broke, don't fix it. Engineers believe that if it
+      ain't broke, it doesn't have enough features yet.
+    </div>
+    <img src="i/edit-bot.gif" width="387" height="76" />
+  </div>
+  <div class="edit2">
+    <img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+    <div class="edittopafter">
+      a.txt
+    </div>
+    <div class="editcontent">
+      <strong>SCOTT ADAMS:</strong>
+      Normal people believe that if it ain't
+      broke, don't fix it. Engineers believe that if it
+      ain't broke, it doesn't have enough features yet.
+    </div>
+    <img src="i/edit-bot.gif" width="387" height="76" />
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+  <!-- end edit text file module -->
+  <p>Now that we&#8217;ve made another change, we can commit it using <strong>hg commit</strong>:</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg commit</strong>
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>Notice that Mercurial has figured out that only one file, a.txt, changed:</p>
+  <img src="i/01-commit1.png">
+  <p>And now that I&#8217;ve committed, let&#8217;s take a look at the log:</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg log</strong>
+changeset:   1:a9497f468dc3
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:26:13 2010 -0500
+summary:     Capitalized "Scott Adams"
+changeset:   0:da5f372c3901
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>Like any modern blogger, Mercurial puts the newest stuff on top.</p>
+  <p>I&#8217;m going to make one more change, just to amuse myself.</p>
+  <div class="edit1">
+    <div class="edittopbefore">
+    a.txt </div>
+    <div class="editcontent">
+      SCOTT ADAMS: Normal people believe that if it ain't
+      broke, don't fix it. Engineers believe that if it
+      ain't broke, it doesn't have enough features yet.
+    </div>
+    <img src="i/edit-bot.gif" width="387" height="76" />
+  </div>
+  <div class="edit2">
+    <img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+    <div class="edittopafter">a.txt</div>
+    <div class="editcontent">
+      SCOTT ADAMS:
+      Normal people believe that if it <strong>isn't
+      broken</strong>, don't fix it. Engineers believe that if it
+      <strong>isn't broken</strong>, it doesn't have enough features yet.
+    </div>
+    <img src="i/edit-bot.gif" width="387" height="76" />
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+  <p>Committing:</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg commit</strong>
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>My commit message:</p>
+  <img src="i/01-commit2.png">
+  <p>And now what does the log show?</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown> <strong>hg log</strong>
+changeset:   2:55490459b740
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:47:43 2010 -0500
+summary:     Fixed some grammar
+changeset:   1:a9497f468dc3
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:26:13 2010 -0500
+summary:     Capitalized "Scott Adams"
+changeset:   0:da5f372c3901
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>OK, that was a lot of fun. I made some changes, and each time
+  I made a significant change, I committed it to the repository.</p>
+  <p>I know what you&#8217;re thinking. You&#8217;re thinking, &#8220;JOEL, THIS ALL SEEMS LIKE A BIG WASTE OF TIME.&#8221;
+    Why go through all this rigamarole of committing?
+  </p>
+  <p>Patience, young grasshopper. You&#8217;re about to learn how to get some benefit out of this.</p>
+  <p>Number one. Let&#8217;s say you make a huge mistake editing.</p>
+  <!-- edit text file module -->
+  <div class="edit1">
+    <div class="edittopbefore">
+    a.txt </div>
+    <div class="editcontent">
+      SCOTT ADAMS: Normal people believe that if it isn't
+      broken, don't fix it. Engineers believe that if it
+      isn't broken, it doesn't have enough features yet.
+    </div>
+    <img src="i/edit-bot.gif" width="387" height="76" />
+  </div>
+  <div class="edit2">
+    <img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+    <div class="edittopafter">a.txt</div>
+    <div class="editcontent">
+      <strong>DAN QUAYLE: Illegitimacy is something we should
+      talk about in terms of not having it.</strong>
+    </div>
+    <img src="i/edit-bot.gif" width="387" height="76" />
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+  <!-- end edit text file module -->
+  <p>And then, gosh, just for good measure you delete a couple of
+  really important files.</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown> <strong>del favicon.ico</strong>
+c:\hginit\CountDown> <strong>del App.xaml</strong>
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>In the days before Mercurial, this would be a good opportunity to go crying
+    to the system administrator and asking piercingly sad questions about
+    <em>why</em> the backup system is &#8220;temporarily&#8221; out of commission and has been
+  for the last eight months.</p>
+  <p>The system administrator, whom everybody calls Taco, is too shy to eat lunch
+    with the rest of the team. On those rare occasions where he is away from his swivel office
+    chair, you will notice a triangular-shaped salsa-colored stain on the seat where
+    drippings of his many Mexican lunches fell between his legs, insuring that nobody takes
+    his chair, even though it is the superior Herman Miller variety that the company founders bought
+    themselves, not the standard-issue Staples $99 special that causes everyone else
+  back pain.</p>
+  <p>Anyway, yeah, there&#8217;s no backup.</p>
+  <p>Thanks to Mercurial, though, when you&#8217;re unhappy with your changes, you can just issue
+    the handy command <strong>hg revert</strong> which will immediately revert
+  your directory back to the way it was at the time of the last commit.</p>
+  <!-- hg log box -->
+  <div class="cheatcontent" style="margin-top:-80px">
+    <div class="cheattop">
+      <div class="command">hg revert</div>
+    </div>
+    <p class="cheattext">revert changed files back to committed version  </p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown> <strong>hg revert --all</strong>
+reverting App.xaml
+reverting a.txt
+reverting favicon.ico
+c:\hginit\CountDown> <strong>type a.txt</strong>
+SCOTT ADAMS: Normal people believe that if it isn't
+broken, don't fix it. Engineers believe that if it
+isn't broken, it doesn't have enough features yet.
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>I used the command line argument <strong><code>--</code>all</strong> because I wanted
+  to revert <em>all</em> files back to their original state.</p>
+  <p>So, when you&#8217;re working on source code with Mercurial:</p>
+  <ol>
+    <li>Make some changes</li>
+    <li>See if they work</li>
+    <li>If they do, <strong>commit</strong> them</li>
+    <li>If they don&#8217;t, <strong>revert</strong> them</li>
+    <li>GOTO 1</li>
+  </ol>
+  <p>(I know. Between the Windows command prompt and the GOTO statements, I am the <em>least cool programmer</em> who ever lived.)</p>
+  <!-- hg log box -->
+  <div class="cheatcontent" style="margin-top:-10px">
+    <div class="cheattop">
+      <div class="command">hg status</div>
+    </div>
+    <p class="cheattext">shows a list of changed files</p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <p>As time goes on, you may get confused about where you are and what
+    changes you&#8217;ve made since the last commit. Mercurial keeps
+    track of all that for you. All you have to do is type <strong>hg status</strong> and
+  Mercurial will give you a list of files that have changed.</p>
+  <p>Suppose I create a file, edit a file, and delete a file.</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>copy a.txt b.txt</strong>
+        1 file(s) copied.
+c:\hginit\CountDown&gt; <strong>notepad2 a.txt</strong>
+c:\hginit\CountDown&gt; <strong>del favicon.ico</strong>
+c:\hginit\CountDown&gt; <strong>hg status</strong>
+M a.txt
+! favicon.ico
+? b.txt
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p><strong>hg status</strong> lists any files that have changed with a little letter at
+    the beginning of the line telling you what&#8217;s up. &#8220;M&#8221; means &#8220;Modified&#8221;&#8212;the file has been changed. &#8220;!&#8221; means missing&#8212;the file is supposed to be there, but it disappeared.
+  &#8220;?&#8221; means unknown&#8212;Mercurial doesn&#8217;t know anything about this file. Yet.</p>
+  <p>Let&#8217;s deal with these changes one at a time. That modified file, <strong>a.txt</strong>.
+    What&#8217;s modified about it? You may have forgotten what you changed! Heck, I can
+    barely even remember what I ate for breakfast most days. Which is especially worrisome
+  because it&#8217;s ALWAYS CHEERIOS. Anyway, a.txt has changed. What changed?</p>
+  <p>There&#8217;s a command for that: <strong>hg diff</strong> tells you exactly what&#8217;s changed
+  with a file since the last commit.</p>
+  <div class="cheatcontent" style="margin-top:-50px">
+    <div class="cheattop">
+      <div class="command">hg diff</div>
+    </div>
+    <p class="cheattext">shows what changed in a file  </p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+<pre>c:\hginit\CountDown&gt; <strong>hg diff a.txt</strong>
+diff -r 55490459b740 a.txt
+--- a/a.txt     Fri Feb 05 13:47:43 2010 -0500
++++ b/a.txt     Fri Feb 05 14:31:18 2010 -0500
+@@ -1,3 +1,3 @@
+-SCOTT ADAMS: Normal people believe that if it isn't
++SCOTT ADAMS: Civilians believe that if it isn't
+ broken, don't fix it. Engineers believe that if it
+ isn't broken, it doesn't have enough features yet.
+</pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>This format is a little bit cryptic, but the interesting part
+    is that you can see some lines that begin with a minus,
+    which were removed, and lines that begin with a plus, which
+    were added, so you can see here that &#8220;Normal people&#8221; was edited to be &#8220;Civilians&#8221;.
+  </p>
+  <!-- hg log box -->
+  <div class="cheatcontent" style="margin-top:-10px;">
+    <div class="cheattop">
+      <div class="command">hg remove</div>
+    </div>
+    <p class="cheattext">schedules files to be removed from
+      the repository. They won&#8217;t actually
+    be removed until you commit.  </p>
+    <img src="i/cheatbot.png" width="241" height="41" />
+  </div>
+  <p>
+    Now. That missing file, favicon.ico. As earlier, if you didn&#8217;t mean to
+    delete it, you can <strong>hg revert</strong>, but let&#8217;s assume you really did mean
+    to remove it. Whenever you remove (or add) a file, you have to tell Mercurial:
+  </p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg remove favicon.ico</strong>
+c:\hginit\CountDown&gt; <strong>hg status</strong>
+M a.txt
+R favicon.ico
+? b.txt
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>The &#8220;R&#8221; means &#8220;Removed&#8221; so the next time we commit in Mercurial this file will be
+    removed. (The <em>history</em> of the file will remain in the repository, so of course
+  we can always get it back). Finally, we need to add that new file, <strong>b.txt</strong>:</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg add</strong>
+adding b.txt
+c:\hginit\CountDown&gt; <strong>hg st</strong>
+M a.txt
+A b.txt
+R favicon.ico
+    </pre>
+    <div class="codebottom"> </div>
+  </div>
+  <p>&#8220;A&#8221; means &#8220;Added.&#8221; Did you notice I was getting lazy about typing out
+    <strong>hg status</strong> all the time? Mercurial only needs enough letters
+  to disambiguate, and there are no other commands that start with <strong>st</strong>.</p>
+  <p>Having solved all the little ?&#8217;s and !&#8217;s, I can go ahead and check in my changes:</p>
+  <div class="codesnippet">
+    <div class="codetop"> </div>
+    <pre>
+c:\hginit\CountDown&gt; <strong>hg commit</strong>
+
+c:\hginit\CountDown&gt; <strong>hg log</strong>
+changeset:   3:2f4718ee168e
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 14:54:45 2010 -0500
+summary:     A few highly meaningful changes. No favicon.ico no more.
+
+changeset:   2:55490459b740
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:47:43 2010 -0500
+summary:     Fixed some grammar
+
+changeset:   1:a9497f468dc3
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:26:13 2010 -0500
+summary:     Capitalized "Scott Adams"
+
+changeset:   0:da5f372c3901
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code</pre>
+  </pre>
+  <div class="codebottom"> </div>
+</div>
+<p>One more thing about the output from
+  <strong>hg log</strong>: the <em>changeset</em> line shows us a number
+  to every commit&#8230;. actually two numbers: a handy, short one, like &#8220;0&#8221; for
+  your initial revision, etc., and a long, goofy hexadecimal one which you can
+ignore for now.</p>
+<p>Remember that Mercurial keeps, in the repository, enough information
+to reconstruct any old version of any file.</p>
+<!-- hg log box -->
+<div class="cheatcontent" style="margin-top:-10px">
+  <div class="cheattop">
+    <div class="command">hg cat</div>
+  </div>
+  <p class="cheattext">shows any revision of any file.</p>
+  <img src="i/cheatbot.png" width="241" height="41" />
+</div>
+<p>First of all, the simple command <strong>hg cat</strong> can be used to print any old version
+of a file. For example, to see what a.txt looks like now:</p>
+<div class="codesnippet">
+  <div class="codetop"> </div>
+  <pre>
+c:\hginit\CountDown&gt; <strong>hg cat a.txt</strong>
+SCOTT ADAMS: Civilians believe that if it isn't
+broken, don't fix it. Engineers believe that if it
+isn't broken, it doesn't have enough features yet.
+  </pre>
+  <div class="codebottom"> </div>
+</div>
+<p>To see what it looked like in the past, I can just pick a changeset number
+  from the log. Then I use the <strong>cat</strong> command
+with the <strong>-r</strong> (&#8220;revision&#8221;) argument:</p>
+<div class="codesnippet">
+  <div class="codetop"> </div>
+  <pre>
+c:\hginit\CountDown&gt; <strong>hg cat -r 0 a.txt</strong>
+Scott Adams: Normal people believe that if it ain't
+broke, don't fix it. Engineers believe that if it
+ain't broke, it doesn't have enough features yet.
+  </pre>
+  <div class="codebottom"> </div>
+</div>
+<p>If the file is long and complicated, and only a little bit of it changed,
+  I can use the <strong>hg diff</strong> command with an <strong>-r</strong>
+  argument to print the difference between any two revisions. For example, to see
+what changed between revisions 0 and 1:</p>
+<div class="codesnippet">
+  <div class="codetop"> </div>
+  <pre>
+c:\hginit\CountDown&gt; <strong>hg diff -r 0:1 a.txt</strong>
+diff -r da5f372c3901 -r a9497f468dc3 a.txt
+--- a/a.txt     Fri Feb 05 13:04:30 2010 -0500
++++ b/a.txt     Fri Feb 05 13:26:13 2010 -0500
+@@ -1,3 +1,3 @@
+-Scott Adams: Normal people believe that if it ain't
++SCOTT ADAMS: Normal people believe that if it ain't
+ broke, don't fix it. Engineers believe that if it
+ ain't broke, it doesn't have enough features yet.
+  </pre>
+  <div class="codebottom"> </div>
+</div>
+<p>Finally, if you haven&#8217;t collapsed yet from exhaustion, before
+  I finish this tutorial, I just want to show you <em>one more tiny thing:</em> you can use
+  the <strong>hg update</strong> command to go backwards or forwards in time
+  to any revision you want. Well, you can&#8217;t really go into the
+  future <em>per se</em>, although that would be super-cool. If you only had four revisions
+  you would just <strong>hg update -r 103994</strong> and get some really
+  cool anti-gravity sci-fi futuristic version of your source code.
+But of course, that is not possible.</p>
+<!-- hg log box -->
+<div class="cheatcontent" style="margin-top:-120px">
+  <div class="cheattop">
+    <div class="command">hg update</div>
+  </div>
+  <p class="cheattext">update the working directory to a particular revision </p>
+  <img src="i/cheatbot.png" width="241" height="41" />
+</div>
+<p>What is possible is going <em>back</em> to any version. Watch:</p>
+<div class="codesnippet">
+  <div class="codetop"> </div>
+  <pre>
+c:\hginit\CountDown&gt; <strong>hg update -r 0</strong>
+2 files updated, 0 files merged, 1 files removed, 0 files unresolved
+c:\hginit\CountDown&gt; <strong>type a.txt</strong>
+
+Scott Adams: Normal people believe that if it ain't
+broke, don't fix it. Engineers believe that if it
+ain't broke, it doesn't have enough features yet.
+
+c:\hginit\CountDown&gt; <strong>hg up -r 1</strong>
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+c:\hginit\CountDown&gt; <strong>type a.txt</strong>
+SCOTT ADAMS: Normal people believe that if it ain't
+broke, don't fix it. Engineers believe that if it
+ain't broke, it doesn't have enough features yet.
+
+c:\hginit\CountDown&gt; <strong>hg up</strong>
+2 files updated, 0 files merged, 1 files removed, 0 files unresolved
+
+c:\hginit\CountDown&gt; <strong>type a.txt</strong>
+SCOTT ADAMS: Civilians believe that if it isn't
+broken, don't fix it. Engineers believe that if it
+isn't broken, it doesn't have enough features yet.
+  </pre>
+  <div class="codebottom"> </div>
+</div>
+<p><strong>hg update</strong> is actually modifying every file in the directory that changed
+  to go backwards and forwards through time. If a file was added or removed, it adds or removes it.
+Without any arguments, <strong>hg update</strong> goes to the latest version.</p>
+<h2>Test yourself</h2>
+<p>OK! That&#8217;s it for tutorial one. Here&#8217;s all the things you should know how to do now:</p>
+<ol>
+  <li>Create a repository</li>
+  <li>Add and remove files in a repository</li>
+  <li>After making changes, see what uncommitted changes you made, then</li>
+  <li>&#8230; commit if you like them,</li>
+  <li>&#8230; or revert if you don&#8217;t.</li>
+  <li>See old versions of files, or even move your directory backwards and forwards in time</li>
+</ol>
+<div class="footer">
+  <div class="footernav" id="home" align="center"><a href="index.html"><span class="angleQuote">&#171;</span> Home</a></div>
+  <div class="footernav" id="comingup">Next, we&#8217;ll see how to get your whole team working with Mercurial.</div>
+  <div class="footernav" id="next" align="center"><a href="02.html">Next <span class="angleQuote">&#187;</span></a></div>
+</div>

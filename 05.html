@@ -1,0 +1,601 @@
+---
+title: Repository Architecture
+description: >
+  Mercurial gives you a great deal of flexibility in setting up repositories.
+  Since merges work so well, you can depend on them, which means you can keep
+  special-purpose repos around to match your development process.
+layout: default
+---
+<div id="topnav">
+  <div class="tInterior">
+      <a href="index.html">
+        <img src="i/logo.png" border="0" alt="HgInit Home" />
+      </a>
+
+  Mercurial gives you a great deal of flexibility in setting up repositories.
+  Since merges work so well, you can depend on them, which means you can keep
+  special-purpose repos around to match your development process.
+
+  </div>
+</div>
+<h1>Repository Architecture</h1>
+<div class="content">
+
+<p>Our recipe is getting pretty good:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   13:1b03ab783b17
+tag:         tip
+parent:      12:f923c9049234
+parent:      11:0bd396c9b89b
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 23:01:55 2010 -0500
+summary:     merge
+
+changeset:   12:f923c9049234
+parent:      10:8646f8cd7154
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 22:49:31 2010 -0500
+summary:     mmmmango
+
+changeset:   11:0bd396c9b89b
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 22:46:47 2010 -0500
+summary:     bananas YUM
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Let&#8217;s look more closely at that changeset number:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+changeset:   <strong>13</strong>:1b03ab783b17
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>The first part of the number, 13, is short and convenient. There&#8217;s only one problem&#8230; it&#8217;s not reliable!</p>
+
+<p>When people on the team work separately and then merge their work, those short numbers get out of sync:</p>
+
+<img src="i/05-repo.png" />
+
+
+<p>So, for all intents and purposes, I can&#8217;t tell people &#8220;OK, let&#8217;s ship the revision based on changeset 13&#8221;, because they might have a different idea of what 13 is. That&#8217;s why there&#8217;s that crazy hexadecimal number.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+changeset:   13:<strong>1b03ab783b17</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>The hexadecimal number <em>is</em> consistent across all repositories and will never change.</p>
+
+<p>OK, so now I could tell people, &#8220;Hey, we&#8217;re shipping today! Changeset number 1b03ab783b17! Wouldn&#8217;t it be nice if I could give this changeset a <em>name</em>?</p>
+
+<p>Well, you can. It&#8217;s called a <strong>tag</strong>.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg tag Version-1.0</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Let&#8217;s look at the log now:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg log -l 2</strong>
+changeset:   14:1adc88356f40
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 09:38:06 2010 -0500
+summary:     Added tag Version-1.0 for changeset 1b03ab783b17
+
+changeset:   13:1b03ab783b17
+tag:         Version-1.0
+parent:      12:f923c9049234
+parent:      11:0bd396c9b89b
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 23:01:55 2010 -0500
+summary:     merge
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Notice that the the very act of adding the tag was a changeset, and it got committed automatically for me. So now, every time I want to refer to the version of the code that we shipped, I can use <strong>Version-1.0</strong> instead of <strong>1b03ab783b17</strong>.</p>
+
+<p>The CEO came down from the 31st floor for the office ship party, with a crate of rather expensive looking sparkling wine. Stan got a little bit drunk. Well, not a little. Nobody had ever seen anything like it. He was taking off his shirt, showing off his muscles and not insignificant flab, and trying to impress some women from the marketing department. &#8220;I&#8217;m gonna do pullups from the lights,&#8221; he brags (we have these long fluorescent lights). So he jumps up, grabs the fixture, and of course, pulls down the whole thing immediately, since it was a ten pound light fixture hanging from a couple of thin pieces of piano wire, and his weight was somewhere in that hotly contested zone between 290 and 300 pounds. He pulls down the whole light and a lot of ceiling tiles, too, shattered glass and acoustic-tile-material everywhere, and lands smack on his tailbone whining about how he&#8217;s going to sue the company for making an unsafe work environment.</p>
+
+<p>The rest of us went back to our cubes, to work on Guac 2.0.</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe Hass avocados (not Haas)<br />
+* 1/2 red onion, minced (about 1/2 cup)<br />
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br />
+* 2 tablespoons cilantro leaves, finely chopped<br />
+* 1 tablespoon of fresh lime or lemon juice<br />
+* 1/2 teaspoon coarse salt<br />
+* A dash of freshly grated black pepper<br />
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br />
+* 1 ripe young Mango, in season.<br />
+* 1 delicious, yellow BANANA.<br />
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+  <div class="editcontent">
+<strong>GUACAMOLE 2.0 THIS IS GOING TO BE AWESOME</strong><br /><br />
+
+* 2<strong>00</strong> ripe Hass avocados (not Haas)<br />
+* 1/2 red onion, minced (about 1/2 cup)<br />
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br />
+* 2 tablespoons cilantro leaves, finely chopped<br />
+* 1 tablespoon of fresh lime or lemon juice<br />
+* 1/2 teaspoon coarse salt<br />
+* A dash of freshly grated black pepper<br />
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br />
+* 1 ripe young Mango, in season.<br />
+* 1 delicious, yellow BANANA.<br />
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+<p>Commit:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg com -m "more avocado flavor"</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Needless to say, the recipe here is in a very unsettled state. It hasn&#8217;t been tested or anything. And then, the (one) customer calls up.</p>
+
+<p>&#8220;It&#8217;s too salty!&#8221; he whimpers. And no, he doesn&#8217;t want to wait for version 2.0 for a fix.</p>
+
+<p>Luckily, we&#8217;ve got that tag. I can use <strong>hg up</strong> to go to any version in the repository.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg up -r Version-1.0</strong>
+1 files updated, 0 files merged, 1 files removed, 0 files unresolved
+
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe Hass avocados (not Haas)
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 jalapeno chiles, stems and seeds removed, minced
+...
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And now I can fix his stupid salt problem:</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe Hass avocados (not Haas)<br />
+* 1/2 red onion, minced (about 1/2 cup)<br />
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br />
+* 2 tablespoons cilantro leaves, finely chopped<br />
+* 1 tablespoon of fresh lime or lemon juice<br />
+* 1/2 teaspoon coarse salt<br />
+* A dash of freshly grated black pepper<br />
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br />
+* 1 ripe young Mango, in season.<br />
+* 1 delicious, yellow BANANA.<br />
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+    <div class="editcontent">
+* 2 ripe Hass avocados (not Haas)<br />
+* 1/2 red onion, minced (about 1/2 cup)<br />
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br />
+* 2 tablespoons cilantro leaves, finely chopped<br />
+* 1 tablespoon of fresh lime or lemon juice<br />
+* <strong>1 grain table </strong>salt<strong>, split in half</strong><br />
+* A dash of freshly grated black pepper<br />
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br />
+* 1 ripe young Mango, in season.<br />
+* 1 delicious, yellow BANANA.<br />
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>And:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg diff</strong>
+diff -r 1b03ab783b17 guac
+--- a/guac      Thu Feb 11 23:01:55 2010 -0500
++++ b/guac      Fri Feb 12 10:44:19 2010 -0500
+@@ -3,7 +3,7 @@
+ * 1-2 jalapeno chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+ * 1 tablespoon of fresh lime or lemon juice
+-* 1/2 teaspoon coarse salt
++* 1 grain table salt, split in half
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+ * 1 ripe young Mango, in season.
+
+C:\Users\joel\recipes&gt; <strong>hg com -m &quot;less salt&quot;</strong>
+created new head
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Mercurial reminds me that I&#8217;ve created a new head. There are two heads now, the 2.0 head I was working on a second ago, and the 1.1 head I just committed.</p>
+
+
+<img src="i/05-repo-2.png" />
+
+
+<p>Now I can ship this to my customer, tag it as 1.1, and go back to work on version 2.0.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg tag -r . Version-1.1</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   17:f4220e321145
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 11:17:02 2010 -0500
+summary:     Added tag Version-1.1 for changeset 60ddc0122eb4
+
+changeset:   16:60ddc0122eb4
+tag:         Version-1.1
+parent:      13:1b03ab783b17
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 10:44:32 2010 -0500
+summary:     less salt
+
+changeset:   15:90c349eca2e8
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 10:31:24 2010 -0500
+summary:     more avocado flavor
+
+
+C:\Users\joel\recipes&gt; <strong>hg up -r 15</strong>
+2 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+GUACAMOLE 2.0 THIS IS GOING TO BE AWESOME
+
+* 200 ripe Hass avocados (not Haas)
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 jalapeno chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+* 1 ripe young Mango, in season.
+* 1 delicious, yellow BANANA.
+...
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Only one problem&#8230; the salt fix is not here. How do I solve that?</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg merge</strong>
+merging .hgtags
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+
+<img src="i/05-kdiff3.png" />
+
+
+<p>Uh oh. I have to merge the tags. This is an annoying bug in Mercurial. The problem is that tags in Mercurial are just a file, named .hgtags, which is also under version control, so occasionally, you have to manually merge different versions of the .hgtags file. Whenever that happens, what you have to do is easy&#8230; always keep BOTH versions of every line in the file.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+merging guac
+0 files updated, 2 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\joel\recipes&gt; <strong>hg diff guac</strong>
+diff -r 90c349eca2e8 guac
+--- a/guac      Fri Feb 12 10:31:24 2010 -0500
++++ b/guac      Fri Feb 12 11:32:43 2010 -0500
+@@ -5,7 +5,7 @@
+ * 1-2 jalapeno chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+ * 1 tablespoon of fresh lime or lemon juice
+-* 1/2 teaspoon coarse salt
++* 1 grain table salt, split in half
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+ * 1 ripe young Mango, in season.
+
+C:\Users\joel\recipes&gt; <strong>hg com -m "bringing in salt fix from 1.1"</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>This simple method of going back to old, tagged versions is fine for when you just want to make one little unexpected fix to shipping code. But the truth is, in most software projects, this kind of stuff happens all the time, and Mercurial has a more robust way to deal with it.</p>
+
+<p>So I&#8217;m just going to undo all that post-1.0 work, and get the repository back to the way it was when I had just shipped 1.0, and then I can show you the fancy robust way to fix existing customers&#8217; bugs while working on a future version at the same time.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>cd ..</strong>
+
+C:\Users\joel&gt; <strong>hg clone -r 14 recipes recipes-stable</strong>
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added 15 changesets with 15 changes to 2 files
+updating to branch default
+2 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\joel&gt; <strong>cd recipes-stable</strong>
+
+C:\Users\joel\recipes-stable&gt; <strong>hg log -l 3</strong>
+changeset:   14:1adc88356f40
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 09:38:06 2010 -0500
+summary:     Added tag Version-1.0 for changeset 1b03ab783b17
+
+changeset:   13:1b03ab783b17
+tag:         Version-1.0
+parent:      12:f923c9049234
+parent:      11:0bd396c9b89b
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 23:01:55 2010 -0500
+summary:     merge
+
+changeset:   12:f923c9049234
+parent:      10:8646f8cd7154
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 22:49:31 2010 -0500
+summary:     mmmmango
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>The idea is that instead of doing everything in one repository, we&#8217;re going to make two repositories, one called <strong>stable</strong> and the other called <strong>dev</strong>.</p>
+
+<p>The <strong>stable</strong> repository holds the last major version of the code that we shipped to customers. Whenever you need to make an urgent bug fix, you do it in <strong>stable</strong>. In this example it&#8217;s going to be all the patches to 1.0.</p>
+
+<p>The <strong>dev</strong> repository is where the next major train of development is happening, leading up to 2.0.</p>
+
+<p>As soon as 1.0 ships, I&#8217;m going to clone <strong>stable</strong> to <strong>dev</strong>:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-stable&gt; <strong>cd ..</strong>
+
+C:\Users\joel&gt; <strong>hg clone recipes-stable recipes-dev</strong>
+updating to branch default
+2 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Now I have two identical repositories:</p>
+
+
+<img src="i/05-repo-3.png" />
+
+
+<p>Since the history of both of these repositories is the same up to changeset 14, Mercurial will actually use a file system trick called hard links to avoid making two copies on disk. That makes the <strong>hg clone</strong> operation fast and cheap, so you shouldn&#8217;t hesitate to make lots and lots and lots of clones.</p>
+
+<p>Now we start working on that guac in the <strong>dev</strong> repository:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel&gt; <strong>cd recipes-dev</strong>
+
+C:\Users\joel\recipes-dev&gt; <strong>edit guac</strong>
+
+C:\Users\joel\recipes-dev&gt; <strong>hg diff</strong>
+diff -r 1adc88356f40 guac
+--- a/guac      Fri Feb 12 09:38:06 2010 -0500
++++ b/guac      Fri Feb 12 15:15:01 2010 -0500
+@@ -1,4 +1,6 @@
+-* 2 ripe Hass avocados (not Haas)
++GUACAMOLE 2.0 THIS IS GOING TO BE AWESOME
++
++* 200 ripe Hass avocados (not Haas)
+ * 1/2 red onion, minced (about 1/2 cup)
+ * 1-2 jalapeno chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+
+C:\Users\joel\recipes-dev&gt; <strong>hg commit -m &quot;more avocado flavor&quot;</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And fix the salt problem in the stable repository:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-dev&gt; <strong>cd ..\recipes-stable</strong>
+
+C:\Users\joel\recipes-stable&gt; <strong>edit guac</strong>
+
+C:\Users\joel\recipes-stable&gt; <strong>hg diff</strong>
+diff -r 1adc88356f40 guac
+--- a/guac      Fri Feb 12 09:38:06 2010 -0500
++++ b/guac      Fri Feb 12 15:18:31 2010 -0500
+@@ -3,7 +3,7 @@
+ * 1-2 jalapeno chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+ * 1 tablespoon of fresh lime or lemon juice
+-* 1/2 teaspoon coarse salt
++* 1 grain table salt, split in half
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+ * 1 ripe young Mango, in season.
+
+C:\Users\joel\recipes-stable&gt; <strong>hg com -m "less salt"</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>I&#8217;ll tag that and ship it as 1.1:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-stable&gt; <strong>hg tag Version-1.1</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And now, every once in a while, we pull in the fixes from stable to dev:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-stable&gt; <strong>cd ..\recipes-dev</strong>
+
+C:\Users\joel\recipes-dev&gt; <strong>hg in</strong>
+comparing with c:\Users\joel\recipes-stable
+searching for changes
+changeset:   15:e05c954f961f
+tag:         Version-1.1
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 15:28:27 2010 -0500
+summary:     less salt
+
+changeset:   16:f0e8768829ed
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 12 15:28:40 2010 -0500
+summary:     Added tag Version-1.1 for changeset e05c954f961f
+
+
+C:\Users\joel\recipes-dev&gt; <strong>hg pull</strong>
+pulling from c:\Users\joel\recipes-stable
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 2 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)
+
+C:\Users\joel\recipes-dev&gt; <strong>hg merge</strong>
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\joel\recipes-dev&gt; <strong>hg com -m &quot;merge&quot;</strong>
+
+C:\Users\joel\recipes-dev&gt; <strong>type guac</strong>
+GUACAMOLE 2.0 THIS IS GOING TO BE AWESOME
+
+* 200 ripe Hass avocados (not Haas)
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 jalapeno chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1 grain table salt, split in half
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+* 1 ripe young Mango, in season.
+* 1 delicious, yellow BANANA.
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<p>Here&#8217;s what we&#8217;ve been doing:</p>
+
+
+<img src="i/05-repo-4.png" />
+
+
+<p>And, if you can understand <em>that</em> crazy graph, you&#8217;re well on your way to understanding Mercurial. The gist of it is that eventually the stable repository only has the bug fixes, while the dev repository has new code and bug fixes merged in.</p>
+
+<p>There are other ways you can use multiple repositories.</p>
+
+<ul>
+  <li>You can set up a team repository where a few people work on a feature together. When they are finished and the feature works well, you push the changes from the team repository to the main development repository, and then everyone else sees it.</li>
+  <li>You can set up a QA repository for the testers. Instead of pushing into the main repository, you push into the QA repository where your code is tested. Once the testers approve it, you push from the QA repository into the main development repository. That way the main repository always contains tested code.</li>
+  <li>Since each developer has their own repository, you can pull an experimental changeset from your friend to test it, without inflicting that change on the rest of the team.</li>
+</ul>
+
+<p>In large, complicated organizations, you can combine these techniques, setting up a bunch of repositories that pull from each other. As each feature goes through testing and integration, it gets pulled up higher and higher in the tree until eventually the new code is in the main shipping repository where customers can get it:</p>
+
+
+ <img src="i/05-complex.png" />
+
+
+<h2>Test yourself</h2>
+
+<p>Here are the things you should know how to do after reading this tutorial:</p>
+
+<ol>
+  <li>Tag old versions and go back to them</li>
+  <li>Organize your team with &#8220;stable&#8221; and &#8220;dev&#8221; repositories</li>
+</li>
+</ol>
+
+<p>Well, somehow we&#8217;ve reached the end of this tutorial. I haven&#8217;t even come <em>close</em> to covering everything in Mercurial, but there are plenty of resources to go more in depth.
+There&#8217;s <a href="http://hgbook.red-bean.com/">a book</a> that covers everything in utter and complete detail.
+</p>
+
+<div class="footer">
+ <div class="footernav" id="home" align="center"><a href="index.html"><span class="angleQuote">&#171;</span> Home</a></div>
+
+ <div class="footernav" id="comingup" style=" text-align: left; margin-left: 35px;">To learn more, <a href="http://hgbook.red-bean.com/">read the book</a>!</div>
+
+ </div>

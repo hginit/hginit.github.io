@@ -1,0 +1,640 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+html>/**/body
+{
+    /* NON-IE ONLY: Keep vertical scrollbar around, regardless of page height */
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../i/background.png);
+	background-repeat: repeat-y;
+	background-color: rgb(247,250,236);
+}
+
+a
+{
+    color: #0F5491;
+}
+
+h1
+{
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
+  color: rgb(181,129,69);
+  font-size: 39px;
+  font-weight: bold;
+  padding: 7px 0;
+}
+
+h2
+{
+  padding-top: 1em;
+  color: rgb(181,129,69);
+}
+
+body img
+{
+	max-width: 700px;
+	-ms-interpolation-mode: bicubic;
+}
+
+div#dropshadow
+{
+	background: transparent url(../i/top-dropshadow.png) repeat-x;
+	height: 10px;
+}
+div#topnav
+{
+  background: transparent url(../i/hg-panel.png) 65px 0 no-repeat;
+  width: 1024px;
+  height: 180px;
+  position: relative;
+  top: -10px;
+}
+
+
+div#topnav div.t {
+  padding-left: 310px; 
+  padding-top: 30px; 
+  width: 600px;
+	font-size: 18px;
+	line-height: 25px;
+	color: #000;
+}
+
+div#topnav div.tInterior {
+  padding-left: 310px; 
+  padding-top: 70px; 
+  width: 600px;
+	font-size: 18px;
+	line-height: 25px;
+	color: #000;
+}
+
+div.tInterior a img
+{
+  position: absolute;
+  top: 0px;
+  left: 69px;
+}
+
+
+div#topnav div.t div.h {
+  font-size: 45px;
+  font-weight: bold; 
+  line-height: 65px;
+}
+
+
+
+* {
+  font-family: Helvetica;
+}
+
+	
+/* home page navigation stuff */
+
+.mainnav {
+	width: 920px;
+	height: auto;
+	margin-top: 60px;
+	}
+
+/* image one*/
+
+.mainnav a 
+{
+	display: block;
+	float: left;
+	height: 176px;
+    width: 151px;
+	padding: 0;
+	text-decoration: none;
+}
+
+.mainnav .button a.zero
+{
+	background: transparent url(../i/homenav-1-1.png) no-repeat bottom left;
+}
+	.mainnav .button a.zero:hover
+	{
+		background-position: top left;
+	}
+.mainnav .button a.one
+{
+	background: transparent url(../i/homenav-2-1.png) no-repeat bottom left;
+}
+	.mainnav .button a.one:hover
+	{
+		background-position: top left;
+	}
+.mainnav .button a.two
+{
+	background: transparent url(../i/homenav-3-1.png) no-repeat bottom left;
+}
+	.mainnav .button a.two:hover
+	{
+		background-position: top left;
+	}
+.mainnav .button a.three
+{
+	background: transparent url(../i/homenav-4-1.png) no-repeat bottom left;
+}
+	.mainnav .button a.three:hover
+	{
+		background-position: top left;
+	}
+.mainnav .button a.four
+{
+	background: transparent url(../i/homenav-5-1.png) no-repeat bottom left;
+}
+	.mainnav .button a.four:hover
+	{
+		background-position: top left;
+	}
+.mainnav .button a.five
+{
+	background: transparent url(../i/homenav-6-1.png) no-repeat bottom left;
+}
+	.mainnav .button a.five:hover
+	{
+		background-position: top left;
+	}
+
+
+/* end home page nav*/
+
+/* top grey bar nav */
+.toptop {
+	background-color: #333;
+	height: 25px;
+	width: 100%;
+	margin: 0px;
+	padding-top: -2px;
+	position: relative;
+	z-index: 100;
+}
+
+.toptop ul {
+	background-color: #333;
+	height: 25px;
+	margin: 0px;
+	
+}
+
+.toptop ul li {
+	text-indent: 0px;
+	background-color: #333;
+	float: right;
+	color: #fff;
+	font-size: 12px;
+	width: 100px;
+	list-style: none;
+	padding-top: 5px;
+	padding-right: 5px;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+.toptop ul li a {
+	text-decoration: none;
+	color: #fff;
+	
+}
+.toptop ul li a:link {
+	text-decoration: none;
+	color: #fff;
+	
+}
+
+.toptop ul li a:hover {
+	text-decoration: none;
+	color: #999;
+}
+
+.toptop ul li a:visted {
+	text-decoration: none;
+	color: #fff;
+}
+
+/* nav styles */
+
+div#shortcuts {
+  position: absolute;
+  top: 25px;
+  left: 320px;
+}
+
+div.topcontainer {
+	height: 190px;
+	clear: both;
+}
+
+.navholder {
+	width: 103px;
+	float: left;
+}
+	
+	.bottom {
+		position: relative;
+		top: 30px;
+	}
+	
+	.top {
+		position: relative;
+			top: -45px;
+			*top: -48px;
+		}
+
+
+/* fly-out */
+
+#kilnFlyOut {
+	position: absolute;
+	top: -57px;
+	right: 3px;
+	background: url(../i/flyout.gif) no-repeat;
+	width: 511px;
+	height: 117px;
+	overflow: hidden;
+	cursor: pointer;
+	z-index: 50;
+}
+
+#kilnFlyOut .flyouttext {
+	font-size: 11px;
+	width: 140px;
+	height: 55px;
+	padding-top: 5px;
+	padding-left: 15px;
+	float: left;
+	cursor: auto;
+}
+
+#kilnFlyOut .flyouttext a {
+	color:#0F5491;
+}
+
+#kilnFlyOut .flyoutteaser {
+	clear:both;
+	text-align:right;
+	padding:0 55px 0 230px;
+	font-size: 12px;
+	position: relative;
+	top: 25px;
+	_top: 10px;
+	overflow: hidden;
+}
+
+/* content divs */
+
+div.main {
+	width: 900px;
+	margin-left: 70px;
+	height: auto;
+}
+
+div.intro {
+	width: 600px;
+	font-size: 18px;
+	line-height: 25px;
+	color: #000;
+  margin-left: 240px;
+}
+
+
+
+/* Cheat Sheet styles */
+div.cheat {
+	width: 241px;
+	height: auto;
+	float: left;
+}
+
+.cheattitle {
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-left: 40px;
+	color: red;
+	
+}
+
+div.cheatcontent {
+	margin: auto 0px 0px -240px;
+	position: absolute;
+	width: 240px;
+}
+
+div.cheattop {
+	width: 241px;
+	height: 58px;
+	background: transparent url(../i/cheattop.png) no-repeat;
+}
+div.cheattop .command
+{
+	font-size: 18px;
+	font-weight: bold;
+	padding: 25px 0 0 40px;
+	*padding-bottom: 3px;
+	color: #B58145;
+}
+	
+p.cheattext {
+	background: url(../i/cheatmiddle.png) 0 0 repeat-y;
+	background-repeat:repeat-y;
+	font-size: 13px;
+	line-height: 18px;
+	padding: 10px 40px 10px 20px;
+	margin: 0;
+}
+
+/* main content styles*/
+div.content {
+	width: 642px;
+	font-size: 14px;
+	line-height: 18px;
+	float: left;
+	margin-left: 240px;
+}
+
+div.i   
+	{
+    text-align: left;
+	}
+	
+.codesnippet pre, .codesnippetjoel pre, .codesnippetrose pre
+{
+  margin: 0px;
+  padding: 0px 9px;
+  font-family: Consolas,monospace;
+  font-size: 14px;
+}
+
+.codesnippet pre
+{
+  background: url(../i/code-anonymous-middle.png) repeat-y;
+}
+
+.codesnippetjoel pre
+{
+  background: url(../i/code-joel-middle.png) repeat-y;
+}
+
+.codesnippetrose pre
+{
+  background: url(../i/code-rose-middle.png) repeat-y;
+}
+
+
+.codesnippet pre strong, .codesnippetjoel pre strong, .codesnippetrose pre strong
+{
+  font-size: larger;
+}
+
+.codesnippet .codetop
+{
+  background: url(../i/code-anonymous-top.png) no-repeat;
+  height: 41px;
+  width: 642px;
+}
+
+.codesnippetjoel .codetop
+{
+  background: url(../i/code-joel-top.png) no-repeat;
+  height: 40px;
+  width: 642px;
+}
+
+.codesnippetrose .codetop
+{
+  background: url(../i/code-rose-top.png) no-repeat;
+  height: 40px;
+  width: 642px;
+}
+
+.codesnippet .codebottom, .codesnippetjoel .codebottom, .codesnippetrose .codebottom
+{
+  height: 37px;
+  width: 642px;
+}
+
+.codesnippet .codebottom
+{
+  background: url(../i/code-anonymous-bottom.png) no-repeat;
+}
+
+.codesnippetjoel .codebottom
+{
+  background: url(../i/code-joel-bottom.png) no-repeat;
+}
+
+.codesnippetrose .codebottom
+{
+  background: url(../i/code-rose-bottom.png) no-repeat;
+}
+
+
+/*  edit text styles */	
+	div.edit1 {
+		z-index: -1;
+		float: left;
+		margin-top: 0px;
+		margin-left: 10px;
+		width: 384px;
+	}
+	
+	div.edit2 {
+		float: left;
+		margin-top: -70px;
+		margin-left: 100px;
+		z-index: 1;
+		width: 384px;
+	}
+	
+	div.edittopbefore {
+		font-family: Consolas, monospace;
+		font-size: 14px;
+		margin-left: 1px;
+		height: 21px;
+		background-color: #666;
+		border: solid 1px black;
+		color: #fff;
+		font-weight: bold;
+		padding-left: 15px;
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-topright: 3px;
+		-webkit-border-top-left-radius: 3px;
+		-webkit-border-top-right-radius: 3px;
+	}
+	
+	div.editcontent {
+		font-family: Consolas, monospace;
+		font-size: 14px;
+		margin-left: 1px;
+		height: auto;
+		background-color: #fff;
+		border-left: solid 1px black;
+		border-right: solid 1px black;
+		color: #000;
+		padding-top: 5px;
+		padding-left: 15px;
+	}
+	
+	div.editcontent strong
+	{
+    font-weight: normal;
+    background-color: yellow;
+    font-family: Consolas, monospace;
+	}
+	
+	div.edittopafter {
+		font-family: Consolas, monospace;
+		font-size: 14px;
+		margin-left: 1px;
+		height: 21px;
+		background: transparent url(../i/editTopAfter.gif) repeat-x;
+		border: solid 1px black;
+		color: #fff;
+		font-weight: bold;
+		padding-left: 15px;
+		margin-top: -97px;
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-topright: 3px;
+		-webkit-border-top-left-radius: 3px;
+		-webkit-border-top-right-radius: 3px;
+	}
+	img.editArrow
+	{
+		left: -80px;
+		position: relative;
+		z-index: 2;
+	}
+/* footer */
+div.footer {
+	margin-top: 40px;
+	width: 630px;
+	height: 65px;
+	border-top: solid 1px #ccc;
+	border-bottom: solid 1px #ccc;
+	padding-top: 10px;
+}
+
+div.footernav {
+	float: left;
+	height: 35px;
+	*height: auto;
+}
+
+#home , #next {
+	background-color: #666;
+	border: 1px solid #666;
+	font-size: 35px;
+	font-weight: 800;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 17px 0 0;
+	*padding-bottom: 15px;
+}
+
+#next {
+	float: right;
+}
+#next:hover, #home:hover
+{
+	background-color: #9B9B9B;
+}
+.footer #home a, .footer #next a
+{
+	text-decoration: none;
+	color: #fff;
+	padding: 8px 10px;
+}
+	.footer #next a
+	{
+		padding: 8px 20px;
+	}
+.footer a span.angleQuote
+{
+	position: relative;
+	top: -2px;
+}
+
+#comingup {
+	padding-left: 10px;
+	font-size: 17px;
+	line-height: 20px;
+	color: rgb(181,129,69);
+	height: auto;
+	width: 310px;
+	text-align: center;
+	font-weight: bold;
+}
+
+div.pagebottom {
+	margin-top: 25px;
+	width: 650px;
+	clear: both;
+	*margin-bottom: -20px;
+}
+div.bottomimg {
+	background: url(../i/footer.png) no-repeat;
+	width: 237px;
+	height: 409px;
+	float: left;
+}
+div.bottomimg a#logoLink
+{
+	display: block;
+	padding-top: 90px;
+	text-decoration: none;
+}
+div.bottomtext {
+	font-size: 13px;
+	line-height: 15px;
+	padding: 0 30px 20px 30px;
+}
+	div.bottomtext.getStarted
+	{
+		padding-bottom: 5px;
+	}
+
+.bottomtext a {
+	color: #0F5491;
+}
+
+div.about {
+	float: left;
+	width: 350px;
+	margin-left: 30px;
+}
+
+
+
+.botbot {
+	background: #333;
+	height: 20px;
+	width: 100%;
+	clear: both;
+	
+}
+
+div.content p, div.content p em, div.content p strong, div.content p a, div.content ul li, div.content ol li
+{
+	font-family: Georgia,serif;
+	font-size: 17px;
+	line-height: 27px;
+}
+
+div.about p, div.about p a, div.about p strong
+{
+  font-family: Helvetica,sans-serif;
+  font-size: 15px;
+  line-height: 21px;
+}

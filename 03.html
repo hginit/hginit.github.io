@@ -1,0 +1,583 @@
+---
+title: Fixing Goofs
+description: >
+  One of the biggest benefits of Mercurial is that you can
+  use private clones to try experiments and develop new
+  features&#8230; if they don&#8217;t work out, you can
+  reverse them in a second.
+layout: default
+---
+<div id="topnav">
+  <div class="tInterior">
+      <a href="index.html">
+        <img src="i/logo.png" border="0" alt="HgInit Home" />
+      </a>
+
+One of the biggest benefits of Mercurial is that you can
+use private clones to try experiments and develop new
+features&#8230; if they don&#8217;t work out, you can
+reverse them in a second.
+
+  </div>
+</div>
+<h1>Fixing Goofs</h1>
+<div class="content">
+
+<p>Mercurial lets you experiment freely. Imagine that during the course of normal editing, you get into trouble with your editor and do something catastrophic:</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 habanero chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with potato chips.<br>
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+  <div class="editcontent">
+ * 2 iperay avocadosway<br>
+* 1/2 edray onionway, incedmay (aboutway 1/2 upcay)<br>
+* 1-2 abanerohay ileschay, emsstay andway eedssay <br>
+  emovedray, incedmay<br>
+* 2 ablespoonstay ilantrocay eaveslay, inelyfay oppedchay<br>
+* 1 ablespoontay ofway eshfray imelay orway emonlay <br>
+  uicejay
+* 1/2 easpoontay oarsecay altsay<br>
+* Away ashday ofway eshlyfray atedgray ackblay epperpay<br>
+* 1/2 iperay omatotay, eedssay andway ulppay emovedray, <br>
+  oppedchay<br><br>
+
+Ooshsmay allway ingredientsway ogethertay.<br>
+Ervesay ithway otatopay ipschay.<br>
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+
+
+<p>Gotta love emacs. Anyway, all is not lost. The most common way to recover from these things is just to <strong>hg revert</strong> them:</p>
+
+<div class="cheatcontent" style="margin-top:-65px">
+<div class="cheattop">
+	<div class="command">hg revert</div>
+</div>
+<p class="cheattext">revert changed files back to committed version </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg revert guac</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That&#8217;ll put the files back exactly the way they were at the time of the last commit. Mercurial doesn&#8217;t like to delete anything, so instead of zapping the <a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank">Pig Latin</a> recipe, it renamed it:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>dir</strong>
+ Volume in drive C has no label.
+ Volume Serial Number is 84BD-9C2C
+
+ Directory of C:\Users\joel\recipes
+
+02/11/2010  11:16 AM    &lt;DIR&gt;          .
+02/11/2010  11:16 AM    &lt;DIR&gt;          ..
+02/11/2010  11:16 AM    &lt;DIR&gt;          .hg
+02/11/2010  11:16 AM               393 guac
+02/11/2010  11:15 AM               510 guac.orig
+               2 File(s)            903 bytes
+               3 Dir(s)  40,958,005,248 bytes free
+
+C:\Users\joel\recipes&gt; <strong>del guac</strong>
+
+C:\Users\joel\recipes&gt; <strong>rename guac.orig guac</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>What if you had gone one step too far and actually committed?</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg com -m "Pig Latin ftw"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   5:c7af1973de6d
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 11:32:27 2010 -0500
+summary:     Pig Latin ftw
+
+changeset:   4:0849ca96c304
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg rollback</div>
+</div>
+<p class="cheattext">undoes one commit, as long as you haven&#8217;t pushed it to anyone else. </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+
+
+<p>There&#8217;s a command called <strong>hg rollback</strong> which will save your skin, but only if you haven&#8217;t pushed this change to anyone else. It only undoes <em>one</em> commit.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg rollback</strong>
+rolling back last transaction
+
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+changeset:   2:4ecdb2401ab4
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+
+C:\Users\joel\recipes&gt; <strong>hg stat</strong>
+M guac
+
+C:\Users\joel\recipes&gt; <strong>hg revert guac</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Imagine you want to do a major experiment on the side. Your boss hired a new designer, Jim, and lately the specs you&#8217;ve been getting from him are just absurd. There&#8217;s fluorescent green text, nothing lines up (for &#8220;artistic&#8221; reasons), and the usability is awful. You want to come in one weekend and redo the whole thing, but you&#8217;re afraid to commit it because you&#8217;re not really 100% sure that your ideas are better than this nutty graphic designer. Jim is basically smoking a joint from the moment he wakes up until he goes to bed. You don&#8217;t want to hold that against him, and everybody else thinks that it&#8217;s nobody&#8217;s business as long as his designs are good, but really, there&#8217;s a limit. Right? And his designs aren&#8217;t good. Plus he&#8217;s kind of offensive.</p>
+
+<p>With Mercurial, you can just make an experimental clone of the entire repository:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>cd ..</strong>
+
+C:\Users\joel&gt; <strong>hg clone recipes recipes-experiment</strong>
+updating to branch default
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>This isn&#8217;t as inefficient as it seems. Because both <strong>recipes</strong> and <strong>recipes-experiment</strong> share all their history (so far), Mercurial will use a file system trick called &#8220;hard links&#8221; so that the copy can be created very quickly, without taking up a lot of extra space on disk.</p>
+
+<p>Now we can make a bunch of changes in the experimental branch:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel&gt; <strong>cd recipes-experiment</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Here&#8217;s my grand guacamole experiment:</p>
+ <!-- edit text file module -->
+   <div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+                &#8230;<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with potato chips.<br>
+                </div>
+                <img src="i/edit-bot.gif" width="387" height="76" />
+    </div>
+
+
+<div class="edit2">
+	<img src="i/arrow2.gif" width="83" height="97" class="editArrow" />
+	<div class="edittopafter">
+		guac
+	</div>
+  <div class="editcontent">
+&#8230;<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with potato chips.<br><br>
+
+<strong>This recipe is really good served with QUESO.<br><br>
+
+QUESO is Spanish for "cheese," but in Texas,
+it's just Kraft Slices melted in the microwave
+with some salsa from a jar. MMM!</strong><br>
+</span>
+   </div>
+  <img src="i/edit-bot.gif" width="387" height="76" />
+ </div>
+
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>Here in the experimental repository, we can commit freely.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-experiment&gt; <strong>hg com -m "Queso = Cheese!"</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>You can make changes and work freely, committing whenever you want. That gives you all the power of source control even for your crazy experiment, without infecting anyone else.</p>
+
+<p>If you decide that the experiment was misguided, you can just delete the whole experimental directory. Problem solved. It&#8217;s gone.</p>
+
+<p>But if it worked, all you have to do is push your new changes:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-experiment&gt; <strong>hg push</strong>
+pushing to c:\Users\joel\recipes
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Where did they go?</p>
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg paths</div>
+</div>
+<p class="cheattext">shows a list of known remote repositories  </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-experiment&gt; <strong>hg paths</strong>
+default = c:\Users\joel\recipes
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>The &#8220;default&#8221; entry there shows you the path to the repository that <strong>hg push</strong> will push changes to, if you don&#8217;t specify any other repository. Normally, that&#8217;s the repository that you cloned off of. In this case, it&#8217;s a local directory, but you could also have a URL there.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-experiment&gt; <strong>cd ..\recipes</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Don&#8217;t forget, just because the change has been pushed into this <em>repository</em>&#8230;</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   5:9545248f3fc9
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 12:59:11 2010 -0500
+summary:     Queso = Cheese!
+
+changeset:   4:0849ca96c304
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>&#8230; doesn&#8217;t mean we&#8217;re working off that version yet.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+
+C:\Users\joel\recipes&gt; <strong>hg parent</strong>
+changeset:   4:0849ca96c304
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<div class="cheatcontent" style="margin-top:0px">
+<div class="cheattop">
+	<div class="command">hg parent</div>
+</div>
+<p class="cheattext">shows which changeset(s) you&#8217;re working off of </p>
+<img src="i/cheatbot.png" width="241" height="41" />
+</div>
+
+<p>See? That &#8220;Queso&#8221; stuff is in changeset 5. But my main repository was working off of changeset 4, and just because someone pushed new changes into the <em>repository</em>, doesn&#8217;t mean they&#8217;ve showed up in my working directory yet, so I&#8217;m still working off of changeset 4.</p>
+
+
+<img src="i/03-repo.png" />
+
+
+<p>If I want to see what&#8217;s in changeset 5, I have to use the <strong>hg update</strong> command:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg up</strong>
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\joel\recipes&gt; <strong>hg parent</strong>
+changeset:   5:9545248f3fc9
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 12:59:11 2010 -0500
+summary:     Queso = Cheese!
+
+
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+
+This recipe is really good served with QUESO.
+
+QUESO is Spanish for &quot;cheese,&quot; but in Texas,
+it's just Kraft Slices melted in the microwave
+with some salsa from a jar. MMM!
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<p>See what happened here? The changes came in, but they were on top of the version I was working on. <strong>push</strong> and <strong>pull</strong> just send changes from one repo to another&#8212;they don&#8217;t affect the files I&#8217;m working on at the moment.</p>
+
+<p>Right now here&#8217;s the state of repositories:</p>
+
+
+<img src="i/03-repo-2.png" />
+
+
+<p>Mercurial is flexible about moving changes around from repository to repository. You can push straight from the experimental repository into the central repository:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>cd ..\recipes-experiment</strong>
+
+C:\Users\joel\recipes-experiment&gt; <strong>hg outgoing http://joel.example.com:8000/</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   5:9545248f3fc9
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 12:59:11 2010 -0500
+summary:     Queso = Cheese!
+
+
+C:\Users\joel\recipes-experiment&gt; <strong>hg push http://joel.example.com:8000/</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That pushed change 5 from the experimental repo directly into the central repository. Now, if I go back to my repository, there&#8217;s nothing left to push!</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes-experiment&gt; <strong>cd ..\recipes</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg out</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+no changes found
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That&#8217;s because Mercurial knows that the central repo already got this particular changeset from somewhere else. That&#8217;s really useful, because otherwise it would try to apply it again, and it would be massively confused.</p>
+
+<p>After they made a job offer to designer Jim, he said he would start work right away, but then he didn&#8217;t show up for two months. People had mostly forgotten about him and about the job offer, and when he showed up at the office for the first time to start work, looking rather sunburned, to be honest, nobody quite knew who he was or what was going on. It was pretty funny. He is kind of a generic looking guy. Eventually they figured it out, but since he was new, nobody had the guts to ask him what the hell had happened. Just like they never ask him about the bruises and scratches on his face. Whatever. We hate that guy.</p>
+
+<p>Sometimes it may happen that you discover that, months earlier, you made a mistake.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg diff -r 1:2 guac</strong>
+diff -r a52881ed530d -r 4ecdb2401ab4 guac
+--- a/guac      Mon Feb 08 14:51:18 2010 -0500
++++ b/guac      Mon Feb 08 15:32:01 2010 -0500
+@@ -8,4 +8,4 @@
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+
+ Smoosh all ingredients together.
+-Serve with tortilla chips.
++Serve with potato chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Potato chips? WTF?!</p>
+
+<p>Mercurial can backout an old changeset from the past for you. It looks at the changeset, figures out the <em>opposite</em>, and does that to your current working directory. Let&#8217;s try backing out that old revision 2.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg backout -r 2 --merge</strong>
+reverting guac
+created new head
+changeset 6:d828920f7f85 backs out changeset 2:4ecdb2401ab4
+merging with changeset 6:d828920f7f85
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Holy crap, what just happened?</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>
+C:\Users\joel\recipes&gt; <strong>hg diff</strong>
+diff -r 9545248f3fc9 guac
+--- a/guac      Thu Feb 11 12:59:11 2010 -0500
++++ b/guac      Thu Feb 11 14:19:34 2010 -0500
+@@ -8,7 +8,7 @@
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+
+ Smoosh all ingredients together.
+-Serve with potato chips.
++Serve with tortilla chips.
+
+ This recipe is really good served with QUESO.
+
+C:\Users\joel\recipes&gt; <strong>hg com -m &quot;undo thing from the past&quot;</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Now, a lot of time may have passed. The chips might already be gone from the recipe. All kinds of spooky stuff might have happened that makes it impossible to merge in this change. In that case, you&#8217;re going to get merge conflicts, which you&#8217;re going to have to resolve somehow. We&#8217;ll talk about that in the next tutorial.</p>
+
+<h2>Test yourself</h2>
+
+<p>Here are the things you should know how to do after reading this tutorial:</p>
+
+<ol>
+  <li>Revert accidental changes, before and after checking in</li>
+  <li>Clone a repository locally for experiments</li>
+  <li>Push between repositories</li>
+  <li>Revert an old mistake that&#8217;s been in the repository for ages</li>
+</li>
+</ol>
+
+<div class="footer">
+ <div class="footernav" id="home" align="center"><a href="index.html"><span class="angleQuote">&#171;</span> Home</a></div>
+
+ <div class="footernav" id="comingup">Next, we talk about how to<br /> merge in Mercurial</div>
+ <div class="footernav" id="next" align="center"><a href="04.html">Next <span class="angleQuote">&#187;</span></a></div>
+
+
+
+
+ </div>
