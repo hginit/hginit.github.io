@@ -6,12 +6,16 @@ The copyright situation is confusing, but I'd love to get this on the original w
 
 # Changes from original
 
-You can visit the original website via [The Web Archive](https://web.archive.org/web/20180926172759/http://hginit.com/). Changes:
+You can visit the original website via [The Web Archive](https://web.archive.org/web/20180926172759/http://hginit.com/). Important Changes:
 
 - Removed references to Kiln
 - Fixed external links
 - Removed Google Analytics and other tracking
 - Jekyll-ized for easier edits.
+- [Removed all javascript](https://github.com/hginit/hginit.github.io/commit/9224bd8dc466ea264c9c275343509f2bfd2e5325).
+- [Added translation links](https://github.com/hginit/hginit.github.io/commit/2a7d7ab1db0935c1ad7ac12d225cd7cedb36a778) in navigation bar (Japenese, Chinese)
+- [Added translation links](https://github.com/hginit/hginit.github.io/commit/7910cb82eff9dc32c74227ca22f80db72ecff15d) in [Sitemap](https://hginit.github.io/sitemap.xml)
+- [Reduced image sizes](https://github.com/hginit/hginit.github.io/commit/af01f5252abe904136e7252e9e519d1f4804554a) by optimizing the PNG files
 
 # LICENSE
 
