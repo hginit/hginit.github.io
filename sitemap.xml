@@ -8,9 +8,9 @@ search: exclude
 
     {% for page in site.pages %}
     <url>
-        <loc>{{page.url}}</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="{{page.alternate.zh}}" /> 
-        <xhtml:link rel="alternate" hreflang="ja" href="{{page.alternate.ja}}" /> 
+        <loc>{{page.url | absolute_url}}</loc>
+        <link rel="alternate" hreflang="zh" href="{{page.alternate.zh}}" /> 
+        <link rel="alternate" hreflang="ja" href="{{page.alternate.ja}}" /> 
         <lastmod>{{site.time | date: '%Y-%m-%d' }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
