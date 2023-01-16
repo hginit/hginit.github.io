@@ -15,15 +15,18 @@
     <meta name="og:title" content="The Rock" />
     <meta name="og:url" content="{{site.url}}/{{page.url}}" />
     <meta name="og:image" content="{{site.url}}/public/hginit.png" />
-    <link rel="start" title="HgInit" href="{{site.url}}/index.html" />
+    <link rel="start" title="HgInit" href="{{site.url}}/" />
     {% if page.previous %}
     <link rel="prev" href="{{site.url}}/{{page.previous}}" />
     {% endif %} {% if page.next %}
     <link rel="next" href="{{site.url}}/{{page.next}}" />
     {% endif %}
-    <link rel="alternate" href="{{site.url}}/{{page.url}}" hreflang="en" />
+    <link rel="alternate" href="{{site.url}}{{page.url}}" hreflang="en" />
     <link rel="alternate" href="{{page.alternate.zh}}" hreflang="zh" />
+    {% if page.alternate.ja %}
     <link rel="alternate" href="{{page.alternate.ja}}" hreflang="ja" />
+    {% endif %}
+    <link rel="canonical" href="{{site.url}}{{page.url}}" />
   </head>
   <body>
     <div class="toptop" align="left">
