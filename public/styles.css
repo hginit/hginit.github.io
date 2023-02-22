@@ -1,12 +1,11 @@
 @charset "UTF-8";
-/* CSS Document */
 
-
-html>/**/body
+html>body
 {
-    /* NON-IE ONLY: Keep vertical scrollbar around, regardless of page height */
-    overflow-x: auto;
-    overflow-y: scroll;
+  /* NON-IE ONLY: Keep vertical scrollbar around, regardless of page height */
+  overflow-x: auto;
+  overflow-y: scroll;
+	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 body {
@@ -90,13 +89,6 @@ div#topnav div.t div.h {
   font-weight: bold; 
   line-height: 65px;
 }
-
-
-
-* {
-  font-family: Helvetica;
-}
-
 	
 /* home page navigation stuff */
 
@@ -251,47 +243,6 @@ div.topcontainer {
 			top: -45px;
 			*top: -48px;
 		}
-
-
-/* fly-out */
-
-#kilnFlyOut {
-	position: absolute;
-	top: -57px;
-	right: 3px;
-	background: url(../i/flyout.gif) no-repeat;
-	width: 511px;
-	height: 117px;
-	overflow: hidden;
-	cursor: pointer;
-	z-index: 50;
-}
-
-#kilnFlyOut .flyouttext {
-	font-size: 11px;
-	width: 140px;
-	height: 55px;
-	padding-top: 5px;
-	padding-left: 15px;
-	float: left;
-	cursor: auto;
-}
-
-#kilnFlyOut .flyouttext a {
-	color:#0F5491;
-}
-
-#kilnFlyOut .flyoutteaser {
-	clear:both;
-	text-align:right;
-	padding:0 55px 0 230px;
-	font-size: 12px;
-	position: relative;
-	top: 25px;
-	_top: 10px;
-	overflow: hidden;
-}
-
 /* content divs */
 
 div.main {
@@ -357,6 +308,9 @@ p.cheattext {
 
 /* main content styles*/
 div.content {
+	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol; 
+	font-size: 17px;
+	line-height: 27px;
 	width: 642px;
 	font-size: 14px;
 	line-height: 18px;
@@ -364,82 +318,53 @@ div.content {
 	margin-left: 240px;
 }
 
-div.i   
-	{
-    text-align: left;
-	}
-	
-.codesnippet pre, .codesnippetjoel pre, .codesnippetrose pre
+pre
 {
+	font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   margin: 0px;
-  padding: 0px 9px;
-  font-family: Consolas,monospace;
+  padding: 10px 9px 25px 10px;
   font-size: 14px;
+  	position: relative;
+	z-index: 2;
+	background: url(../i/code-anonymous-top.png) top left no-repeat, 
+                url(../i/code-anonymous-bottom.png) bottom left no-repeat;
+}
+pre:before {
+	content: '';
+  position: absolute;
+  z-index: -1; /* push it to the background */
+  top: 41px; /* position it off the top background */
+  right: 0;
+  bottom: 37px; /* position it off the bottom background */
+  left: 0;
+  background: url(../i/code-anonymous-middle.png) top left repeat-y;
+}
+pre .prompt {
+	color: dimgray;
+}
+pre.joel {
+	background: url(../i/joel-top.png) top left no-repeat, 
+                url(../i/joel-bottom.png) bottom left no-repeat;
+}
+pre.joel:before {
+	top: 40px;
+	background: url(../i/code-joel-middle.png) top left repeat-y;
 }
 
-.codesnippet pre
-{
-  background: url(../i/code-anonymous-middle.png) repeat-y;
+pre.joel {
+	background: url(../i/rose-top.png) top left no-repeat, 
+                url(../i/rose-bottom.png) bottom left no-repeat;
+}
+pre.joel:before {
+	top: 40px;
+	background: url(../i/code-rose-middle.png) top left repeat-y;
 }
 
-.codesnippetjoel pre
+pre kbd
 {
-  background: url(../i/code-joel-middle.png) repeat-y;
-}
-
-.codesnippetrose pre
-{
-  background: url(../i/code-rose-middle.png) repeat-y;
-}
-
-
-.codesnippet pre strong, .codesnippetjoel pre strong, .codesnippetrose pre strong
-{
+	font-weight: bold;
   font-size: larger;
 }
-
-.codesnippet .codetop
-{
-  background: url(../i/code-anonymous-top.png) no-repeat;
-  height: 41px;
-  width: 642px;
-}
-
-.codesnippetjoel .codetop
-{
-  background: url(../i/code-joel-top.png) no-repeat;
-  height: 40px;
-  width: 642px;
-}
-
-.codesnippetrose .codetop
-{
-  background: url(../i/code-rose-top.png) no-repeat;
-  height: 40px;
-  width: 642px;
-}
-
-.codesnippet .codebottom, .codesnippetjoel .codebottom, .codesnippetrose .codebottom
-{
-  height: 37px;
-  width: 642px;
-}
-
-.codesnippet .codebottom
-{
-  background: url(../i/code-anonymous-bottom.png) no-repeat;
-}
-
-.codesnippetjoel .codebottom
-{
-  background: url(../i/code-joel-bottom.png) no-repeat;
-}
-
-.codesnippetrose .codebottom
-{
-  background: url(../i/code-rose-bottom.png) no-repeat;
-}
-
 
 /*  edit text styles */	
 	div.edit1 {
@@ -459,7 +384,6 @@ div.i
 	}
 	
 	div.edittopbefore {
-		font-family: Consolas, monospace;
 		font-size: 14px;
 		margin-left: 1px;
 		height: 21px;
@@ -475,7 +399,7 @@ div.i
 	}
 	
 	div.editcontent {
-		font-family: Consolas, monospace;
+		font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 		font-size: 14px;
 		margin-left: 1px;
 		height: auto;
@@ -491,11 +415,11 @@ div.i
 	{
     font-weight: normal;
     background-color: yellow;
-    font-family: Consolas, monospace;
+		font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 	}
 	
 	div.edittopafter {
-		font-family: Consolas, monospace;
+		font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 		font-size: 14px;
 		margin-left: 1px;
 		height: 21px;
@@ -609,28 +533,14 @@ div.about {
 	float: left;
 	width: 350px;
 	margin-left: 30px;
+	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-size: 15px;
+  line-height: 21px;
 }
-
-
 
 .botbot {
 	background: #333;
 	height: 20px;
 	width: 100%;
 	clear: both;
-	
-}
-
-div.content p, div.content p em, div.content p strong, div.content p a, div.content ul li, div.content ol li
-{
-	font-family: Georgia,serif;
-	font-size: 17px;
-	line-height: 27px;
-}
-
-div.about p, div.about p a, div.about p strong
-{
-  font-family: Helvetica,sans-serif;
-  font-size: 15px;
-  line-height: 21px;
 }
