@@ -69,14 +69,11 @@ Ervesay ithway otatopay ipschay.<br>
 
 <p>Gotta love emacs. Anyway, all is not lost. The most common way to recover from these things is just to <strong>hg revert</strong> them:</p>
 
-<div class="cheatcontent" style="margin-top:-65px">
-<div class="cheattop">
-	<div class="command">hg revert</div>
-</div>
-<p class="cheattext">revert changed files back to committed version </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
-
+{% include cheat.html 
+ top="-65"
+ command="hg revert" 
+ text="revert changed files back to committed version"
+%}
 
 <div class="codesnippet">
 <div class="codetop"> </div>
@@ -143,15 +140,10 @@ summary:     spicier kind of chile
 </div>
 
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg rollback</div>
-</div>
-<p class="cheattext">undoes one commit, as long as you haven&#8217;t pushed it to anyone else. </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
-
-
+{% include cheat.html top=0
+command="hg rollback"
+text"undoes one commit, as long as you haven&#8217;t pushed it to anyone else."
+%}
 
 <p>There&#8217;s a command called <strong>hg rollback</strong> which will save your skin, but only if you haven&#8217;t pushed this change to anyone else. It only undoes <em>one</em> commit.</p>
 
@@ -289,13 +281,10 @@ added 1 changesets with 1 changes to 1 files
 
 <p>Where did they go?</p>
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg paths</div>
-</div>
-<p class="cheattext">shows a list of known remote repositories  </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html top=0
+command="hg paths"
+text"shows a list of known remote repositories "
+%}
 
 <div class="codesnippet">
 <div class="codetop"> </div>
@@ -373,13 +362,10 @@ summary:     merge
 <div class="codebottom"> </div>
 </div>
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg parent</div>
-</div>
-<p class="cheattext">shows which changeset(s) you&#8217;re working off of </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html top=0
+command="hg parent"
+text"shows which changeset(s) you're working off of"
+%}
 
 <p>See? That &#8220;Queso&#8221; stuff is in changeset 5. But my main repository was working off of changeset 4, and just because someone pushed new changes into the <em>repository</em>, doesn&#8217;t mean they&#8217;ve showed up in my working directory yet, so I&#8217;m still working off of changeset 4.</p>
 
