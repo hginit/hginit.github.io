@@ -14,22 +14,18 @@ alternate:
   ja: http://d.hatena.ne.jp/mmitou/20100430/1272596378
 ---
 
-<p>The most common way to collaborate with Mercurial is to set up a central repository, in addition to the private repositories that we each have on our own computers. We can use the central repository sort of like a swap meet, where we get together to trade the changes we&#8217;ve been making.</p>
+<p>The most common way to collaborate with Mercurial is to set up a central repository, in addition to the private repositories that we each have on our own computers. We can use the central repository sort of like a swap meet, where we get together to trade the changes we’ve been making.</p>
 
 
 <div><img src="i/02-repo.png" /></div>
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg serve</div>
-</div>
-<p class="cheattext">runs a web server to make the current repository accessible over the Internet </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html 
+   top=0 
+   command="hg serve" 
+   text="runs a web server to make the current repository accessible over the Internet"
+%}
 
-
-
-<p>The quick-and-dirty way to make a central repository is to use Mercurial&#8217;s built in web server&#8212;all you have to do is make a repository with <strong>hg init</strong> and then serve it on the web with <strong>hg serve</strong>. By default it will be served on port 8000.</p>
+<p>The quick-and-dirty way to make a central repository is to use Mercurial’s built in web server&#8212;all you have to do is make a repository with <strong>hg init</strong> and then serve it on the web with <strong>hg serve</strong>. By default it will be served on port 8000.</p>
 
 <div class="codesnippet">
 <div class="codetop"> </div>
@@ -51,17 +47,12 @@ C:\CentralRepo&gt; <strong>hg serve</strong>
 
 <div><img src="i/02-web.png" /></div>
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg clone</div>
-</div>
-<p class="cheattext">make a complete copy of an entire repository </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html 
+   command="hg clone"
+   text="make a complete copy of an entire repository"
+%}
 
-
-
-<p>With the central web server running, I can <em>clone</em> this repository <em>from</em> the server <em>onto</em> my own computer for my own use. This repository is empty right now, so I&#8217;ll just get another empty repository when I clone it.</p>
+<p>With the central web server running, I can <em>clone</em> this repository <em>from</em> the server <em>onto</em> my own computer for my own use. This repository is empty right now, so I’ll just get another empty repository when I clone it.</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -88,7 +79,7 @@ C:\Users\joel\recipes&gt; <strong>dir</strong>
 <div class="codebottom"> </div>
 </div>
 
-<p>Now I&#8217;ll create a file called <strong>guac</strong> with my famous guacamole recipe.</p>
+<p>Now I’ll create a file called <strong>guac</strong> with my famous guacamole recipe.</p>
 
 <div class="edit1">
                 <div class="edittopbefore" >
@@ -114,7 +105,7 @@ Serve with tortilla chips.<br>
 
 
 
-<p>I&#8217;ll add this file, and commit it as the first official version:</p>
+<p>I’ll add this file, and commit it as the first official version:</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -127,13 +118,13 @@ C:\Users\joel\recipes&gt; <strong>hg commit</strong>
 <div class="codebottom"> </div>
 </div>
 
-<p>I&#8217;ll provide a commit comment:</p>
+<p>I’ll provide a commit comment:</p>
 
 
 <img src="i/02-commit0.png">
 
 
-<p>I&#8217;m just going to quickly edit this file and make one small change, so
+<p>I’m just going to quickly edit this file and make one small change, so
 that we have a little bit of history in the repository.</p>
 
 <div class="edit1">
@@ -209,25 +200,20 @@ summary:     Initial version of guacamole recipe
 <div class="codebottom"> </div>
 </div>
 
-<p>Notice that when I committed that time, I used the <strong>-m</strong> argument, which I haven&#8217;t done before. That&#8217;s just a way to provide the commit message on the command line, without using an editor.</p>
+<p>Notice that when I committed that time, I used the <strong>-m</strong> argument, which I haven’t done before. That’s just a way to provide the commit message on the command line, without using an editor.</p>
 
-<p>OK, where are we? So far, I&#8217;ve got a central repository, and my clone of it. I&#8217;ve made two changes and committed them, but those changes are only in my clone&#8212;they&#8217;re not in the central repository yet. So the world looks like this:</p>
+<p>OK, where are we? So far, I’ve got a central repository, and my clone of it. I’ve made two changes and committed them, but those changes are only in my clone&#8212;they’re not in the central repository yet. So the world looks like this:</p>
 
 
    <div><img src="i/02-repo-2.png" /></div>
 
+{% include cheat.html 
+   command="hg push"
+   text="push new changes from this repository into another"
+%}
 
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg push</div>
-</div>
-<p class="cheattext"> push new changes from this repository into another  </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
-
-
-<p>Now I&#8217;m going to use the <strong>hg push</strong> command, which will push my changes from my repository into the central repository:</p>
+<p>Now I’m going to use the <strong>hg push</strong> command, which will push my changes from my repository into the central repository:</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -240,7 +226,7 @@ ssl required
 <div class="codebottom"> </div>
 </div>
 
-<p>Oh great. It figures that wouldn&#8217;t work. I neglected to think about the security implications of just running a random web server and allowing anybody in the world to push their stupid changes into it. Bear with me for a moment; I&#8217;m going to configure that server to allow anybody in the world to do anything they want to it. This can be done by editing the file .hg\hgrc on the server:</p>
+<p>Oh great. It figures that wouldn’t work. I neglected to think about the security implications of just running a random web server and allowing anybody in the world to push their stupid changes into it. Bear with me for a moment; I’m going to configure that server to allow anybody in the world to do anything they want to it. This can be done by editing the file .hg\hgrc on the server:</p>
 <div class="edit1">
                 <div class="edittopbefore">
                 .hg\hgrc </div>
@@ -254,7 +240,7 @@ ssl required
 
  <div style="clear: both;">&nbsp;</div>
 
-<p>Needless to say, this is rather unsafe, but if you&#8217;re on a nice protected LAN at work and there&#8217;s a good firewall and you trust everybody on your LAN, this is reasonably OK. Otherwise, you&#8217;ll want to read the advanced chapters on security.</p>
+<p>Needless to say, this is rather unsafe, but if you’re on a nice protected LAN at work and there’s a good firewall and you trust everybody on your LAN, this is reasonably OK. Otherwise, you’ll want to read the advanced chapters on security.</p>
 
 <p>OK, time to fire up the server again:</p>
 
@@ -288,9 +274,9 @@ added 2 changesets with 2 changes to 1 files
 
    <img src="i/02-repo-3.png" />
 
-<p>I know what you&#8217;re thinking. You&#8217;re thinking, &#8220;Gosh, Joel, that&#8217;s strange. Why do these repositories contain <em>changes</em> as opposed to <em>files</em>? Where&#8217;s that <strong>guac</strong> file?&#8221;</p>
+<p>I know what you’re thinking. You’re thinking, &#8220;Gosh, Joel, that’s strange. Why do these repositories contain <em>changes</em> as opposed to <em>files</em>? Where’s that <strong>guac</strong> file?&#8221;</p>
 
-<p>Yeah, it&#8217;s weird. But that&#8217;s the way distributed version control works. Repositories just contain big stacks of changes. Imagine that a change is like one of those clear transparency sheets. When you have a bunch of transparency sheets, you stack them on each other in order, with the latest change on the top, and look down from above, and&#8212;tada!&#8212;you&#8217;re looking at the current version of the file. As you peel away transparencies from the top of the pile, you see older and older versions.</p>
+<p>Yeah, it’s weird. But that’s the way distributed version control works. Repositories just contain big stacks of changes. Imagine that a change is like one of those clear transparency sheets. When you have a bunch of transparency sheets, you stack them on each other in order, with the latest change on the top, and look down from above, and&#8212;tada!&#8212;you’re looking at the current version of the file. As you peel away transparencies from the top of the pile, you see older and older versions.</p>
 
 <p>We can use our web browser to peek into the central repository now:</p>
 
@@ -300,7 +286,7 @@ added 2 changesets with 2 changes to 1 files
 
 <p>Exactly what you would expect.</p>
 
-<p>Now I want Rose to help me work on the recipe. Rose is on the test team. Everyone agrees that she reminds them of those middle-aged ladies you see in Vegas, sitting there slack-jawed for hours, shoveling quarter after quarter into the slot machines, only she&#8217;s testing software. You can throw her a new version of your code and she&#8217;ll test it on 23 different Linux distros, one after the other, expressionless, unmoving, pausing only to tell you that there&#8217;s a dot missing on one of the lower-case I&#8217;s in the Turkish version on Ubuntu Linux. Rose is a great tester but I swear sometimes she acts like a zombie.</p>
+<p>Now I want Rose to help me work on the recipe. Rose is on the test team. Everyone agrees that she reminds them of those middle-aged ladies you see in Vegas, sitting there slack-jawed for hours, shoveling quarter after quarter into the slot machines, only she’s testing software. You can throw her a new version of your code and she’ll test it on 23 different Linux distros, one after the other, expressionless, unmoving, pausing only to tell you that there’s a dot missing on one of the lower-case I’s in the Turkish version on Ubuntu Linux. Rose is a great tester but I swear sometimes she acts like a zombie.</p>
 
 
 
@@ -471,7 +457,7 @@ Serve with <strong>potato</strong> chips.
 
 
 
-<p>After I check that in, you&#8217;ll see that my log shows something different as changeset #2 than Rose&#8217;s log.</p>
+<p>After I check that in, you’ll see that my log shows something different as changeset #2 than Rose’s log.</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -504,18 +490,17 @@ summary:     Initial version of guacamole recipe
   <img src="i/02-repo-4.png" />
 
 
-<p>Don&#8217;t worry&#8230; in a minute we&#8217;ll see how to bring these diverging changes back together into one delicious habanero-based potato chip dip.</p>
-
-<div class="cheatcontent" style="margin-top:-15px">
-<div class="cheattop">
-	<div class="command">hg outgoing</div>
-</div>
-<p class="cheattext">list changes in current repository waiting to be pushed  </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+<p>Don’t worry&#8230; in a minute we’ll see how to bring these diverging changes back together into one delicious habanero-based potato chip dip.</p>
 
 
-<p>Rose can continue to work, disconnected, making as many changes as she wants, and either committing them, or reverting them, in her own repository. At some point, though, she&#8217;s going to want to share all the changes she&#8217;s been committing with the outside world. She can type <strong>hg outgoing</strong> which will show a list of changes that are waiting to be sent up to the central repository. These are the changes that <strong>hg push</strong> would send, if she were to <strong>hg push</strong>.</p>
+{% include cheat.html 
+   command="hg outgoing"
+   top="-15"
+   text="list changes in current repository waiting to be pushed"
+%}
+
+
+<p>Rose can continue to work, disconnected, making as many changes as she wants, and either committing them, or reverting them, in her own repository. At some point, though, she’s going to want to share all the changes she’s been committing with the outside world. She can type <strong>hg outgoing</strong> which will show a list of changes that are waiting to be sent up to the central repository. These are the changes that <strong>hg push</strong> would send, if she were to <strong>hg push</strong>.</p>
 
 <div class="codesnippetrose">
 <div class="codetop"> </div>
@@ -532,7 +517,7 @@ summary:     spicier kind of chile
 <div class="codebottom"> </div>
 </div>
 
-<p>Think of <strong>hg outgoing</strong> like this: it simply lists any changes in the current repository that aren&#8217;t in the central repository.</p>
+<p>Think of <strong>hg outgoing</strong> like this: it simply lists any changes in the current repository that aren’t in the central repository.</p>
 
 <p>OK, so Rose pushes her changes.</p>
 
@@ -555,7 +540,7 @@ added 1 changesets with 1 changes to 1 files
 
   <img src="i/02-repo-5.png" />
 
-<p>When I get back from my fourth latte break of the day, I&#8217;m ready to push my potato-chip change, too.</p>
+<p>When I get back from my fourth latte break of the day, I’m ready to push my potato-chip change, too.</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -579,13 +564,13 @@ abort: push creates new remote heads!
 <div class="codebottom"> </div>
 </div>
 
-<p>Ahhh!! Failure! By the way&#8230; that message you see there? The one that says <strong>use push -f to force?</strong> That&#8217;s <em>terrible</em> advice. Never, ever, EVER use <strong>push -f</strong> to force. You will regret it. Trust me for now.</p>
+<p>Ahhh!! Failure! By the way&#8230; that message you see there? The one that says <strong>use push -f to force?</strong> That’s <em>terrible</em> advice. Never, ever, EVER use <strong>push -f</strong> to force. You will regret it. Trust me for now.</p>
 
-<p>The reason Rose&#8217;s push succeeded while mine failed is because potato chips do not go well with guacamole. Just kidding! I wanted to see if you were awake, there.</p>
+<p>The reason Rose’s push succeeded while mine failed is because potato chips do not go well with guacamole. Just kidding! I wanted to see if you were awake, there.</p>
 
 <p>The push failed because we both made changes, and so they need to be merged somehow, and Mercurial knows it.</p>
 
-<p>The first thing I&#8217;m going to do is get all those changes that are in the central repository that I don&#8217;t have yet, so I can merge them.</p>
+<p>The first thing I’m going to do is get all those changes that are in the central repository that I don’t have yet, so I can merge them.</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -613,13 +598,13 @@ added 1 changesets with 1 changes to 1 files (+1 heads)
 <div class="codebottom"> </div>
 </div>
 
-<p>There&#8217;s some gibberish there about +1 heads. That&#8217;s because my repository, which used to just have three changes neatly stacked, is now a two-headed monster, with two different changes stacked precariously on top like this:</p>
+<p>There’s some gibberish there about +1 heads. That’s because my repository, which used to just have three changes neatly stacked, is now a two-headed monster, with two different changes stacked precariously on top like this:</p>
 
 <div class="i">
   <img src="i/02-repo-6.png" />
 </div>
 
-<p>I&#8217;ve got both versions in my repository now&#8230; I&#8217;ve got my version:</p>
+<p>I’ve got both versions in my repository now&#8230; I’ve got my version:</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -640,7 +625,7 @@ Serve with potato chips.
 <div class="codebottom"> </div>
 </div>
 
-<p>And I&#8217;ve got Rose&#8217;s version:</p>
+<p>And I’ve got Rose’s version:</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -661,7 +646,7 @@ Serve with tortilla chips.
 <div class="codebottom"> </div>
 </div>
 
-<p>And it&#8217;s up to me to merge them. Luckily, this is easy.</p>
+<p>And it’s up to me to merge them. Luckily, this is easy.</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -689,17 +674,14 @@ Serve with potato chips.
 
 
 <p>Look! The <strong>hg merge</strong> command took my two heads and combined them together. In this case, since we both edited different parts of the file, there was no conflict at all and the merge went off without a hitch.</p>
-<div class="cheatcontent" style="margin-top:-65px">
-<div class="cheattop">
-	<div class="command">hg merge</div>
-</div>
-<p class="cheattext">merge two heads  </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
 
+{% include cheat.html 
+   command="hg merge"
+   top="-65"
+   text="merge two heads"
+%}
 
-
-<p>I still have to commit. This is important. If the merge failed, I could always revert and try again. Since the merge was successful, I&#8217;m going to commit it. Then I&#8217;ll be able to push my changes to the central repository.</p>
+<p>I still have to commit. This is important. If the merge failed, I could always revert and try again. Since the merge was successful, I’m going to commit it. Then I’ll be able to push my changes to the central repository.</p>
 
 <div class="codesnippetjoel">
 <div class="codetop"> </div>
@@ -771,9 +753,9 @@ added 2 changesets with 2 changes to 1 files
 <img src="i/02-repo-7.png" />
 
 
-<p>OK, I have Rose&#8217;s changes, and my changes, but Rose doesn&#8217;t have my changes yet.</p>
+<p>OK, I have Rose’s changes, and my changes, but Rose doesn’t have my changes yet.</p>
 
-<p>One thing I forgot to tell you about Rose. She&#8217;s a doctor. Yep. A medical doctor. Isn&#8217;t that weird? She was a hotshot pediatrician at Mt. Sinai, probably earning five times as much as this crappy joint pays its testers. Nobody really knows why she left the field of medicine. The other testers think something tragic happened. She had a family, once, too; there&#8217;s a picture of a cute ten year old on her desk, but now she lives alone, and we don&#8217;t want to pry.</p>
+<p>One thing I forgot to tell you about Rose. She’s a doctor. Yep. A medical doctor. Isn’t that weird? She was a hotshot pediatrician at Mt. Sinai, probably earning five times as much as this crappy joint pays its testers. Nobody really knows why she left the field of medicine. The other testers think something tragic happened. She had a family, once, too; there’s a picture of a cute ten year old on her desk, but now she lives alone, and we don’t want to pry.</p>
 
 <p>Rose needs to
 pull the latest, incoming stuff from the repository to get it.</p>
@@ -793,7 +775,7 @@ added 2 changesets with 2 changes to 1 files
 <div class="codebottom"> </div>
 </div>
 
-<p>Got it. Now, you may find this a bit odd, but even though Rose pulled those new changes into her repository, <em>they&#8217;re not in her working directory yet.</em></p>
+<p>Got it. Now, you may find this a bit odd, but even though Rose pulled those new changes into her repository, <em>they’re not in her working directory yet.</em></p>
 
 <div class="codesnippetrose">
 <div class="codetop"> </div>
@@ -814,7 +796,7 @@ Serve with tortilla chips.
 <div class="codebottom"> </div>
 </div>
 
-<p>See that? She&#8217;s still working with Tortilla chips. Tortilla chips!</p>
+<p>See that? She’s still working with Tortilla chips. Tortilla chips!</p>
 
 <p>She <em>does</em> have my new changes somewhere in her repository&#8230;</p>
 
@@ -854,17 +836,13 @@ summary:     Initial version of guacamole recipe
 <div class="codebottom"> </div>
 </div>
 
-<div class="cheatcontent" style="margin-top:0px">
-<div class="cheattop">
-	<div class="command">hg parent</div>
-</div>
-<p class="cheattext">show the changeset that&#8217;s in the working directory </p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html 
+   top=0 
+   command="hg parent" 
+   text="show the changeset that's in the working directory"
+%}
 
-
-
-<p>They&#8217;re just not in her working directory. That&#8217;s because she&#8217;s still working off of changeset #2. You can see this with the &#8220;parent&#8221; command:</p>
+<p>They’re just not in her working directory. That’s because she’s still working off of changeset #2. You can see this with the “parent” command:</p>
 
 <div class="codesnippetrose">
 <div class="codetop"> </div>
@@ -878,7 +856,7 @@ summary:     spicier kind of chile
 <div class="codebottom"> </div>
 </div>
 
-<p>Mercurial is being nice to us. It&#8217;s always safe to pull; all it does is get us the latest changes that other people have been making. We can switch to working with them later, at our own convenience.<p>
+<p>Mercurial is being nice to us. It’s always safe to pull; all it does is get us the latest changes that other people have been making. We can switch to working with them later, at our own convenience.<p>
 
 <p>Remember that the <strong>hg up</strong> command with no arguments will change the working directory to the <em>tip</em> (the absolute TOP changeset), in this case number 4:</p>
 
@@ -904,12 +882,12 @@ Serve with potato chips.
 <div class="codebottom"> </div>
 </div>
 
-<p>And now, she&#8217;s looking at the latest version with everybody&#8217;s changes.</p>
+<p>And now, she’s looking at the latest version with everybody’s changes.</p>
 
-<p>When you&#8217;re working on a team, your workflow is going to look a lot like this:</p>
+<p>When you’re working on a team, your workflow is going to look a lot like this:</p>
 
 <ol>
-  <li>If you haven&#8217;t done so in a while, get the latest version that everyone else is
+  <li>If you haven’t done so in a while, get the latest version that everyone else is
       working off of:</li>
   <ul>
       <li>hg pull</li>
@@ -917,12 +895,12 @@ Serve with potato chips.
   </ul>
   <li>Make some changes</li>
   <li>Commit them (locally)</li>
-  <li>Repeat steps 2-3 until you&#8217;ve got some nice code that you&#8217;re willing to inflict on everyone else</li>
-  <li>When you&#8217;re ready to share:</li>
+  <li>Repeat steps 2-3 until you’ve got some nice code that you’re willing to inflict on everyone else</li>
+  <li>When you’re ready to share:</li>
   <ul>
-    <li>hg pull to get everyone else&#8217;s changes (if there are any)</li>
+    <li>hg pull to get everyone else’s changes (if there are any)</li>
     <li>hg merge to merge them into yours</li>
-    <li>test! to make sure the merge didn&#8217;t screw anything up</li>
+    <li>test! to make sure the merge didn’t screw anything up</li>
     <li>hg commit (the merge)</li>
     <li>hg push</li>
   </ul>
