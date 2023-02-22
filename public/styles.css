@@ -517,7 +517,7 @@ div.i
 		z-index: 2;
 	}
 /* footer */
-div.footer {
+footer {
 	margin-top: 40px;
 	width: 630px;
 	height: 65px;
@@ -550,23 +550,19 @@ div.footernav {
 {
 	background-color: #9B9B9B;
 }
-.footer #home a, .footer #next a
+footer #home a, footer #next a
 {
 	text-decoration: none;
 	color: #fff;
 	padding: 8px 10px;
 }
-	.footer #next a
-	{
-		padding: 8px 20px;
-	}
-.footer a span.angleQuote
+footer #next a
 {
-	position: relative;
-	top: -2px;
+	padding: 8px 20px;
 }
 
-#comingup {
+#comingup p{
+	margin-top: 0px;
 	padding-left: 10px;
 	font-size: 17px;
 	line-height: 20px;

@@ -1,0 +1,11 @@
+<footer>
+   <div class="footernav" rel="home" id="home" align="center">
+      <a href="index.html">&#171; Home</a>
+   </div>
+   <div class="footernav" id="comingup">{{include.teaser | markdownify}}</div>
+   {% if page.next %}
+   <div class="footernav" rel="next" id="next" align="center">
+      <a href="{{page.next}}">Next &#187;</a>
+   </div>
+   {% endif %}
+</footer>
