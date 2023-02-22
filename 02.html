@@ -27,19 +27,15 @@ alternate:
 
 <p>The quick-and-dirty way to make a central repository is to use Mercurial’s built in web server&#8212;all you have to do is make a repository with <strong>hg init</strong> and then serve it on the web with <strong>hg serve</strong>. By default it will be served on port 8000.</p>
 
-<div class="codesnippet">
-<div class="codetop"> </div>
-<pre>
-C:\&gt; <strong>mkdir CentralRepo</strong>
+<pre><samp>
+<span class="prompt">C:\> </span><kbd>mkdir CentralRepo</kbd>
 
-C:\&gt; <strong>cd CentralRepo</strong>
+<span class="prompt">C:\> </span><kbd>cd CentralRepo</kbd>
 
-C:\CentralRepo&gt; <strong>hg init</strong>
+<span class="prompt">C:\CentralRepo> </span><kbd>init</kbd>
 
-C:\CentralRepo&gt; <strong>hg serve</strong>
-</pre>
-<div class="codebottom"> </div>
-</div>
+<span class="prompt">C:\CentralRepo> </span><kbd>serve</kbd>
+</samp></pre>
 
 
 <p>Since this computer is named <strong>joel.example.com</strong> I can just go to <strong>http://joel.example.com:8000/</strong> with a web browser and see that the server is up and running, even though the repository there is completely empty.</p>
@@ -54,17 +50,14 @@ C:\CentralRepo&gt; <strong>hg serve</strong>
 
 <p>With the central web server running, I can <em>clone</em> this repository <em>from</em> the server <em>onto</em> my own computer for my own use. This repository is empty right now, so I’ll just get another empty repository when I clone it.</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel&gt; <strong>hg clone http://joel.example.com:8000/ recipes</strong>
+<pre class="joel"><samp>
+<span class="prompt">C:\Users\joel> </span><kbd>clone http://joel.example.com:8000/ recipes</kbd>
 no changes found
 updating to branch default
 0 files updated, 0 files merged, 0 files removed, 0 files unresolved
 
-C:\Users\joel&gt; <strong>cd recipes</strong>
-
-C:\Users\joel\recipes&gt; <strong>dir</strong>
+<span class="prompt">C:\Users\joel> </span><kbd>cd recipes</kbd>
+<span class="prompt">C:\Users\joel\recipes> </span><kbd>dir</kbd>
  Volume in drive C has no label.
  Volume Serial Number is 84BD-9C2C
 
@@ -75,9 +68,7 @@ C:\Users\joel\recipes&gt; <strong>dir</strong>
 02/08/2010  02:46 PM    &lt;DIR&gt;          .hg
                0 File(s)              0 bytes
                3 Dir(s)  41,852,125,184 bytes free
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Now I’ll create a file called <strong>guac</strong> with my famous guacamole recipe.</p>
 
@@ -107,16 +98,12 @@ Serve with tortilla chips.<br>
 
 <p>I’ll add this file, and commit it as the first official version:</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg add</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>add</kbd>
 adding guac
 
-C:\Users\joel\recipes&gt; <strong>hg commit</strong>
-</pre>
-<div class="codebottom"> </div>
-</div>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>commit</kbd>
+</samp></pre>
 
 <p>I’ll provide a commit comment:</p>
 
@@ -164,14 +151,12 @@ Serve with tortilla chips.<br>
 
 <p>And now to commit that change:</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
+<pre class="joel"><samp>
 
-C:\Users\joel\recipes&gt; <strong>hg status</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>status</kbd>
 M guac
 
-C:\Users\joel\recipes&gt; <strong>hg diff guac</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>diff guac</kbd>
 diff -r c1fb7e7fbe50 guac
 --- a/guac      Mon Feb 08 14:50:08 2010 -0500
 +++ b/guac      Mon Feb 08 14:51:08 2010 -0500
@@ -183,9 +168,9 @@ diff -r c1fb7e7fbe50 guac
 +Smoosh all ingredients together.
  Serve with tortilla chips.
 
-C:\Users\joel\recipes&gt; <strong>hg com -m "Change crunch to smoosh"</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>com -m "Change crunch to smoosh"</kbd>
 
-C:\Users\joel\recipes&gt; <strong>hg log</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>log</kbd>
 changeset:   1:a52881ed530d
 tag:         tip
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
@@ -196,9 +181,7 @@ changeset:   0:c1fb7e7fbe50
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
 date:        Mon Feb 08 14:50:08 2010 -0500
 summary:     Initial version of guacamole recipe
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Notice that when I committed that time, I used the <strong>-m</strong> argument, which I haven’t done before. That’s just a way to provide the commit message on the command line, without using an editor.</p>
 
@@ -215,16 +198,12 @@ summary:     Initial version of guacamole recipe
 
 <p>Now I’m going to use the <strong>hg push</strong> command, which will push my changes from my repository into the central repository:</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg push</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>push</kbd>
 pushing to http://joel.example.com:8000/
 searching for changes
 ssl required
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Oh great. It figures that wouldn’t work. I neglected to think about the security implications of just running a random web server and allowing anybody in the world to push their stupid changes into it. Bear with me for a moment; I’m going to configure that server to allow anybody in the world to do anything they want to it. This can be done by editing the file .hg\hgrc on the server:</p>
 <div class="edit1">
@@ -244,30 +223,22 @@ ssl required
 
 <p>OK, time to fire up the server again:</p>
 
-<div class="codesnippet">
-<div class="codetop"> </div>
-<pre>
-C:\CentralRepo> <strong>hg serve</strong>
-</pre>
-<div class="codebottom"> </div>
-</div>
+<pre><samp>
+<span class=prompt>C:\CentralRepo></span> <kbd>hg serve</kbd>
+</samp></pre>
 
 
 <p>And now I should be able to push into it:</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg push</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>push</kbd>
 pushing to http://joel.example.com:8000/
 searching for changes
 adding changesets
 adding manifests
 adding file changes
 added 2 changesets with 2 changes to 1 files
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Yay! Now the world looks like this:</p>
 
@@ -292,10 +263,8 @@ added 2 changesets with 2 changes to 1 files
 
 
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose&gt; <strong>hg clone http://joel.example.com:8000/ recipes</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose> </span><kbd>clone http://joel.example.com:8000/ recipes</kbd>
 requesting all changes
 adding changesets
 adding manifests
@@ -303,20 +272,16 @@ adding file changes
 added 2 changesets with 2 changes to 1 files
 updating to branch default
 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 
 
 <p>Rose used the <strong>hg clone</strong> command to get her own, complete copy of the repository. <strong>hg clone</strong> takes two arguments: the URL of the repository and the name of the directory where you want it cloned. She made her own <strong>recipes</strong> folder.</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose&gt; <strong>cd recipes</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose> </span><kbd>cd recipes</kbd>
 
-C:\Users\rose\recipes&gt; <strong>dir</strong>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>dir</kbd>
  Volume in drive C has no label.
  Volume Serial Number is 84BD-9C2C
 
@@ -329,7 +294,7 @@ C:\Users\rose\recipes&gt; <strong>dir</strong>
                1 File(s)            394 bytes
                3 Dir(s)  41,871,872,000 bytes free
 
-C:\Users\rose\recipes&gt; <strong>hg log</strong>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>log</kbd>
 changeset:   1:a52881ed530d
 tag:         tip
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
@@ -340,9 +305,7 @@ changeset:   0:c1fb7e7fbe50
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
 date:        Mon Feb 08 14:50:08 2010 -0500
 summary:     Initial version of guacamole recipe
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Notice that when she types <strong>hg log</strong> she sees the whole history. She has actually downloaded the entire repository, with its complete history of everything that happened.</p>
 
@@ -384,10 +347,8 @@ summary:     Initial version of guacamole recipe
 
 <p>Now she commits it. Notice that she can do this even if the server is not running: the commit entirely happens on her machine.</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg diff</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg diff</kbd>
 diff -r a52881ed530d guac
 --- a/guac      Mon Feb 08 14:51:18 2010 -0500
 +++ b/guac      Mon Feb 08 15:28:57 2010 -0500
@@ -400,9 +361,9 @@ diff -r a52881ed530d guac
  * 1 tablespoon of fresh lime or lemon juice
  * 1/2 teaspoon coarse salt
 
-C:\Users\rose\recipes&gt; <strong>hg com -m "spicier kind of chile"</strong>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg com -m "spicier kind of chile"</kbd>
 
-C:\Users\rose\recipes&gt; <strong>hg log</strong>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg log</kbd>
 changeset:   2:689026657682
 tag:         tip
 user:        Rose Hillman &lt;rose@example.com&gt;
@@ -418,9 +379,7 @@ changeset:   0:c1fb7e7fbe50
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
 date:        Mon Feb 08 14:50:08 2010 -0500
 summary:     Initial version of guacamole recipe
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>While Rose was making her change, I can make a change at the same time.</p>
 
@@ -459,12 +418,10 @@ Serve with <strong>potato</strong> chips.
 
 <p>After I check that in, you’ll see that my log shows something different as changeset #2 than Rose’s log.</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg com -m "potato chips. No one can eat just one."</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg com -m "potato chips. No one can eat just one."</kbd>
 
-C:\Users\joel\recipes&gt; <strong>hg log</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg log</kbd>
 changeset:   2:4ecdb2401ab4
 tag:         tip
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
@@ -480,9 +437,7 @@ changeset:   0:c1fb7e7fbe50
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
 date:        Mon Feb 08 14:50:08 2010 -0500
 summary:     Initial version of guacamole recipe
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Our histories are starting to diverge.</p>
 
@@ -502,10 +457,8 @@ summary:     Initial version of guacamole recipe
 
 <p>Rose can continue to work, disconnected, making as many changes as she wants, and either committing them, or reverting them, in her own repository. At some point, though, she’s going to want to share all the changes she’s been committing with the outside world. She can type <strong>hg outgoing</strong> which will show a list of changes that are waiting to be sent up to the central repository. These are the changes that <strong>hg push</strong> would send, if she were to <strong>hg push</strong>.</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg outgoing</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg outgoing</kbd>
 comparing with http://joel.example.com:8000/
 searching for changes
 changeset:   2:689026657682
@@ -513,27 +466,21 @@ tag:         tip
 user:        Rose Hillman &lt;rose@example.com&gt;
 date:        Mon Feb 08 15:29:09 2010 -0500
 summary:     spicier kind of chile
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Think of <strong>hg outgoing</strong> like this: it simply lists any changes in the current repository that aren’t in the central repository.</p>
 
 <p>OK, so Rose pushes her changes.</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg push</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg push</kbd>
 pushing to http://joel.example.com:8000/
 searching for changes
 adding changesets
 adding manifests
 adding file changes
 added 1 changesets with 1 changes to 1 files
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>And the world looks like this:</p>
 
@@ -542,10 +489,8 @@ added 1 changesets with 1 changes to 1 files
 
 <p>When I get back from my fourth latte break of the day, I’m ready to push my potato-chip change, too.</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg outgoing</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>outgoing</kbd>
 comparing with http://joel.example.com:8000/
 searching for changes
 changeset:   2:4ecdb2401ab4
@@ -555,14 +500,12 @@ date:        Mon Feb 08 15:32:01 2010 -0500
 summary:     potato chips. No one can eat just one.
 
 
-C:\Users\joel\recipes&gt; <strong>hg push</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg push</kbd>
 pushing to http://joel.example.com:8000/
 searching for changes
 abort: push creates new remote heads!
 (did you forget to merge? use push -f to force)
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Ahhh!! Failure! By the way&#8230; that message you see there? The one that says <strong>use push -f to force?</strong> That’s <em>terrible</em> advice. Never, ever, EVER use <strong>push -f</strong> to force. You will regret it. Trust me for now.</p>
 
@@ -572,10 +515,8 @@ abort: push creates new remote heads!
 
 <p>The first thing I’m going to do is get all those changes that are in the central repository that I don’t have yet, so I can merge them.</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg incoming</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg incoming</kbd>
 comparing with http://joel.example.com:8000/
 searching for changes
 changeset:   3:689026657682
@@ -586,7 +527,7 @@ date:        Mon Feb 08 15:29:09 2010 -0500
 summary:     spicier kind of chile
 
 
-C:\Users\joel\recipes&gt; <strong>hg pull</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg pull</kbd>
 pulling from http://joel.example.com:8000/
 searching for changes
 adding changesets
@@ -594,9 +535,7 @@ adding manifests
 adding file changes
 added 1 changesets with 1 changes to 1 files (+1 heads)
 (run 'hg heads' to see heads, 'hg merge' to merge)
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>There’s some gibberish there about +1 heads. That’s because my repository, which used to just have three changes neatly stacked, is now a two-headed monster, with two different changes stacked precariously on top like this:</p>
 
@@ -606,10 +545,8 @@ added 1 changesets with 1 changes to 1 files (+1 heads)
 
 <p>I’ve got both versions in my repository now&#8230; I’ve got my version:</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>type guac</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes> <kbd>type guac</kbd>
 * 2 ripe avocados
 * 1/2 red onion, minced (about 1/2 cup)
 * 1-2 serrano chiles, stems and seeds removed, minced
@@ -621,16 +558,12 @@ C:\Users\joel\recipes&gt; <strong>type guac</strong>
 
 Smoosh all ingredients together.
 Serve with potato chips.
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>And I’ve got Rose’s version:</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg cat -r 3 guac</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>cat -r 3 guac</kbd>
 * 2 ripe avocados
 * 1/2 red onion, minced (about 1/2 cup)
 * 1-2 habanero chiles, stems and seeds removed, minced
@@ -642,21 +575,17 @@ C:\Users\joel\recipes&gt; <strong>hg cat -r 3 guac</strong>
 
 Smoosh all ingredients together.
 Serve with tortilla chips.
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>And it’s up to me to merge them. Luckily, this is easy.</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg merge</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>merge</kbd>
 merging guac
 0 files updated, 1 files merged, 0 files removed, 0 files unresolved
 (branch merge, don't forget to commit)
 
-C:\Users\joel\recipes&gt; <strong>type guac</strong>
+<span class=prompt>C:\Users\joel\recipes> </span><kbd>type guac</kbd>
 * 2 ripe avocados
 * 1/2 red onion, minced (about 1/2 cup)
 * 1-2 habanero chiles, stems and seeds removed, minced
@@ -668,9 +597,7 @@ C:\Users\joel\recipes&gt; <strong>type guac</strong>
 
 Smoosh all ingredients together.
 Serve with potato chips.
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 
 <p>Look! The <strong>hg merge</strong> command took my two heads and combined them together. In this case, since we both edited different parts of the file, there was no conflict at all and the merge went off without a hitch.</p>
@@ -683,12 +610,10 @@ Serve with potato chips.
 
 <p>I still have to commit. This is important. If the merge failed, I could always revert and try again. Since the merge was successful, I’m going to commit it. Then I’ll be able to push my changes to the central repository.</p>
 
-<div class="codesnippetjoel">
-<div class="codetop"> </div>
-<pre class="joel">
-C:\Users\joel\recipes&gt; <strong>hg commit -m "merge"</strong>
+<pre class="joel"><samp>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg commit -m "merge"</kbd>
 
-C:\Users\joel\recipes&gt; <strong>hg log</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg log</kbd>
 changeset:   4:0849ca96c304
 tag:         tip
 parent:      2:4ecdb2401ab4
@@ -719,7 +644,7 @@ date:        Mon Feb 08 14:50:08 2010 -0500
 summary:     Initial version of guacamole recipe
 
 
-C:\Users\joel\recipes&gt; <strong>hg out</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg out</kbd>
 comparing with http://joel.example.com:8000/
 searching for changes
 changeset:   2:4ecdb2401ab4
@@ -736,16 +661,14 @@ date:        Mon Feb 08 16:07:23 2010 -0500
 summary:     merge
 
 
-C:\Users\joel\recipes&gt; <strong>hg push</strong>
+<span class=prompt>C:\Users\joel\recipes></span><kbd>hg push</kbd>
 pushing to http://joel.example.com:8000/
 searching for changes
 adding changesets
 adding manifests
 adding file changes
 added 2 changesets with 2 changes to 1 files
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>And now the central repository has the same thing as I do:</p>
 
@@ -760,10 +683,8 @@ added 2 changesets with 2 changes to 1 files
 <p>Rose needs to
 pull the latest, incoming stuff from the repository to get it.</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg pull</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg pull</kbd>
 pulling from http://joel.example.com:8000/
 searching for changes
 adding changesets
@@ -771,16 +692,12 @@ adding manifests
 adding file changes
 added 2 changesets with 2 changes to 1 files
 (run 'hg update' to get a working copy)
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Got it. Now, you may find this a bit odd, but even though Rose pulled those new changes into her repository, <em>they’re not in her working directory yet.</em></p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>type guac</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> <strong>type guac</strong>
 * 2 ripe avocados
 * 1/2 red onion, minced (about 1/2 cup)
 * 1-2 habanero chiles, stems and seeds removed, minced
@@ -792,18 +709,14 @@ C:\Users\rose\recipes&gt; <strong>type guac</strong>
 
 Smoosh all ingredients together.
 Serve with tortilla chips.
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>See that? She’s still working with Tortilla chips. Tortilla chips!</p>
 
 <p>She <em>does</em> have my new changes somewhere in her repository&#8230;</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg log</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg log</kbd>
 changeset:   4:0849ca96c304
 tag:         tip
 parent:      3:4ecdb2401ab4
@@ -832,9 +745,7 @@ changeset:   0:c1fb7e7fbe50
 user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
 date:        Mon Feb 08 14:50:08 2010 -0500
 summary:     Initial version of guacamole recipe
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 {% include cheat.html 
    top=0 
@@ -844,29 +755,23 @@ summary:     Initial version of guacamole recipe
 
 <p>They’re just not in her working directory. That’s because she’s still working off of changeset #2. You can see this with the “parent” command:</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg parent</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg parent</kbd>
 changeset:   2:689026657682
 user:        Rose Hillman &lt;rose@example.com&gt;
 date:        Mon Feb 08 15:29:09 2010 -0500
 summary:     spicier kind of chile
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>Mercurial is being nice to us. It’s always safe to pull; all it does is get us the latest changes that other people have been making. We can switch to working with them later, at our own convenience.<p>
 
 <p>Remember that the <strong>hg up</strong> command with no arguments will change the working directory to the <em>tip</em> (the absolute TOP changeset), in this case number 4:</p>
 
-<div class="codesnippetrose">
-<div class="codetop"> </div>
-<pre class="rose">
-C:\Users\rose\recipes&gt; <strong>hg up</strong>
+<pre class="rose"><samp>
+<span class=prompt>C:\Users\rose\recipes> </span><kbd>hg up</kbd>
 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
 
-C:\Users\rose\recipes&gt; <strong>type guac</strong>
+<span class=prompt>C:\Users\rose\recipes> <kbd>type guac</kbd>
 * 2 ripe avocados
 * 1/2 red onion, minced (about 1/2 cup)
 * 1-2 habanero chiles, stems and seeds removed, minced
@@ -878,9 +783,7 @@ C:\Users\rose\recipes&gt; <strong>type guac</strong>
 
 Smoosh all ingredients together.
 Serve with potato chips.
-</pre>
-<div class="codebottom"> </div>
-</div>
+</samp></pre>
 
 <p>And now, she’s looking at the latest version with everybody’s changes.</p>
 
