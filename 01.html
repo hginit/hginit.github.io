@@ -79,16 +79,12 @@ DevDaysCountDown.csproj   favicon.ico               [Images]
     </pre>
     <div class="codebottom"> </div>
   </div>
-  <div class="cheat">
-  </div>
   <p>&#8230; there&#8217;s my code, and you type <strong>hg init</strong>:</p>
-  <div class="cheatcontent" style="margin-top:-50px">
-    <div class="cheattop">
-      <div class="command">hg init</div>
-    </div>
-    <p class="cheattext">creates a repository</p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-50"
+   command="hg init" 
+   text="creates a repository"
+  %}
   <div class="codesnippet">
     <div class="codetop"> </div>
     <pre class="cl">
@@ -117,13 +113,13 @@ DevDaysCountDown.csproj   favicon.ico               [Images]
   </div>
   <p>That&#8217;s the repository! It&#8217;s a directory full of everything Mercurial needs. Settings, old version of files, tags, an extra pair of socks for when it rains, etc. <em>Don&#8217;t go in there.</em> You are almost never going to want to mess with that directory directly.</p>
   <p>OK, now that we have a fresh new repository, we&#8217;re going to want to add all these source files to it. That&#8217;s easy, too: just type <strong>hg add</strong>.</p>
-  <div class="cheatcontent" style="margin-top:-60px">
-    <div class="cheattop">
-      <div class="command">hg add</div>
-    </div>
-    <p class="cheattext">schedules files to be added to the repository. They won&#8217;t actually be added until you commit </p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+
+  {% include cheat.html 
+   top="-60"
+   command="hg add" 
+   text="schedules files to be added to the repository. They won&#8217;t actually be added until you commit"
+  %}
+
   <div class="codesnippet">
     <div class="codetop"> </div>
     <pre>
@@ -163,13 +159,12 @@ adding favicon.ico
   <p>There&#8217;s still one more step&#8230; you have to <em>commit</em> your changes. What changes? The change of adding all those files.</p>
   <p>Why do you have to commit? With Mercurial, committing says &#8220;hey, the way the files look right now&#8212;please remember that.&#8221; It&#8217;s like making a copy of the whole directory&#8230; every time you have something that you&#8217;ve changed that you sorta like, you commit.</p>
   <!-- hg commit box -->
-  <div class="cheatcontent" style="margin-top:-80px">
-    <div class="cheattop">
-      <div class="command">hg commit</div>
-    </div>
-    <p class="cheattext">saves the current state of all files to the repository </p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-80"
+   command="hg commit" 
+   text="saves the current state of all files to the repository"
+  %}
+  
   <div class="codesnippet">
     <div class="codetop"> </div>
     <pre>
@@ -182,13 +177,11 @@ c:\hginit\CountDown&gt; <strong>hg commit</strong>
   <p>When you save and exit, your files will be committed.</p>
   <p>You can type <strong>hg log</strong> to see a history of changes. It&#8217;s like your repository&#8217;s blog:</p>
   <!-- hg log box -->
-  <div class="cheatcontent" style="margin-top:-50px">
-    <div class="cheattop">
-      <div class="command">hg log</div>
-    </div>
-    <p class="cheattext">shows the history of changes committed to the repository </p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-50"
+   command="hg log" 
+   text="shows the history of changes committed to the repository"
+  %}
   <div class="codesnippet">
     <div class="codetop"> </div>
     <pre>
@@ -363,14 +356,11 @@ c:\hginit\CountDown> <strong>del App.xaml</strong>
   <p>Thanks to Mercurial, though, when you&#8217;re unhappy with your changes, you can just issue
     the handy command <strong>hg revert</strong> which will immediately revert
   your directory back to the way it was at the time of the last commit.</p>
-  <!-- hg log box -->
-  <div class="cheatcontent" style="margin-top:-80px">
-    <div class="cheattop">
-      <div class="command">hg revert</div>
-    </div>
-    <p class="cheattext">revert changed files back to committed version  </p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-80"
+   command="hg revert" 
+   text="revert changed files back to committed version"
+  %}
   <div class="codesnippet">
     <div class="codetop"> </div>
     <pre>
@@ -396,14 +386,11 @@ isn't broken, it doesn't have enough features yet.
     <li>GOTO 1</li>
   </ol>
   <p>(I know. Between the Windows command prompt and the GOTO statements, I am the <em>least cool programmer</em> who ever lived.)</p>
-  <!-- hg log box -->
-  <div class="cheatcontent" style="margin-top:-10px">
-    <div class="cheattop">
-      <div class="command">hg status</div>
-    </div>
-    <p class="cheattext">shows a list of changed files</p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-10"
+   command="hg status" 
+   text="shows a list of changed files"
+  %}
   <p>As time goes on, you may get confused about where you are and what
     changes you&#8217;ve made since the last commit. Mercurial keeps
     track of all that for you. All you have to do is type <strong>hg status</strong> and
@@ -432,13 +419,11 @@ M a.txt
   because it&#8217;s ALWAYS CHEERIOS. Anyway, a.txt has changed. What changed?</p>
   <p>There&#8217;s a command for that: <strong>hg diff</strong> tells you exactly what&#8217;s changed
   with a file since the last commit.</p>
-  <div class="cheatcontent" style="margin-top:-50px">
-    <div class="cheattop">
-      <div class="command">hg diff</div>
-    </div>
-    <p class="cheattext">shows what changed in a file  </p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-50"
+   command="hg diff" 
+   text="shows what changed in a file"
+  %}
   <div class="codesnippet">
     <div class="codetop"> </div>
 <pre>c:\hginit\CountDown&gt; <strong>hg diff a.txt</strong>
@@ -458,16 +443,14 @@ diff -r 55490459b740 a.txt
     which were removed, and lines that begin with a plus, which
     were added, so you can see here that &#8220;Normal people&#8221; was edited to be &#8220;Civilians&#8221;.
   </p>
-  <!-- hg log box -->
-  <div class="cheatcontent" style="margin-top:-10px;">
-    <div class="cheattop">
-      <div class="command">hg remove</div>
-    </div>
-    <p class="cheattext">schedules files to be removed from
-      the repository. They won&#8217;t actually
-    be removed until you commit.  </p>
-    <img src="i/cheatbot.png" width="241" height="41" />
-  </div>
+  {% include cheat.html 
+   top="-10"
+   command="hg remove" 
+   text="schedules files to be removed from
+      the repository. They won't actually
+    be removed until you commit."
+  %}
+
   <p>
     Now. That missing file, favicon.ico. As earlier, if you didn&#8217;t mean to
     delete it, you can <strong>hg revert</strong>, but let&#8217;s assume you really did mean
@@ -539,14 +522,11 @@ summary:     Initial version of the CountDown code</pre>
 ignore for now.</p>
 <p>Remember that Mercurial keeps, in the repository, enough information
 to reconstruct any old version of any file.</p>
-<!-- hg log box -->
-<div class="cheatcontent" style="margin-top:-10px">
-  <div class="cheattop">
-    <div class="command">hg cat</div>
-  </div>
-  <p class="cheattext">shows any revision of any file.</p>
-  <img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html 
+   top="-10"
+   command="hg cat" 
+   text="shows any revision of any file."
+  %}
 <p>First of all, the simple command <strong>hg cat</strong> can be used to print any old version
 of a file. For example, to see what a.txt looks like now:</p>
 <div class="codesnippet">
@@ -599,14 +579,12 @@ diff -r da5f372c3901 -r a9497f468dc3 a.txt
   you would just <strong>hg update -r 103994</strong> and get some really
   cool anti-gravity sci-fi futuristic version of your source code.
 But of course, that is not possible.</p>
-<!-- hg log box -->
-<div class="cheatcontent" style="margin-top:-120px">
-  <div class="cheattop">
-    <div class="command">hg update</div>
-  </div>
-  <p class="cheattext">update the working directory to a particular revision </p>
-  <img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% include cheat.html 
+   top="-120"
+   command="hg update" 
+   text="update the working directory to a particular revision"
+  %}
+
 <p>What is possible is going <em>back</em> to any version. Watch:</p>
 <div class="codesnippet">
   <div class="codetop"> </div>
