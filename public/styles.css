@@ -343,19 +343,19 @@ pre .prompt {
 	color: dimgray;
 }
 pre.joel {
-	background: url(../i/joel-top.png) top left no-repeat, 
-                url(../i/joel-bottom.png) bottom left no-repeat;
+	background: url(../i/code-joel-top.png) top left no-repeat, 
+                url(../i/code-joel-bottom.png) bottom left no-repeat;
 }
 pre.joel:before {
 	top: 40px;
 	background: url(../i/code-joel-middle.png) top left repeat-y;
 }
 
-pre.joel {
-	background: url(../i/rose-top.png) top left no-repeat, 
-                url(../i/rose-bottom.png) bottom left no-repeat;
+pre.rose {
+	background: url(../i/code-rose-top.png) top left no-repeat, 
+                url(../i/code-rose-bottom.png) bottom left no-repeat;
 }
-pre.joel:before {
+pre.rose:before {
 	top: 40px;
 	background: url(../i/code-rose-middle.png) top left repeat-y;
 }
