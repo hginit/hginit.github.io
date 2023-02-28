@@ -1,52 +1,43 @@
 @charset "UTF-8";
-
 html > body {
-  /* NON-IE ONLY: Keep vertical scrollbar around, regardless of page height */
   overflow-x: auto;
   overflow-y: scroll;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
     sans-serif;
 }
-
 body {
-  margin: 0px;
-  padding: 0px;
-  background-image: url(../i/background.png);
+  margin: 0;
+  padding: 0;
+  background-image: url(/i/background.png);
   background-repeat: repeat-y;
-  background-color: rgb(247, 250, 236);
+  background-color: #f7faec;
 }
-
 a {
   color: #0f5491;
 }
-
 h1 {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  color: rgb(181, 129, 69);
+  color: #b58145;
   font-size: 39px;
-  font-weight: bold;
+  font-weight: 700;
   padding: 7px 0;
 }
-
 h2 {
   padding-top: 1em;
-  color: rgb(181, 129, 69);
+  color: #b58145;
 }
-
 body img {
   max-width: 700px;
   -ms-interpolation-mode: bicubic;
 }
-
 div#topnav {
   width: 100%;
   height: 180px;
   position: relative;
   top: -10px;
 }
-
 div#topnav div.t {
   padding-left: 310px;
   padding-top: 30px;
@@ -55,7 +46,6 @@ div#topnav div.t {
   line-height: 25px;
   color: #000;
 }
-
 div#topnav div.tInterior {
   padding-left: 310px;
   padding-top: 70px;
@@ -64,29 +54,21 @@ div#topnav div.tInterior {
   line-height: 25px;
   color: #000;
 }
-
 div.tInterior a img {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 69px;
 }
-
 div#topnav div.t div.h {
   font-size: 45px;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 65px;
 }
-
-/* home page navigation stuff */
-
 .mainnav {
   width: 920px;
   height: auto;
   margin-top: 60px;
 }
-
-/* image one*/
-
 .mainnav a {
   display: block;
   float: left;
@@ -95,65 +77,64 @@ div#topnav div.t div.h {
   padding: 0;
   text-decoration: none;
 }
-
 .mainnav .button a.zero {
-  background: transparent url(../i/homenav-1-1.png) no-repeat bottom left;
+  background: transparent url(/i/homenav-1-1.png)
+    no-repeat bottom left;
 }
 .mainnav .button a.zero:hover {
   background-position: top left;
 }
 .mainnav .button a.one {
-  background: transparent url(../i/homenav-2-1.png) no-repeat bottom left;
+  background: transparent url(/i/homenav-2-1.png)
+    no-repeat bottom left;
 }
 .mainnav .button a.one:hover {
   background-position: top left;
 }
 .mainnav .button a.two {
-  background: transparent url(../i/homenav-3-1.png) no-repeat bottom left;
+  background: transparent url(/i/homenav-3-1.png)
+    no-repeat bottom left;
 }
 .mainnav .button a.two:hover {
   background-position: top left;
 }
 .mainnav .button a.three {
-  background: transparent url(../i/homenav-4-1.png) no-repeat bottom left;
+  background: transparent url(/i/homenav-4-1.png)
+    no-repeat bottom left;
 }
 .mainnav .button a.three:hover {
   background-position: top left;
 }
 .mainnav .button a.four {
-  background: transparent url(../i/homenav-5-1.png) no-repeat bottom left;
+  background: transparent url(/i/homenav-5-1.png)
+    no-repeat bottom left;
 }
 .mainnav .button a.four:hover {
   background-position: top left;
 }
 .mainnav .button a.five {
-  background: transparent url(../i/homenav-6-1.png) no-repeat bottom left;
+  background: transparent url(/i/homenav-6-1.png)
+    no-repeat bottom left;
 }
 .mainnav .button a.five:hover {
   background-position: top left;
 }
-
-/* end home page nav*/
-
-/* top grey bar nav */
 .toptop {
   background-color: #333;
   height: 50px;
   width: 100%;
-  margin: 0px;
+  margin: 0;
   position: relative;
   z-index: 100;
-  filter: drop-shadow(0px 2px 5px #808080);
+  filter: drop-shadow(0 2px 5px grey);
 }
-
 .toptop ul {
   background-color: #333;
   height: 25px;
-  margin: 0px;
+  margin: 0;
 }
-
 .toptop ul li {
-  text-indent: 0px;
+  text-indent: 0;
   background-color: #333;
   float: right;
   color: #fff;
@@ -166,49 +147,40 @@ div#topnav div.t div.h {
   text-align: center;
   vertical-align: middle;
 }
-.toptop a:link,
 .toptop a,
+.toptop a:link,
 .toptop a:visited {
   text-decoration: none;
   color: #fff;
 }
-
 .toptop ul li a:hover {
   color: #999;
 }
-
-/* content divs */
-
 div.main {
   width: 900px;
   margin-left: 70px;
   height: auto;
 }
-
-/* Cheat Sheet styles */
-
 .cheatcontent {
   float: left;
-  margin: auto 0px 0px -250px;
+  margin: auto 0 0 -250px;
   position: relative;
   z-index: 2;
   width: 250px;
   position: relative;
-  background: url(../i/cheattop.png) top left no-repeat,
-    url(../i/cheatbot.png) bottom left no-repeat;
+  background: url(/i/cheattop.png) top left no-repeat,
+    url(/i/cheatbot.png) bottom left no-repeat;
 }
-
 .cheatcontent:before {
   content: "";
   position: absolute;
-  z-index: -1; /* push it to the background */
-  top: 58px; /* position it off the top background */
+  z-index: -1;
+  top: 58px;
   right: 0;
-  bottom: 41px; /* position it off the bottom background */
+  bottom: 41px;
   left: 0;
-  background: url(../i/cheatmiddle.png) top left repeat-y;
+  background: url(/i/cheatmiddle.png) top left repeat-y;
 }
-
 .cheatcontent dfn {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
@@ -216,22 +188,19 @@ div.main {
   font-style: normal;
   position: static;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   padding-left: 40px;
   padding-top: 20px;
   display: inline-block;
   color: #b58145;
 }
-
 .cheatcontent p {
   font-size: 18px;
   line-height: 20px;
   margin-top: 10px;
   min-height: 50px;
-  padding: 0px 45px 25px 15px;
+  padding: 0 45px 25px 15px;
 }
-
-/* main content styles*/
 div.content {
   font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
     Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
@@ -241,62 +210,63 @@ div.content {
   float: left;
   margin-left: 240px;
 }
-
 pre {
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
-  margin: 0px;
+  margin: 0;
   padding: 10px 9px 25px 10px;
   font-size: 14px;
   position: relative;
   z-index: 2;
-  background: url(../i/code-anonymous-top.png) top left no-repeat,
-    url(../i/code-anonymous-bottom.png) bottom left no-repeat;
+  background: url(/i/code-anonymous-top.png) top left
+      no-repeat,
+    url(/i/code-anonymous-bottom.png) bottom left
+      no-repeat;
 }
 pre:before {
   content: "";
   position: absolute;
-  z-index: -1; /* push it to the background */
-  top: 41px; /* position it off the top background */
+  z-index: -1;
+  top: 41px;
   right: 0;
-  bottom: 37px; /* position it off the bottom background */
+  bottom: 37px;
   left: 0;
-  background: url(../i/code-anonymous-middle.png) top left repeat-y;
+  background: url(/i/code-anonymous-middle.png) top left
+    repeat-y;
 }
 pre .prompt {
-  color: dimgray;
+  color: #696969;
 }
 pre.joel {
-  background: url(../i/code-joel-top.png) top left no-repeat,
-    url(../i/code-joel-bottom.png) bottom left no-repeat;
+  background: url(/i/code-joel-top.png) top left
+      no-repeat,
+    url(/i/code-joel-bottom.png) bottom left no-repeat;
 }
 pre.joel:before {
   top: 40px;
-  background: url(../i/code-joel-middle.png) top left repeat-y;
+  background: url(/i/code-joel-middle.png) top left
+    repeat-y;
 }
-
 pre.rose {
-  background: url(../i/code-rose-top.png) top left no-repeat,
-    url(../i/code-rose-bottom.png) bottom left no-repeat;
+  background: url(/i/code-rose-top.png) top left
+      no-repeat,
+    url(/i/code-rose-bottom.png) bottom left no-repeat;
 }
 pre.rose:before {
   top: 40px;
-  background: url(../i/code-rose-middle.png) top left repeat-y;
+  background: url(/i/code-rose-middle.png) top left
+    repeat-y;
 }
-
 pre kbd {
   font-weight: 600;
 }
-
-/*  edit text styles */
 div.edit1 {
   z-index: -1;
   float: left;
-  margin-top: 0px;
+  margin-top: 0;
   margin-left: 10px;
   width: 384px;
 }
-
 div.edit2 {
   float: left;
   margin-top: -70px;
@@ -304,19 +274,17 @@ div.edit2 {
   z-index: 1;
   width: 384px;
 }
-
 div.edittopbefore {
   font-size: 14px;
   margin-left: 1px;
   height: 21px;
   background-color: #666;
-  border: solid 1px black;
+  border: solid 1px #000;
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
   padding-left: 15px;
-  border-radius: 3px 3px 0px 0px;
+  border-radius: 3px 3px 0 0;
 }
-
 div.editcontent {
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
@@ -324,41 +292,38 @@ div.editcontent {
   margin-left: 1px;
   height: auto;
   background-color: #fff;
-  border-left: solid 1px black;
-  border-right: solid 1px black;
+  border-left: solid 1px #000;
+  border-right: solid 1px #000;
   color: #000;
   padding-top: 5px;
   padding-left: 15px;
 }
-
 div.editcontent strong {
-  font-weight: normal;
-  background-color: yellow;
+  font-weight: 400;
+  background-color: #ff0;
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
 }
-
 div.edittopafter {
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
   font-size: 14px;
   margin-left: 1px;
   height: 21px;
-  background: transparent url(../i/editTopAfter.gif) repeat-x;
-  border: solid 1px black;
+  background: transparent url(/i/editTopAfter.gif)
+    repeat-x;
+  border: solid 1px #000;
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
   padding-left: 15px;
   margin-top: -97px;
-  border-radius: 3px 3px 0px 0px;
+  border-radius: 3px 3px 0 0;
 }
 img.editArrow {
   left: -80px;
   position: relative;
   z-index: 2;
 }
-
-/* footer */
 footer {
   margin-top: 30px;
   width: 630px;
@@ -369,7 +334,6 @@ footer {
     helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
     sans-serif;
 }
-
 div.footernav {
   float: left;
   height: 45px;
@@ -377,7 +341,6 @@ div.footernav {
   vertical-align: middle;
   line-height: 45px;
 }
-
 #home,
 #next {
   background-color: #666;
@@ -385,7 +348,6 @@ div.footernav {
   font-weight: 800;
   border-radius: 4px;
 }
-
 #next {
   float: right;
 }
@@ -397,21 +359,19 @@ footer a {
   text-decoration: none;
   color: #fff;
 }
-
 #comingup,
 #comingup a {
   padding: 0;
   font-size: 17px;
   line-height: 18px;
-  color: rgb(181, 129, 69) !important;
+  color: #b58145 !important;
   width: 350px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
 }
 #comingup a {
   text-decoration: underline;
 }
-
 div.about {
   float: left;
   width: 350px;
