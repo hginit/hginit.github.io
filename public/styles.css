@@ -414,14 +414,17 @@ footer a
 	color: #fff;
 }
 
-#comingup{
+#comingup, #comingup a{
   padding: 0;
 	font-size: 17px;
 	line-height: 18px;
-	color: rgb(181,129,69);
+	color: rgb(181,129,69) !important;
 	width: 350px;
 	text-align: center;
 	font-weight: bold;
+}
+#comingup a {
+  text-decoration: underline;
 }
 
 div.about {
