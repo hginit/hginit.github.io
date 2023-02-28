@@ -8,6 +8,7 @@ The copyright situation is confusing, but I'd love to get this on the original w
 
 You can visit the original website via [The Web Archive](https://web.archive.org/web/20180926172759/http://hginit.com/). Important Changes:
 
+- Switched to [System Font Stack](https://systemfontstack.com/)
 - Switched to semantic HTML wherever possible:
   - Use clean (no wrapper divs) `<pre>` tags with `<samp>` and `<kbd>` tags to denote
     sample output text and input commands typed within a terminal session.
@@ -20,7 +21,7 @@ You can visit the original website via [The Web Archive](https://web.archive.org
 - Removed references to Kiln
 - Fixed external links
 - Removed Google Analytics and other tracking
-- Jekyll-ized for easier edits.
+- Jekyll-ized for easier edits, using includes and layouts
 - [Removed all javascript](https://github.com/hginit/hginit.github.io/commit/9224bd8dc466ea264c9c275343509f2bfd2e5325).
 - [Added translation links](https://github.com/hginit/hginit.github.io/commit/2a7d7ab1db0935c1ad7ac12d225cd7cedb36a778) in navigation bar (Japenese, Chinese)
 - [Added translation links](https://github.com/hginit/hginit.github.io/commit/7910cb82eff9dc32c74227ca22f80db72ecff15d) in [Sitemap](https://hginit.github.io/sitemap.xml)

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*  We use https://systemfontstack.com/ for all 3 cases */
 html > body {
   overflow-x: auto;
   overflow-y: scroll;
@@ -9,6 +10,7 @@ html > body {
 body {
   margin: 0;
   padding: 0;
+  /* TODO: Switch to css instead */
   background-image: url(/i/background.png);
   background-repeat: repeat-y;
   background-color: #f7faec;
@@ -30,15 +32,14 @@ h2 {
 }
 body img {
   max-width: 700px;
-  -ms-interpolation-mode: bicubic;
 }
-div#topnav {
+header {
   width: 100%;
   height: 180px;
   position: relative;
   top: -10px;
 }
-div#topnav div.t {
+header div.t {
   padding-left: 310px;
   padding-top: 30px;
   width: 600px;
@@ -46,7 +47,7 @@ div#topnav div.t {
   line-height: 25px;
   color: #000;
 }
-div#topnav div.tInterior {
+header div.tInterior {
   padding-left: 310px;
   padding-top: 70px;
   width: 600px;
@@ -59,7 +60,7 @@ div.tInterior a img {
   top: 0;
   left: 69px;
 }
-div#topnav div.t div.h {
+header div.t div.h {
   font-size: 45px;
   font-weight: 700;
   line-height: 65px;
@@ -81,42 +82,28 @@ div#topnav div.t div.h {
   background: transparent url(/i/homenav-1-1.png)
     no-repeat bottom left;
 }
-.mainnav .button a.zero:hover {
-  background-position: top left;
-}
 .mainnav .button a.one {
   background: transparent url(/i/homenav-2-1.png)
     no-repeat bottom left;
-}
-.mainnav .button a.one:hover {
-  background-position: top left;
 }
 .mainnav .button a.two {
   background: transparent url(/i/homenav-3-1.png)
     no-repeat bottom left;
 }
-.mainnav .button a.two:hover {
-  background-position: top left;
-}
 .mainnav .button a.three {
   background: transparent url(/i/homenav-4-1.png)
     no-repeat bottom left;
-}
-.mainnav .button a.three:hover {
-  background-position: top left;
 }
 .mainnav .button a.four {
   background: transparent url(/i/homenav-5-1.png)
     no-repeat bottom left;
 }
-.mainnav .button a.four:hover {
-  background-position: top left;
-}
+
 .mainnav .button a.five {
   background: transparent url(/i/homenav-6-1.png)
     no-repeat bottom left;
 }
-.mainnav .button a.five:hover {
+.mainnav .button a:hover {
   background-position: top left;
 }
 .toptop {

@@ -1,0 +1,14 @@
+<header>
+  <div class="tInterior">
+    <a href="index.html">
+      <img src="i/logo.png" alt="HgInit Logo" border="0" alt="HgInit Home" />
+    </a>
+
+  {% if page.longdescription %}
+  {{page.longdescription | markdownify}}
+  {% else %}
+  {{page.description | markdownify}}
+  {% endif %}
+
+  </div>
+</header>
