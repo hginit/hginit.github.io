@@ -208,48 +208,48 @@ div.main {
 }
 
 /* Cheat Sheet styles */
-div.cheat {
-	width: 241px;
-	height: auto;
-	float: left;
+
+.cheatcontent {
+  float: left;
+	margin: auto 0px 0px -250px;
+	position: relative;
+  z-index: 2;
+	width: 250px;
+  position: relative;
+  background: url(../i/cheattop.png) top left no-repeat,
+                url(../i/cheatbot.png) bottom left no-repeat;
 }
 
-.cheattitle {
-	font-size: 18px;
-	font-weight: bold;
-	padding-top: 5px;
-	padding-left: 40px;
-	color: red;
-	
+.cheatcontent:before {
+  content: '';
+  position: absolute;
+  z-index: -1; /* push it to the background */
+  top: 58px; /* position it off the top background */
+  right: 0;
+  bottom: 41px; /* position it off the bottom background */
+  left: 0;
+  background: url(../i/cheatmiddle.png) top left repeat-y;
 }
 
-div.cheatcontent {
-	margin: auto 0px 0px -240px;
-	position: absolute;
-	width: 240px;
-}
-
-div.cheattop {
-	width: 241px;
-	height: 58px;
-	background: transparent url(../i/cheattop.png) no-repeat;
-}
-div.cheattop .command
+.cheatcontent dfn
 {
-	font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-style: normal;
+  position: static;
+	font-size: 20px;
 	font-weight: bold;
-	padding: 25px 0 0 40px;
-	*padding-bottom: 3px;
-	color: #B58145;
+  padding-left: 40px;
+  padding-top: 20px;
+  display: inline-block;
+	color: #b58145;
 }
 	
-p.cheattext {
-	background: url(../i/cheatmiddle.png) 0 0 repeat-y;
-	background-repeat:repeat-y;
-	font-size: 13px;
-	line-height: 18px;
-	padding: 10px 40px 10px 20px;
-	margin: 0;
+.cheatcontent p {
+	font-size: 18px;
+	line-height: 20px;
+	margin-top: 10px;
+  min-height: 50px;
+  padding: 0px 45px 25px 15px;
 }
 
 /* main content styles*/
@@ -267,7 +267,7 @@ pre
   margin: 0px;
   padding: 10px 9px 25px 10px;
   font-size: 14px;
-  	position: relative;
+  position: relative;
 	z-index: 2;
 	background: url(../i/code-anonymous-top.png) top left no-repeat, 
                 url(../i/code-anonymous-bottom.png) bottom left no-repeat;
@@ -305,8 +305,7 @@ pre.rose:before {
 
 pre kbd
 {
-	font-weight: bold;
-  font-size: larger;
+	font-weight: 600;
 }
 
 /*  edit text styles */	
@@ -335,10 +334,7 @@ pre kbd
 		color: #fff;
 		font-weight: bold;
 		padding-left: 15px;
-		-moz-border-radius-topleft: 3px;
-		-moz-border-radius-topright: 3px;
-		-webkit-border-top-left-radius: 3px;
-		-webkit-border-top-right-radius: 3px;
+    border-radius: 3px 3px 0px 0px;
 	}
 	
 	div.editcontent {
@@ -372,10 +368,7 @@ pre kbd
 		font-weight: bold;
 		padding-left: 15px;
 		margin-top: -97px;
-		-moz-border-radius-topleft: 3px;
-		-moz-border-radius-topright: 3px;
-		-webkit-border-top-left-radius: 3px;
-		-webkit-border-top-right-radius: 3px;
+    border-radius: 3px 3px 0px 0px;
 	}
 	img.editArrow
 	{

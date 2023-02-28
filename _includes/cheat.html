@@ -1,7 +1,10 @@
-<div class="cheatcontent" style="margin-top:{{include.top | default: 0}}px">
-<div class="cheattop">
-	<div class="command">{{include.command}}</div>
-</div>
-<p class="cheattext"> {{include.text}}</p>
-<img src="i/cheatbot.png" width="241" height="41" />
-</div>
+{% comment %}
+@see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+
+The <dfn> HTML element is used to indicate the term being defined within the context of a definition phrase or sentence. The ancestor <p> element, the <dt>/<dd> pairing, or the nearest <section> ancestor of the <dfn> element, is considered to be the definition of the term.
+
+{% endcomment %}
+<section class="cheatcontent" style="margin-top:{{include.top | default: 0}}px">
+  <dfn>{{include.command}}</dfn>
+  <p> {{include.text}}</p>
+</section>
