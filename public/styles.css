@@ -160,13 +160,13 @@ div#topnav div.t div.h {
 /* top grey bar nav */
 .toptop {
 	background-color: #333;
-	height: 50px;
+	height: 25px;
 	width: 100%;
 	margin: 0px;
 	padding-top: -2px;
 	position: relative;
 	z-index: 100;
-  filter: drop-shadow(0px 4px 5px dimgray);
+  filter: drop-shadow(0px 2px 5px #808080);
 }
 
 .toptop ul {
@@ -305,11 +305,8 @@ p.cheattext {
 /* main content styles*/
 div.content {
 	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol; 
-	font-size: 17px;
-	line-height: 27px;
+	font-size: 20px;
 	width: 642px;
-	font-size: 14px;
-	line-height: 18px;
 	float: left;
 	margin-left: 240px;
 }
