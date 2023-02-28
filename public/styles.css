@@ -160,10 +160,9 @@ div#topnav div.t div.h {
 /* top grey bar nav */
 .toptop {
 	background-color: #333;
-	height: 25px;
+	height: 50px;
 	width: 100%;
 	margin: 0px;
-	padding-top: -2px;
 	position: relative;
 	z-index: 100;
   filter: drop-shadow(0px 2px 5px #808080);
@@ -186,59 +185,20 @@ div#topnav div.t div.h {
 	list-style: none;
 	padding-top: 5px;
 	padding-right: 5px;
+  padding-bottom: 5px;
 	text-align: center;
 	vertical-align: middle;
 	
 }
-.toptop ul li a {
+.toptop a:link, .toptop a, .toptop a:visited {
 	text-decoration: none;
 	color: #fff;
-	
-}
-.toptop ul li a:link {
-	text-decoration: none;
-	color: #fff;
-	
 }
 
 .toptop ul li a:hover {
-	text-decoration: none;
 	color: #999;
 }
 
-.toptop ul li a:visted {
-	text-decoration: none;
-	color: #fff;
-}
-
-/* nav styles */
-
-div#shortcuts {
-  position: absolute;
-  top: 25px;
-  left: 320px;
-}
-
-div.topcontainer {
-	height: 190px;
-	clear: both;
-}
-
-.navholder {
-	width: 103px;
-	float: left;
-}
-	
-	.bottom {
-		position: relative;
-		top: 30px;
-	}
-	
-	.top {
-		position: relative;
-			top: -45px;
-			*top: -48px;
-		}
 /* content divs */
 
 div.main {
@@ -246,16 +206,6 @@ div.main {
 	margin-left: 70px;
 	height: auto;
 }
-
-div.intro {
-	width: 600px;
-	font-size: 18px;
-	line-height: 25px;
-	color: #000;
-  margin-left: 240px;
-}
-
-
 
 /* Cheat Sheet styles */
 div.cheat {
@@ -433,93 +383,53 @@ pre kbd
 		position: relative;
 		z-index: 2;
 	}
+
 /* footer */
 footer {
-	margin-top: 40px;
+	margin-top: 30px;
 	width: 630px;
 	height: 65px;
 	border-top: solid 1px #ccc;
-	border-bottom: solid 1px #ccc;
-	padding-top: 10px;
+  padding-top: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
 div.footernav {
 	float: left;
-	height: 35px;
-	*height: auto;
+	height: 45px;
+  padding: 10px 10px;
+  vertical-align: middle;
+  line-height: 45px;
 }
 
 #home , #next {
 	background-color: #666;
-	border: 1px solid #666;
-	font-size: 35px;
+	font-size: 30px;
 	font-weight: 800;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	padding: 17px 0 0;
-	*padding-bottom: 15px;
+	border-radius: 4px;
 }
 
 #next {
 	float: right;
 }
-#next:hover, #home:hover
+#home:hover, #next:hover
 {
 	background-color: #9B9B9B;
 }
-footer #home a, footer #next a
+footer a
 {
 	text-decoration: none;
 	color: #fff;
-	padding: 8px 10px;
-}
-footer #next a
-{
-	padding: 8px 20px;
 }
 
-#comingup p{
-	margin-top: 0px;
-	padding-left: 10px;
+#comingup{
+  padding: 0;
 	font-size: 17px;
-	line-height: 20px;
+	line-height: 18px;
 	color: rgb(181,129,69);
-	height: auto;
-	width: 310px;
+	width: 350px;
 	text-align: center;
 	font-weight: bold;
-}
-
-div.pagebottom {
-	margin-top: 25px;
-	width: 650px;
-	clear: both;
-	*margin-bottom: -20px;
-}
-div.bottomimg {
-	background: url(../i/footer.png) no-repeat;
-	width: 237px;
-	height: 409px;
-	float: left;
-}
-div.bottomimg a#logoLink
-{
-	display: block;
-	padding-top: 90px;
-	text-decoration: none;
-}
-div.bottomtext {
-	font-size: 13px;
-	line-height: 15px;
-	padding: 0 30px 20px 30px;
-}
-	div.bottomtext.getStarted
-	{
-		padding-bottom: 5px;
-	}
-
-.bottomtext a {
-	color: #0F5491;
 }
 
 div.about {
@@ -529,11 +439,4 @@ div.about {
 	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   font-size: 15px;
   line-height: 21px;
-}
-
-.botbot {
-	background: #333;
-	height: 20px;
-	width: 100%;
-	clear: both;
 }
