@@ -1,226 +1,205 @@
 @charset "UTF-8";
 
-html>body
-{
+html > body {
   /* NON-IE ONLY: Keep vertical scrollbar around, regardless of page height */
   overflow-x: auto;
   overflow-y: scroll;
-	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
 }
 
 body {
-	margin: 0px;
-	padding: 0px;
-	background-image: url(../i/background.png);
-	background-repeat: repeat-y;
-	background-color: rgb(247,250,236);
+  margin: 0px;
+  padding: 0px;
+  background-image: url(../i/background.png);
+  background-repeat: repeat-y;
+  background-color: rgb(247, 250, 236);
 }
 
-a
-{
-    color: #0F5491;
+a {
+  color: #0f5491;
 }
 
-h1
-{
-  border-top: 1px solid #CCC;
+h1 {
+  border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  color: rgb(181,129,69);
+  color: rgb(181, 129, 69);
   font-size: 39px;
   font-weight: bold;
   padding: 7px 0;
 }
 
-h2
-{
+h2 {
   padding-top: 1em;
-  color: rgb(181,129,69);
+  color: rgb(181, 129, 69);
 }
 
-body img
-{
-	max-width: 700px;
-	-ms-interpolation-mode: bicubic;
+body img {
+  max-width: 700px;
+  -ms-interpolation-mode: bicubic;
 }
 
-div#topnav
-{
+div#topnav {
   width: 100%;
   height: 180px;
   position: relative;
   top: -10px;
 }
 
-
 div#topnav div.t {
-  padding-left: 310px; 
-  padding-top: 30px; 
+  padding-left: 310px;
+  padding-top: 30px;
   width: 600px;
-	font-size: 18px;
-	line-height: 25px;
-	color: #000;
+  font-size: 18px;
+  line-height: 25px;
+  color: #000;
 }
 
 div#topnav div.tInterior {
-  padding-left: 310px; 
-  padding-top: 70px; 
+  padding-left: 310px;
+  padding-top: 70px;
   width: 600px;
-	font-size: 18px;
-	line-height: 25px;
-	color: #000;
+  font-size: 18px;
+  line-height: 25px;
+  color: #000;
 }
 
-div.tInterior a img
-{
+div.tInterior a img {
   position: absolute;
   top: 0px;
   left: 69px;
 }
 
-
 div#topnav div.t div.h {
   font-size: 45px;
-  font-weight: bold; 
+  font-weight: bold;
   line-height: 65px;
 }
-	
+
 /* home page navigation stuff */
 
 .mainnav {
-	width: 920px;
-	height: auto;
-	margin-top: 60px;
-	}
+  width: 920px;
+  height: auto;
+  margin-top: 60px;
+}
 
 /* image one*/
 
-.mainnav a 
-{
-	display: block;
-	float: left;
-	height: 176px;
-    width: 151px;
-	padding: 0;
-	text-decoration: none;
+.mainnav a {
+  display: block;
+  float: left;
+  height: 176px;
+  width: 151px;
+  padding: 0;
+  text-decoration: none;
 }
 
-.mainnav .button a.zero
-{
-	background: transparent url(../i/homenav-1-1.png) no-repeat bottom left;
+.mainnav .button a.zero {
+  background: transparent url(../i/homenav-1-1.png) no-repeat bottom left;
 }
-	.mainnav .button a.zero:hover
-	{
-		background-position: top left;
-	}
-.mainnav .button a.one
-{
-	background: transparent url(../i/homenav-2-1.png) no-repeat bottom left;
+.mainnav .button a.zero:hover {
+  background-position: top left;
 }
-	.mainnav .button a.one:hover
-	{
-		background-position: top left;
-	}
-.mainnav .button a.two
-{
-	background: transparent url(../i/homenav-3-1.png) no-repeat bottom left;
+.mainnav .button a.one {
+  background: transparent url(../i/homenav-2-1.png) no-repeat bottom left;
 }
-	.mainnav .button a.two:hover
-	{
-		background-position: top left;
-	}
-.mainnav .button a.three
-{
-	background: transparent url(../i/homenav-4-1.png) no-repeat bottom left;
+.mainnav .button a.one:hover {
+  background-position: top left;
 }
-	.mainnav .button a.three:hover
-	{
-		background-position: top left;
-	}
-.mainnav .button a.four
-{
-	background: transparent url(../i/homenav-5-1.png) no-repeat bottom left;
+.mainnav .button a.two {
+  background: transparent url(../i/homenav-3-1.png) no-repeat bottom left;
 }
-	.mainnav .button a.four:hover
-	{
-		background-position: top left;
-	}
-.mainnav .button a.five
-{
-	background: transparent url(../i/homenav-6-1.png) no-repeat bottom left;
+.mainnav .button a.two:hover {
+  background-position: top left;
 }
-	.mainnav .button a.five:hover
-	{
-		background-position: top left;
-	}
-
+.mainnav .button a.three {
+  background: transparent url(../i/homenav-4-1.png) no-repeat bottom left;
+}
+.mainnav .button a.three:hover {
+  background-position: top left;
+}
+.mainnav .button a.four {
+  background: transparent url(../i/homenav-5-1.png) no-repeat bottom left;
+}
+.mainnav .button a.four:hover {
+  background-position: top left;
+}
+.mainnav .button a.five {
+  background: transparent url(../i/homenav-6-1.png) no-repeat bottom left;
+}
+.mainnav .button a.five:hover {
+  background-position: top left;
+}
 
 /* end home page nav*/
 
 /* top grey bar nav */
 .toptop {
-	background-color: #333;
-	height: 50px;
-	width: 100%;
-	margin: 0px;
-	position: relative;
-	z-index: 100;
+  background-color: #333;
+  height: 50px;
+  width: 100%;
+  margin: 0px;
+  position: relative;
+  z-index: 100;
   filter: drop-shadow(0px 2px 5px #808080);
 }
 
 .toptop ul {
-	background-color: #333;
-	height: 25px;
-	margin: 0px;
-	
+  background-color: #333;
+  height: 25px;
+  margin: 0px;
 }
 
 .toptop ul li {
-	text-indent: 0px;
-	background-color: #333;
-	float: right;
-	color: #fff;
-	font-size: 12px;
-	width: 100px;
-	list-style: none;
-	padding-top: 5px;
-	padding-right: 5px;
+  text-indent: 0px;
+  background-color: #333;
+  float: right;
+  color: #fff;
+  font-size: 12px;
+  width: 100px;
+  list-style: none;
+  padding-top: 5px;
+  padding-right: 5px;
   padding-bottom: 5px;
-	text-align: center;
-	vertical-align: middle;
-	
+  text-align: center;
+  vertical-align: middle;
 }
-.toptop a:link, .toptop a, .toptop a:visited {
-	text-decoration: none;
-	color: #fff;
+.toptop a:link,
+.toptop a,
+.toptop a:visited {
+  text-decoration: none;
+  color: #fff;
 }
 
 .toptop ul li a:hover {
-	color: #999;
+  color: #999;
 }
 
 /* content divs */
 
 div.main {
-	width: 900px;
-	margin-left: 70px;
-	height: auto;
+  width: 900px;
+  margin-left: 70px;
+  height: auto;
 }
 
 /* Cheat Sheet styles */
 
 .cheatcontent {
   float: left;
-	margin: auto 0px 0px -250px;
-	position: relative;
+  margin: auto 0px 0px -250px;
+  position: relative;
   z-index: 2;
-	width: 250px;
+  width: 250px;
   position: relative;
   background: url(../i/cheattop.png) top left no-repeat,
-                url(../i/cheatbot.png) bottom left no-repeat;
+    url(../i/cheatbot.png) bottom left no-repeat;
 }
 
 .cheatcontent:before {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1; /* push it to the background */
   top: 58px; /* position it off the top background */
@@ -230,49 +209,52 @@ div.main {
   background: url(../i/cheatmiddle.png) top left repeat-y;
 }
 
-.cheatcontent dfn
-{
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+.cheatcontent dfn {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
   font-style: normal;
   position: static;
-	font-size: 20px;
-	font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
   padding-left: 40px;
   padding-top: 20px;
   display: inline-block;
-	color: #b58145;
+  color: #b58145;
 }
-	
+
 .cheatcontent p {
-	font-size: 18px;
-	line-height: 20px;
-	margin-top: 10px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 10px;
   min-height: 50px;
   padding: 0px 45px 25px 15px;
 }
 
 /* main content styles*/
 div.content {
-	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol; 
-	font-size: 20px;
-	width: 642px;
-	float: left;
-	margin-left: 240px;
+  font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
+  font-size: 20px;
+  width: 642px;
+  float: left;
+  margin-left: 240px;
 }
 
-pre
-{
-	font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+pre {
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
   margin: 0px;
   padding: 10px 9px 25px 10px;
   font-size: 14px;
   position: relative;
-	z-index: 2;
-	background: url(../i/code-anonymous-top.png) top left no-repeat, 
-                url(../i/code-anonymous-bottom.png) bottom left no-repeat;
+  z-index: 2;
+  background: url(../i/code-anonymous-top.png) top left no-repeat,
+    url(../i/code-anonymous-bottom.png) bottom left no-repeat;
 }
 pre:before {
-	content: '';
+  content: "";
   position: absolute;
   z-index: -1; /* push it to the background */
   top: 41px; /* position it off the top background */
@@ -282,156 +264,161 @@ pre:before {
   background: url(../i/code-anonymous-middle.png) top left repeat-y;
 }
 pre .prompt {
-	color: dimgray;
+  color: dimgray;
 }
 pre.joel {
-	background: url(../i/code-joel-top.png) top left no-repeat, 
-                url(../i/code-joel-bottom.png) bottom left no-repeat;
+  background: url(../i/code-joel-top.png) top left no-repeat,
+    url(../i/code-joel-bottom.png) bottom left no-repeat;
 }
 pre.joel:before {
-	top: 40px;
-	background: url(../i/code-joel-middle.png) top left repeat-y;
+  top: 40px;
+  background: url(../i/code-joel-middle.png) top left repeat-y;
 }
 
 pre.rose {
-	background: url(../i/code-rose-top.png) top left no-repeat, 
-                url(../i/code-rose-bottom.png) bottom left no-repeat;
+  background: url(../i/code-rose-top.png) top left no-repeat,
+    url(../i/code-rose-bottom.png) bottom left no-repeat;
 }
 pre.rose:before {
-	top: 40px;
-	background: url(../i/code-rose-middle.png) top left repeat-y;
+  top: 40px;
+  background: url(../i/code-rose-middle.png) top left repeat-y;
 }
 
-pre kbd
-{
-	font-weight: 600;
+pre kbd {
+  font-weight: 600;
 }
 
-/*  edit text styles */	
-	div.edit1 {
-		z-index: -1;
-		float: left;
-		margin-top: 0px;
-		margin-left: 10px;
-		width: 384px;
-	}
-	
-	div.edit2 {
-		float: left;
-		margin-top: -70px;
-		margin-left: 100px;
-		z-index: 1;
-		width: 384px;
-	}
-	
-	div.edittopbefore {
-		font-size: 14px;
-		margin-left: 1px;
-		height: 21px;
-		background-color: #666;
-		border: solid 1px black;
-		color: #fff;
-		font-weight: bold;
-		padding-left: 15px;
-    border-radius: 3px 3px 0px 0px;
-	}
-	
-	div.editcontent {
-		font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-		font-size: 14px;
-		margin-left: 1px;
-		height: auto;
-		background-color: #fff;
-		border-left: solid 1px black;
-		border-right: solid 1px black;
-		color: #000;
-		padding-top: 5px;
-		padding-left: 15px;
-	}
-	
-	div.editcontent strong
-	{
-    font-weight: normal;
-    background-color: yellow;
-		font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-	}
-	
-	div.edittopafter {
-		font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-		font-size: 14px;
-		margin-left: 1px;
-		height: 21px;
-		background: transparent url(../i/editTopAfter.gif) repeat-x;
-		border: solid 1px black;
-		color: #fff;
-		font-weight: bold;
-		padding-left: 15px;
-		margin-top: -97px;
-    border-radius: 3px 3px 0px 0px;
-	}
-	img.editArrow
-	{
-		left: -80px;
-		position: relative;
-		z-index: 2;
-	}
+/*  edit text styles */
+div.edit1 {
+  z-index: -1;
+  float: left;
+  margin-top: 0px;
+  margin-left: 10px;
+  width: 384px;
+}
+
+div.edit2 {
+  float: left;
+  margin-top: -70px;
+  margin-left: 100px;
+  z-index: 1;
+  width: 384px;
+}
+
+div.edittopbefore {
+  font-size: 14px;
+  margin-left: 1px;
+  height: 21px;
+  background-color: #666;
+  border: solid 1px black;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 15px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+div.editcontent {
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+  font-size: 14px;
+  margin-left: 1px;
+  height: auto;
+  background-color: #fff;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  color: #000;
+  padding-top: 5px;
+  padding-left: 15px;
+}
+
+div.editcontent strong {
+  font-weight: normal;
+  background-color: yellow;
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+}
+
+div.edittopafter {
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+  font-size: 14px;
+  margin-left: 1px;
+  height: 21px;
+  background: transparent url(../i/editTopAfter.gif) repeat-x;
+  border: solid 1px black;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 15px;
+  margin-top: -97px;
+  border-radius: 3px 3px 0px 0px;
+}
+img.editArrow {
+  left: -80px;
+  position: relative;
+  z-index: 2;
+}
 
 /* footer */
 footer {
-	margin-top: 30px;
-	width: 630px;
-	height: 65px;
-	border-top: solid 1px #ccc;
+  margin-top: 30px;
+  width: 630px;
+  height: 65px;
+  border-top: solid 1px #ccc;
   padding-top: 10px;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
 }
 
 div.footernav {
-	float: left;
-	height: 45px;
+  float: left;
+  height: 45px;
   padding: 10px 10px;
   vertical-align: middle;
   line-height: 45px;
 }
 
-#home , #next {
-	background-color: #666;
-	font-size: 30px;
-	font-weight: 800;
-	border-radius: 4px;
+#home,
+#next {
+  background-color: #666;
+  font-size: 30px;
+  font-weight: 800;
+  border-radius: 4px;
 }
 
 #next {
-	float: right;
+  float: right;
 }
-#home:hover, #next:hover
-{
-	background-color: #9B9B9B;
+#home:hover,
+#next:hover {
+  background-color: #9b9b9b;
 }
-footer a
-{
-	text-decoration: none;
-	color: #fff;
+footer a {
+  text-decoration: none;
+  color: #fff;
 }
 
-#comingup, #comingup a{
+#comingup,
+#comingup a {
   padding: 0;
-	font-size: 17px;
-	line-height: 18px;
-	color: rgb(181,129,69) !important;
-	width: 350px;
-	text-align: center;
-	font-weight: bold;
+  font-size: 17px;
+  line-height: 18px;
+  color: rgb(181, 129, 69) !important;
+  width: 350px;
+  text-align: center;
+  font-weight: bold;
 }
 #comingup a {
   text-decoration: underline;
 }
 
 div.about {
-	float: left;
-	width: 350px;
-	margin-left: 30px;
-	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  float: left;
+  width: 350px;
+  margin-left: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
   font-size: 15px;
   line-height: 21px;
 }
