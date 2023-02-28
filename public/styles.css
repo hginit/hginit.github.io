@@ -45,8 +45,7 @@ body img
 
 div#topnav
 {
-  background: transparent url(../i/hg-panel.png) 65px 0 no-repeat;
-  width: 1024px;
+  width: 100%;
   height: 180px;
   position: relative;
   top: -10px;
