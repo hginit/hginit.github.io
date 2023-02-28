@@ -348,7 +348,7 @@ footer a {
 }
 #comingup,
 #comingup a {
-  padding: 0;
+  padding: 0 10px;
   font-size: 17px;
   line-height: 18px;
   color: #b58145 !important;
