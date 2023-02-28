@@ -14,7 +14,7 @@ You can visit the original website via [The Web Archive](https://web.archive.org
     sample output text and input commands typed within a terminal session.
   - Avoid using `img` tags for border images (pre tags, and cheat tips)
   - Use `dfn` tags for cheat tips which define hg commands
-  - Use `<footer>` instead of `<div>`
+  - Use `<header/footer/main>`
 - Improved favicons
 - Added open-graph meta tags.
 - Switched to markdown (WIP 🚧)

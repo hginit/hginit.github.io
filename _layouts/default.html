@@ -1,53 +1,10 @@
 <!DOCTYPE html>
 <html lang=en>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>HgInit: {{page.title}}</title>
-    <meta name="og:description" content="{{page.description}}" />
-    <meta name="description" content="{{page.description}}" />
-    <link href="public/styles.css" rel="stylesheet" type="text/css" />
-    <meta name="language" content="en" />
-    <meta name="author" content="Joel Spolsky" />
-    <meta name="copyright" content="Joel Spolsky" />
-    <meta name="og:title" content="The Rock" />
-    <meta name="og:url" content="{{site.url}}/{{page.url}}" />
-    <meta name="og:image" content="{{site.url}}/i/logo.png" />
-    <link rel="start" title="HgInit" href="{{site.url}}/" />
-    {% if page.previous %}
-    <link rel="prev" href="{{site.url}}/{{page.previous}}" />
-    {% endif %} {% if page.next %}
-    <link rel="next" href="{{site.url}}/{{page.next}}" />
-    {% endif %}
-    <link rel="alternate" href="{{site.url}}{{page.url}}" hreflang="en" />
-    <link rel="alternate" href="{{page.alternate.zh}}" hreflang="zh" />
-    {% if page.alternate.ja %}
-    <link rel="alternate" href="{{page.alternate.ja}}" hreflang="ja" />
-    {% endif %}
-    <link rel="canonical" href="{{site.url}}{{page.url}}" />
-    {% include favicon.html %}
+    {% include head.html %}
   </head>
   <body>
-    <div class="toptop" align="left">
-      <ul>
-        <li><a href="https://github.com/hginit/hginit.github.io">Source</a></li>
-        <li>
-          <a href="https://zh-hginit.readthedocs.org" hreflang="zh">中文版</a>
-        </li>
-        <li>
-          <a
-            href="https://mmitou.hatenadiary.org/entry/20100501/1272680474"
-            hreflang="ja"
-            >日本語</a
-          >
-        </li>
-        <li><a href="https://www.joelonsoftware.com/">Joel on Software</a></li>
-        <li><a href="https://www.mercurial-scm.org">Mercurial</a></li>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </div>
-    <div id="dropshadow"></div>
+    {% include toptop.html %}
     {{content}}
   </body>
 </html>

@@ -1,15 +1,17 @@
 ---
 layout: default
 ---
-<div class="main">
+<main>
   {% include header.html %}
     <!-- content starts -->
-    <h1>{{page.title}}</h1>
-    <div class="content">
-      {{content}}
-      <!-- content ends -->
-      <!-- footer starts -->
-      {% include footer.html teaser=page.teaser%}
-      <!-- footer ends -->
-    </div>
-</div>
+    <article>
+      <h1>{{page.title}}</h1>
+      <div class="content">
+        {{content}}
+        <!-- content ends -->
+        <!-- footer starts -->
+        {% include footer.html teaser=page.teaser%}
+        <!-- footer ends -->
+      </div>
+    </article>
+</main>
