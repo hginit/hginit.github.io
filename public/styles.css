@@ -5,7 +5,7 @@ html>body
   /* NON-IE ONLY: Keep vertical scrollbar around, regardless of page height */
   overflow-x: auto;
   overflow-y: scroll;
-	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
 body {
@@ -43,11 +43,6 @@ body img
 	-ms-interpolation-mode: bicubic;
 }
 
-div#dropshadow
-{
-	background: transparent url(../i/top-dropshadow.png) repeat-x;
-	height: 10px;
-}
 div#topnav
 {
   background: transparent url(../i/hg-panel.png) 65px 0 no-repeat;
@@ -165,12 +160,13 @@ div#topnav div.t div.h {
 /* top grey bar nav */
 .toptop {
 	background-color: #333;
-	height: 25px;
+	height: 50px;
 	width: 100%;
 	margin: 0px;
 	padding-top: -2px;
 	position: relative;
 	z-index: 100;
+  filter: drop-shadow(0px 4px 5px dimgray);
 }
 
 .toptop ul {
