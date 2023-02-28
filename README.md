@@ -16,7 +16,7 @@ You can visit the original website via [The Web Archive](https://web.archive.org
   - Use `<footer>` instead of `<div>`
 - Improved favicons
 - Added open-graph meta tags.
-- Switched to markdown (:underconstruction:)
+- Switched to markdown (WIP 🚧)
 - Removed references to Kiln
 - Fixed external links
 - Removed Google Analytics and other tracking
