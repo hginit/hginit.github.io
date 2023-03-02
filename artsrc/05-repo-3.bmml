@@ -1,0 +1,156 @@
+<mockup version="1.0" skin="sketch" measuredW="1162" measuredH="445" mockupW="750" mockupH="318">
+  <controls>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::FieldSet" x="557" y="117" w="190" h="315" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Stable%20Repository</text>
+        <backgroundAlpha>0</backgroundAlpha>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::HRule" x="525" y="235" w="89" h="-1" measuredW="100" measuredH="5" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::FieldSet" x="936" y="120" w="190" h="315" measuredW="200" measuredH="170" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dev%20Repository</text>
+        <backgroundAlpha>0</backgroundAlpha>
+      </controlProperties>
+    </control>
+    <control controlID="73" controlTypeID="com.balsamiq.mockups::Button" x="926" y="314" w="-1" h="-1" measuredW="101" measuredH="28" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>8%3A%20Better%20Chile</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::Button" x="1027" y="314" w="-1" h="-1" measuredW="125" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>9%3A%20Better%20Avocados</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::Button" x="992" y="285" w="-1" h="-1" measuredW="74" measuredH="28" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>10%3A%20merge</text>
+        <size>11</size>
+        <bold>false</bold>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::Button" x="926" y="257" w="-1" h="-1" measuredW="105" measuredH="28" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>11%3A%20Bananas%20Yum</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::PointyButton" x="402" y="221" w="-1" h="-1" measuredW="123" measuredH="32" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Version-1.0</text>
+        <icon>VLinesIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::Button" x="992" y="229" w="-1" h="-1" measuredW="74" measuredH="28" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>13%3A%20merge</text>
+        <size>11</size>
+        <bold>false</bold>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::ScratchOut" x="936" y="350" w="185" h="80" measuredW="205" measuredH="107" zOrder="19" locked="false" isInGroup="-1"/>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::CallOut" x="949" y="376" w="-1" h="-1" measuredW="164" measuredH="40" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>murky%20ancient%20history</text>
+        <color>16764006</color>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Button" x="984" y="201" w="-1" h="-1" measuredW="94" measuredH="28" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>14%3A%20added%20tag</text>
+        <size>11</size>
+        <bold>false</bold>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::PointyButton" x="781" y="224" w="-1" h="-1" measuredW="123" measuredH="32" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Version-1.0</text>
+        <icon>VLinesIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::HRule" x="904" y="238" w="89" h="-1" measuredW="100" measuredH="5" zOrder="23" locked="false" isInGroup="-1"/>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::Button" x="1027" y="257" w="-1" h="-1" measuredW="98" measuredH="28" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>12%3A%20mmmmango</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Button" x="547" y="311" w="-1" h="-1" measuredW="101" measuredH="28" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>8%3A%20Better%20Chile</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Button" x="648" y="311" w="-1" h="-1" measuredW="125" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>9%3A%20Better%20Avocados</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Button" x="613" y="282" w="-1" h="-1" measuredW="74" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>10%3A%20merge</text>
+        <size>11</size>
+        <bold>false</bold>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Button" x="547" y="254" w="-1" h="-1" measuredW="105" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>11%3A%20Bananas%20Yum</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Button" x="648" y="254" w="-1" h="-1" measuredW="98" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>12%3A%20mmmmango</text>
+        <size>11</size>
+        <state>up</state>
+        <bold>false</bold>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="613" y="226" w="-1" h="-1" measuredW="74" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>13%3A%20merge</text>
+        <size>11</size>
+        <bold>false</bold>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::ScratchOut" x="557" y="347" w="185" h="80" measuredW="205" measuredH="107" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::CallOut" x="570" y="373" w="-1" h="-1" measuredW="164" measuredH="40" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>murky%20ancient%20history</text>
+        <color>16764006</color>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Button" x="605" y="198" w="-1" h="-1" measuredW="94" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>14%3A%20added%20tag</text>
+        <size>11</size>
+        <bold>false</bold>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

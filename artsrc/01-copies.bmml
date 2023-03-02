@@ -1,0 +1,46 @@
+<mockup version="1.0" skin="sketch" measuredW="1030" measuredH="537" mockupW="538" mockupH="337">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="505" y="233" w="-1" h="-1" measuredW="71" measuredH="73" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>CountDown</text>
+        <icon>FolderClosed%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="608" y="248" w="-1" h="-1" measuredW="124" measuredH="73" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Copy%20of%20CountDown</text>
+        <icon>FolderClosed%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::IconLabel" x="589" y="349" w="-1" h="-1" measuredW="148" measuredH="73" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Copy%20%282%29%20of%20CountDown</text>
+        <icon>FolderClosed%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::IconLabel" x="732" y="400" w="-1" h="-1" measuredW="148" measuredH="73" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Copy%20%283%29%20of%20CountDown</text>
+        <icon>FolderClosed%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::IconLabel" x="774" y="263" w="-1" h="-1" measuredW="217" measuredH="73" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>CountDown%20for%20Mark%20-%20FEB%202009</text>
+        <icon>FolderClosed%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TitleWindow" x="482" y="190" w="538" h="337" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <minimize>true</minimize>
+        <close>true</close>
+        <verticalScrollbar>true</verticalScrollbar>
+        <maximizeRestore>true</maximizeRestore>
+        <text>Explorer</text>
+        <topheight>26</topheight>
+        <bottomheight>22</bottomheight>
+        <dragger>true</dragger>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
