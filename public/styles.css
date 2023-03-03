@@ -181,6 +181,9 @@ main {
   display: inline-block;
   color: #b58145;
 }
+.cheatcontent h4 {
+  display: inline;
+}
 .cheatcontent p {
   font-size: 18px;
   line-height: 20px;
