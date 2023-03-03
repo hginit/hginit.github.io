@@ -261,9 +261,14 @@ div.edit2 {
   z-index: 1;
   width: 384px;
 }
-div.edittopbefore {
+
+.diff {
+  width: 400px;
+  border: solid 1px #000;
+}
+div.edittopbefore, .diff h3 {
   font-size: 14px;
-  margin-left: 1px;
+  margin: 0;
   height: 21px;
   background-color: #666;
   border: solid 1px #000;
@@ -272,25 +277,59 @@ div.edittopbefore {
   padding-left: 15px;
   border-radius: 3px 3px 0 0;
 }
-div.editcontent {
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
+
+.diff p{
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   font-size: 14px;
-  margin-left: 1px;
-  height: auto;
-  background-color: #fff;
-  border-left: solid 1px #000;
+}
+
+.editcontent p{
+    border-left: solid 1px #000;
   border-right: solid 1px #000;
+}
+div.editcontent {
+
+  font-size: 14px;
+/*  margin-left: 1px;*/
+  height: auto;
+/*  border-left: solid 1px #000;*/
+/*  border-right: solid 1px #000;*/
   color: #000;
   padding-top: 5px;
+  padding-bottom: 76px;
   padding-left: 15px;
+  background: url('/i/edit-bot.gif') bottom left no-repeat;
 }
-div.editcontent strong {
-  font-weight: 400;
+div.editcontent strong, .editcontent ins, .diff ins {
+  text-decoration: none;
   background-color: #ff0;
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
 }
+
+/*
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins#accessibility_concerns
+  The presence of the <ins> element is not announced by most screen reading technology
+  in its default configuration. It can be made to be announced by using the CSS
+  content property, along with the ::before and ::after pseudo-elements.
+*/
+ins::before,
+ins::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+ins::before {
+  content: " [insertion start] ";
+}
+
+ins::after {
+  content: " [insertion end] ";
+}
+
 div.edittopafter {
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
