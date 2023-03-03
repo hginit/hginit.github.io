@@ -148,7 +148,7 @@ main {
   margin-left: 70px;
   height: auto;
 }
-.cheatcontent {
+.tip {
   float: left;
   margin: auto 0 0 -250px;
   position: relative;
@@ -158,7 +158,7 @@ main {
   background: url(/i/cheattop.png) top left no-repeat,
     url(/i/cheatbot.png) bottom left no-repeat;
 }
-.cheatcontent:before {
+.tip:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -168,7 +168,7 @@ main {
   left: 0;
   background: url(/i/cheatmiddle.png) top left repeat-y;
 }
-.cheatcontent dfn {
+.tip dfn {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
     sans-serif;
@@ -181,10 +181,10 @@ main {
   display: inline-block;
   color: #b58145;
 }
-.cheatcontent h4 {
+.tip h4 {
   display: inline;
 }
-.cheatcontent p {
+.tip p {
   font-size: 18px;
   line-height: 20px;
   margin-top: 10px;
