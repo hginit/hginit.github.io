@@ -43,6 +43,11 @@ You can visit the original website via [The Web Archive](https://web.archive.org
 - [Added translation links](https://github.com/hginit/hginit.github.io/commit/7910cb82eff9dc32c74227ca22f80db72ecff15d) in [Sitemap](https://hginit.github.io/sitemap.xml)
 - [Reduced image sizes](https://github.com/hginit/hginit.github.io/commit/af01f5252abe904136e7252e9e519d1f4804554a) by optimizing the PNG files
 
+# Development
+
+See [HACKING.md].
+
 # LICENSE
 
 Copyright Joel Spolsky. This is just a mirror to keep it alive on the internet.
+
