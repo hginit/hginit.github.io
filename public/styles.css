@@ -244,29 +244,13 @@ pre.rose:before {
   background: url(/i/code-rose-middle.png) top left
     repeat-y;
 }
-pre kbd {
-  font-weight: 600;
-}
-div.edit1 {
-  z-index: -1;
-  float: left;
-  margin-top: 0;
-  margin-left: 10px;
-  width: 384px;
-}
-div.edit2 {
-  float: left;
-  margin-top: -70px;
-  margin-left: 100px;
-  z-index: 1;
-  width: 384px;
-}
 
+/* Styles for diffs */
 .diff {
-  width: 400px;
+  width: 500px;
   border: solid 1px #000;
 }
-div.edittopbefore, .diff h3 {
+.diff h3 {
   font-size: 14px;
   margin: 0;
   height: 21px;
@@ -275,44 +259,30 @@ div.edittopbefore, .diff h3 {
   color: #fff;
   font-weight: 700;
   padding-left: 15px;
-  border-radius: 3px 3px 0 0;
 }
 
 .diff p{
+  padding: 5px 10px;
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   font-size: 14px;
 }
 
-.editcontent p{
-    border-left: solid 1px #000;
-  border-right: solid 1px #000;
-}
-div.editcontent {
-
-  font-size: 14px;
-/*  margin-left: 1px;*/
-  height: auto;
-/*  border-left: solid 1px #000;*/
-/*  border-right: solid 1px #000;*/
-  color: #000;
-  padding-top: 5px;
-  padding-bottom: 76px;
-  padding-left: 15px;
-  background: url('/i/edit-bot.gif') bottom left no-repeat;
-}
-div.editcontent strong, .editcontent ins, .diff ins {
-  text-decoration: none;
+.diff ins {
+  text-decoration: none; /* default underlines */
   background-color: #ff0;
 }
 
 /*
   See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins#accessibility_concerns
-  The presence of the <ins> element is not announced by most screen reading technology
+  and https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del#accessibility_concerns
+  The presence of the <ins>/<del> element is not announced by most screen reading technology
   in its default configuration. It can be made to be announced by using the CSS
   content property, along with the ::before and ::after pseudo-elements.
 */
 ins::before,
-ins::after {
+ins::after,
+del::before,
+del::after {
   clip-path: inset(100%);
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -330,26 +300,16 @@ ins::after {
   content: " [insertion end] ";
 }
 
-div.edittopafter {
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
-  font-size: 14px;
-  margin-left: 1px;
-  height: 21px;
-  background: transparent url(/i/editTopAfter.gif)
-    repeat-x;
-  border: solid 1px #000;
-  color: #fff;
-  font-weight: 700;
-  padding-left: 15px;
-  margin-top: -97px;
-  border-radius: 3px 3px 0 0;
+
+del::before {
+  content: " [deletion start] ";
 }
-img.editArrow {
-  left: -80px;
-  position: relative;
-  z-index: 2;
+
+del::after {
+  content: " [deletion end] ";
 }
+
+
 footer {
   margin-top: 30px;
   width: 630px;
