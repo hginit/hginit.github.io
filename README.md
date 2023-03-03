@@ -2,12 +2,28 @@
 
 This is the original hginit.com website by [Joel Spolsky](https://www.joelonsoftware.com/). This is like an archival mirror of the original, since hginit.com is no longer up. Source code was fetched using the Wayback Machine, converted to a minimal Jekyll website, and published via GitHub Pages.
 
-The copyright situation is confusing, but I'd love to get this on the original website (hginit.com).
+A copy of the source code was also published by @bpollack at [Kiln](https://developers.kilnhg.com/Code/Kiln/HgInit/HgInit). These are kept inside the `artsrc` directory.
+
+The copyright situation is confusing, but I'd love to get this on the original website (`hginit.com`).
+
+# Reading
+
+You can read the tutorial on the website at <https://hginit.github.io>. It is also meant to be readable at GitHub as well:
+
+0. [Subversion Re-education](00.md)
+1. [Ground Up Mercurial](01.md)
+2. [Setting up for a Team](02.md)
+3. [Fixing Goofs](03.md)
+4. [Merging](04.md)
+4. [Repository Architecture](05.md)
+
+The irony of using Git/GitHub to maintain this project is not lost on me.
 
 # Changes from original
 
 You can visit the original website via [The Web Archive](https://web.archive.org/web/20180926172759/http://hginit.com/). Important Changes:
 
+- Switched edit diff system from complex divs and image tags to be more semantic and use `section/del/ins` tags instead.
 - Switched to [System Font Stack](https://systemfontstack.com/)
 - Switched to semantic HTML wherever possible:
   - Use clean (no wrapper divs) `<pre>` tags with `<samp>` and `<kbd>` tags to denote
