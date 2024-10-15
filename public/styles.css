@@ -120,7 +120,8 @@ header div.t div.h {
   height: 25px;
   margin: 0;
 }
-.toptop ul li {
+.toptop ul li,
+.toptop label{
   text-indent: 0;
   background-color: #333;
   float: right;
@@ -136,12 +137,20 @@ header div.t div.h {
 }
 .toptop a,
 .toptop a:link,
-.toptop a:visited {
+.toptop a:visited,
+.toptop label {
   text-decoration: none;
   color: #fff;
 }
-.toptop ul li a:hover {
+.toptop ul li a:hover,
+.toptop label:hover {
   color: #999;
+}
+.toptop label {
+  display: none;
+}
+input[type=checkbox] {
+  display: none;
 }
 main {
   width: 900px;
@@ -370,4 +379,44 @@ div.about {
     sans-serif;
   font-size: 15px;
   line-height: 21px;
+}
+
+@media screen and (max-width: 700px) {
+  .toptop {
+    display: grid;
+    grid: repeat (7, 1fr) / 1fr;
+    justify-items: center;
+  }
+  .toptop ul li,
+  .toptop label{
+    width: 100%;
+  }
+  .toptop .menu {
+    display: block;
+    grid-row: 1;
+  }
+  .toptop ul {
+    display: none;
+  }
+  .toptop .menu01 {
+    grid-row: 2;
+  }
+  .toptop .menu02 {
+    grid-row: 3;
+  }
+  .toptop .menu03 {
+    grid-row: 4;
+  }
+  .toptop .menu04 {
+    grid-row: 5;
+  }
+  .toptop .menu05 {
+    grid-row: 6;
+  }
+  .toptop .menu06 {
+    grid-row: 7;
+  }
+  input[type="checkbox"]:checked ~ .show-menu{ 
+    display: contents;
+  }
 }
