@@ -120,7 +120,8 @@ header div.t div.h {
   height: 25px;
   margin: 0;
 }
-.toptop ul li {
+.toptop ul li,
+.toptop label{
   text-indent: 0;
   background-color: #333;
   float: right;
@@ -136,12 +137,20 @@ header div.t div.h {
 }
 .toptop a,
 .toptop a:link,
-.toptop a:visited {
+.toptop a:visited,
+.toptop label {
   text-decoration: none;
   color: #fff;
 }
-.toptop ul li a:hover {
+.toptop ul li a:hover,
+.toptop label:hover {
   color: #999;
+}
+.toptop label {
+  display: none;
+}
+input[type=checkbox] {
+  display: none;
 }
 main {
   width: 900px;
@@ -370,4 +379,27 @@ div.about {
     sans-serif;
   font-size: 15px;
   line-height: 21px;
+}
+
+@media screen and (max-width: 700px) {
+  .toptop ul {
+    display: grid;
+    grid-auto-rows: 1fr;
+    justify-items: center;
+  }
+  .toptop ul li,
+  .toptop label{
+    width: 100%;
+  }
+
+  .toptop label {
+    display: grid;
+  }
+  .toptop ul {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked ~ .toptop-menu{
+    display: contents;
+  }
 }
