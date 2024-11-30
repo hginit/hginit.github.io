@@ -381,7 +381,9 @@ div.about {
   line-height: 21px;
 }
 
+/* Responsive Styles */
 @media screen and (max-width: 700px) {
+  /* Top-Menu */
   .toptop ul {
     display: grid;
     grid-auto-rows: 1fr;
@@ -398,8 +400,44 @@ div.about {
   .toptop ul {
     display: none;
   }
-
   input[type="checkbox"]:checked ~ .toptop-menu{
     display: contents;
+  }
+
+  /* Navigation */
+  .mainnav {
+    min-width: max-content;
+    margin: 60px auto 60px auto;
+    padding-left: 69px;
+    display: grid;
+    grid: repeat(6, 1fr) / 1fr;
+    justify-items: left;
+  }
+  .mainnav .button {
+    display: contents;
+  }
+  .mainnav a {
+    height: 205px;
+    width: 122px;
+  }
+  .mainnav .button a.zero {
+    background-image: url(/i/homenav-1-2.png);
+  }
+  .mainnav .button a.one {
+    background-image: url(/i/homenav-2-2.png);
+  }
+  .mainnav .button a.two {
+    background-image: url(/i/homenav-3-2.png);
+  }
+  .mainnav .button a.three {
+    background-image: url(/i/homenav-4-2.png);
+  }
+  .mainnav .button a.four {
+    background-image: url(/i/homenav-5-2.png);
+  }
+  .mainnav .button a.five {
+    height: 176px;
+    width: 122px;
+    background-image: url(/i/homenav-6-1.png);
   }
 }
