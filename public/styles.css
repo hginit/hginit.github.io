@@ -410,6 +410,7 @@ div.about {
   /* header */
   header {
     top: 0;
+    height: auto;
   }
   header div.tInterior {
     padding-left: 0;
@@ -472,7 +473,6 @@ div.about {
       overflow-x: auto;
       padding: 10px 0px 25px 10px;
     }
-
   }
 
   article img {
@@ -499,13 +499,15 @@ div.about {
   div.footernav {
     height: auto;
   }
-  #home, #next {
+  #home,
+  #next {
     font-size: 16px;
     line-height: 24px;
     flex: 0 0 auto; /* Prevent shrinking */
   }
 
-  #comingup, #comingup a {
+  #comingup,
+  #comingup a {
     width: 100%;
     padding: 0 10px;
     font-size: 14px;
