@@ -79,29 +79,23 @@ header div.t div.h {
   text-decoration: none;
 }
 .mainnav .button a.zero {
-  background: transparent url(/i/homenav-1-1.png)
-    no-repeat bottom left;
+  background: transparent url(/i/homenav-1-1.png) no-repeat bottom left;
 }
 .mainnav .button a.one {
-  background: transparent url(/i/homenav-2-1.png)
-    no-repeat bottom left;
+  background: transparent url(/i/homenav-2-1.png) no-repeat bottom left;
 }
 .mainnav .button a.two {
-  background: transparent url(/i/homenav-3-1.png)
-    no-repeat bottom left;
+  background: transparent url(/i/homenav-3-1.png) no-repeat bottom left;
 }
 .mainnav .button a.three {
-  background: transparent url(/i/homenav-4-1.png)
-    no-repeat bottom left;
+  background: transparent url(/i/homenav-4-1.png) no-repeat bottom left;
 }
 .mainnav .button a.four {
-  background: transparent url(/i/homenav-5-1.png)
-    no-repeat bottom left;
+  background: transparent url(/i/homenav-5-1.png) no-repeat bottom left;
 }
 
 .mainnav .button a.five {
-  background: transparent url(/i/homenav-6-1.png)
-    no-repeat bottom left;
+  background: transparent url(/i/homenav-6-1.png) no-repeat bottom left;
 }
 .mainnav .button a:hover {
   background-position: top left;
@@ -121,7 +115,7 @@ header div.t div.h {
   margin: 0;
 }
 .toptop ul li,
-.toptop label{
+.toptop label {
   text-indent: 0;
   background-color: #333;
   float: right;
@@ -149,7 +143,7 @@ header div.t div.h {
 .toptop label {
   display: none;
 }
-input[type=checkbox] {
+input[type="checkbox"] {
   display: none;
 }
 main {
@@ -217,10 +211,8 @@ pre {
   font-size: 14px;
   position: relative;
   z-index: 2;
-  background: url(/i/code-anonymous-top.png) top left
-      no-repeat,
-    url(/i/code-anonymous-bottom.png) bottom left
-      no-repeat;
+  background: url(/i/code-anonymous-top.png) top left no-repeat,
+    url(/i/code-anonymous-bottom.png) bottom left no-repeat;
 }
 pre:before {
   content: "";
@@ -230,31 +222,26 @@ pre:before {
   right: 0;
   bottom: 37px;
   left: 0;
-  background: url(/i/code-anonymous-middle.png) top left
-    repeat-y;
+  background: url(/i/code-anonymous-middle.png) top left repeat-y;
 }
 pre .prompt {
   color: #696969;
 }
 pre.joel {
-  background: url(/i/code-joel-top.png) top left
-      no-repeat,
+  background: url(/i/code-joel-top.png) top left no-repeat,
     url(/i/code-joel-bottom.png) bottom left no-repeat;
 }
 pre.joel:before {
   top: 40px;
-  background: url(/i/code-joel-middle.png) top left
-    repeat-y;
+  background: url(/i/code-joel-middle.png) top left repeat-y;
 }
 pre.rose {
-  background: url(/i/code-rose-top.png) top left
-      no-repeat,
+  background: url(/i/code-rose-top.png) top left no-repeat,
     url(/i/code-rose-bottom.png) bottom left no-repeat;
 }
 pre.rose:before {
   top: 40px;
-  background: url(/i/code-rose-middle.png) top left
-    repeat-y;
+  background: url(/i/code-rose-middle.png) top left repeat-y;
 }
 
 /* Styles for diffs */
@@ -273,9 +260,10 @@ pre.rose:before {
   padding-left: 15px;
 }
 
-.diff p{
+.diff p {
   padding: 5px 10px;
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
   font-size: 14px;
 }
 
@@ -312,7 +300,6 @@ ins::after {
   content: " [insertion end] ";
 }
 
-
 del::before {
   content: " [deletion start] ";
 }
@@ -320,7 +307,6 @@ del::before {
 del::after {
   content: " [deletion end] ";
 }
-
 
 footer {
   margin-top: 30px;
@@ -384,34 +370,67 @@ div.about {
 /* Responsive Styles */
 @media screen and (max-width: 700px) {
   /* Top-Menu */
-  .toptop ul {
-    display: grid;
-    grid-auto-rows: 1fr;
-    justify-items: center;
+  .toptop {
+    & label[for="btn-menu"] {
+      display: block;
+      padding: 16px 0;
+    }
   }
+
   .toptop ul li,
-  .toptop label{
+  .toptop ul li a,
+  .toptop label {
     width: 100%;
+    padding: 4px 0;
+    display: inline-block;
   }
 
   .toptop label {
-    display: grid;
+    display: block;
   }
   .toptop ul {
     display: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
   }
-  input[type="checkbox"]:checked ~ .toptop-menu{
-    display: contents;
+  input[type="checkbox"]:checked ~ .toptop-menu {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
   }
-
+  /* main */
+  main {
+    display: grid;
+    gap: 16px;
+    padding: 0 16px;
+    margin: 0;
+    width: calc(100% - 32px);
+  }
+  /* header */
+  header {
+    top: 0;
+    height: auto;
+  }
+  header div.tInterior {
+    padding-left: 0;
+    padding-top: 0;
+    width: calc(100% - 32px);
+    display: flex;
+    gap: 16px;
+  }
+  div.tInterior a img {
+    position: relative;
+    left: 0;
+  }
   /* Navigation */
   .mainnav {
     min-width: max-content;
+    width: calc(100% - 32px);
     margin: 60px auto 60px auto;
-    padding-left: 69px;
     display: grid;
     grid: repeat(6, 1fr) / 1fr;
-    justify-items: left;
+    justify-items: center;
   }
   .mainnav .button {
     display: contents;
@@ -439,5 +458,61 @@ div.about {
     height: 176px;
     width: 122px;
     background-image: url(/i/homenav-6-1.png);
+  }
+  /* article */
+  article .content {
+    margin: 0;
+    float: none;
+    width: 100%;
+
+    & pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      text-align: justify;
+      max-width: 100%;
+      overflow-x: auto;
+      padding: 10px 0px 25px 10px;
+    }
+  }
+
+  article img {
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+  }
+  .diff {
+    width: 100%;
+  }
+  /* footer */
+  footer {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  div.footernav {
+    height: auto;
+  }
+  #home,
+  #next {
+    font-size: 16px;
+    line-height: 24px;
+    flex: 0 0 auto; /* Prevent shrinking */
+  }
+
+  #comingup,
+  #comingup a {
+    width: 100%;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    flex: 1; /* Allow flexibility */
   }
 }
